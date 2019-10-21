@@ -1,0 +1,108 @@
+STR r2, [sp, #+2];  --  1.0, 1.0;  --  
+STReq r2, [sp, #+2];  --  1.0, 1.0;  --  cc TRUE
+STReq r2, [sp, #+2];  --  1.0, 1.0;  --  cc FALSE
+
+STR r2, [sp, #-2];  --  2.0, 2.0;  --  
+STReq r2, [sp, #-2];  --  2.0, 2.0;  --  cc TRUE
+STReq r2, [sp, #-2];  --  2.0, 2.0;  --  cc FALSE
+
+STR r2, [sp];  --  1.0, 1.0;  --  
+STReq r2, [sp];  --  1.0, 1.0;  --  cc TRUE
+STReq r2, [sp];  --  1.0, 1.0;  --  cc FALSE
+
+STR r2, [sp,+r9, LSL #1];  --  1.0, 1.0;  --  ; wrbackTiming:: 2.5 ::
+STReq r2, [sp,+r9, LSL #1];  --  1.0, 1.0;  --  cc TRUE; wrbackTiming:: 2.5 ::
+STReq r2, [sp,+r9, LSL #1];  --  1.0, 1.0;  --  cc FALSE; wrbackTiming:: 2.5 ::
+
+STR r2, [sp,-r9, LSL #1];  --  4.1, 4.0;  --  ; wrbackTiming:: 2.5 ::
+STReq r2, [sp,-r9, LSL #1];  --  4.0, 4.0;  --  cc TRUE; wrbackTiming:: 2.5 ::
+STReq r2, [sp,-r9, LSL #1];  --  4.0, 4.0;  --  cc FALSE; wrbackTiming:: 2.5 ::
+
+STR r2, [sp,+r9, LSL #1]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0; wrbackTiming:: 3.0 ::
+STReq r2, [sp,+r9, LSL #1]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0; wrbackTiming:: 3.0 ::
+STReq r2, [sp,+r9, LSL #1]!;  --  1.0, 1.0;  --  cc FALSE; wrbackTiming:: 3.5 ::
+
+STR r2, [sp,-r9, LSL #1]!;  --  3.3, 3.3;  --  ; wrbackTiming:: 3.5 ::
+STReq r2, [sp,-r9, LSL #1]!;  --  3.3, 3.3;  --  cc TRUE; wrbackTiming:: 3.5 ::
+STReq r2, [sp,-r9, LSL #1]!;  --  4.0, 4.0;  --  cc FALSE; wrbackTiming:: 3.5 ::
+
+STR r2, [sp,+r9];  --  1.0, 1.0;  --  ; wrbackTiming:: 2.5 ::
+STReq r2, [sp,+r9];  --  1.0, 1.0;  --  cc TRUE; wrbackTiming:: 2.5 ::
+STReq r2, [sp,+r9];  --  1.0, 1.0;  --  cc FALSE; wrbackTiming:: 2.5 ::
+
+STR r2, [sp,-r9];  --  4.0, 4.0;  --  ; wrbackTiming:: 2.5 ::
+STReq r2, [sp,-r9];  --  4.0, 4.0;  --  cc TRUE; wrbackTiming:: 2.5 ::
+STReq r2, [sp,-r9];  --  4.0, 4.0;  --  cc FALSE; wrbackTiming:: 2.5 ::
+
+STR r2, [sp,+r9]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0; wrbackTiming:: 3.0 ::
+STReq r2, [sp,+r9]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0; wrbackTiming:: 3.0 ::
+STReq r2, [sp,+r9]!;  --  1.0, 1.0;  --  cc FALSE; wrbackTiming:: 3.5 ::
+
+STR r2, [sp,-r9]!;  --  3.4, 3.4;  --  ; wrbackTiming:: 3.5 ::
+STReq r2, [sp,-r9]!;  --  3.4, 3.4;  --  cc TRUE; wrbackTiming:: 3.5 ::
+STReq r2, [sp,-r9]!;  --  4.0, 4.0;  --  cc FALSE; wrbackTiming:: 3.5 ::
+
+
+no / imm / +reg offset, left shift:       neg reg offset or right shift
+                std     bailout         std     bailout
+issue time      1       1               3       3
+lock time addr  registers aren't locked
+writeback time  2       2               4       4
+early regs      base&offset (1c)            
+late regs:      Rt (2c) Rt (2c)         Rt (2c)base&offset 1c
+
+writeback time is actually max((issue_time / availability(base_addr))+1)
+there is no early bailout on any register timings (but of course on memory availability there is)
+
+
+shifted reg offset:
+                left shifts                                     right shifts
+                positive            negative                positive            negative
+                std     bailout     std     bailout         std     bailout     std     bailout
+issue time      1                   3                       3                   3                 
+wback time Rn   2       2           4       4               4...
+early regs      base&offset (1c)     -                       -...
+late regs:      Rt (2c) Rt (2c)      Rt(2c)base(1c)
+
+issue time      
+lock time addr  
+lock time Vreg  
+writeback time  
+early regs      
+
+bailout effects?
+different parameter effects? imm / reg / neg reg offset.
+
+TODO: memory address latency, memory address lock time?
+
+UPDATE FOR STR!
+model for LDR:
+	issue timing:	1
+	latency:	    3
+	using a negative register offset or a RIGHT shift increases issue and latency by 2 cycles.
+    
+	offset and base reg are required 2 cycles early when using positive offset reg or either positive or negative imm offset
+    offset reg is required 1 cycle early when using negative offset reg, base reg isn't required early
+    when left shifting with positive offset: both offset and base registers are required 2 cycles early.
+    with any other shifting (negative offset any shift, or positive offset right shift): offset is required 1 cycle early? (even with negative offset). (base reg only required at issuing time)
+    
+    
+	writeback is issue +1 (it's not latency -1 since it's not influenced by bailout)
+	there is generally no register lock other than issuing time (nog regarding lock for bailout or writeback)
+    CC:
+        bailout always drops latency by 1 cycle (or is more probably issue +1)
+    
+    
+    
+        positive register offset left shift, bailout drops 1 cycle (2 total)
+        positive register offset left shift, bailout drops 1 cycle (4 total)
+        negative register offset any shift, bailout drops 1 cycle (4 total)
+        negative register offset no shift, bailout drops 1 cycle (4 total)
+        positive register offset no shift, bailout drops 1 cycle (2 total)
+        
+        negative immediate offset, bailout drops 1 cycle (3 total)
+        positive immediate offset, bailout drops 1 cycle (2 total)
+        no immediate offset, bailout drops 1 cycle (2 total)
+        
+        writeback lock isn't influenced by bailout
+        

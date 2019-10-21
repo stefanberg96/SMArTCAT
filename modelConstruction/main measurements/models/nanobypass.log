@@ -1,0 +1,190 @@
+ADC r1, r2, #77;  --  -1.0, 1.0;  --  
+ADC r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  
+ADC r1, r2, r3;  --  -1.0, 1.0;  --  
+ADC r1, r2, r3, LSL r4;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, #77;  --  -1.0, 1.0;  --  
+ADD r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  
+ADD r1, r2, r3;  --  -1.0, 1.0;  --  
+ADD r1, r2, r3, LSL r4;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, SP, #77;  --  -1.0, 1.0;  --  
+ADD r1, SP, r2, LSL #3;  --  -1.0, 1.0;  --  
+ADD r1, SP, r2;  --  -1.0, 1.0;  --  
+AND r1, r2, #77;  --  -1.0, 1.0;  --  
+AND r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  
+AND r1, r2, r3;  --  -1.0, 1.0;  --  
+AND r1, r2, r3, LSL r4;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ASR r1, r2, #15;  --  -1.0, 1.0;  --  
+ASR r1, r2, r3;  --  -1.0, 1.0;  --  
+BIC r1, r2, #77;  --  -1.0, 1.0;  --  
+BIC r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  
+BIC r1, r2, r3;  --  -1.0, 1.0;  --  
+BIC r1, r2, r3, LSL r4;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+BKPT #15;  --  -100.0, -100.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BLX r1;  --  -100.0, -100.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BX r1;  --  -100.0, -100.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+CLZ r1, r2;  --  -1.0, 1.0;  --  
+CMN r1, #77;  --  -1.0, 1.0;  --  
+CMN r1, r2, LSL #3;  --  -1.0, 1.0;  --  
+CMN r1, r2;  --  -1.0, 1.0;  --  
+CMN r1, r2, LSL r3;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+CMP r1, #77;  --  -1.0, 1.0;  --  
+CMP r1, r2, LSL #3;  --  -1.0, 1.0;  --  
+CMP r1, r2;  --  -1.0, 1.0;  --  
+CMP r1, r2, LSL r3;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+EOR r1, r2, #77;  --  -1.0, 1.0;  --  
+EOR r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  
+EOR r1, r2, r3;  --  -1.0, 1.0;  --  
+EOR r1, r2, r3, LSL r4;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LSL r1, r2, #15;  --  -1.0, 1.0;  --  
+LSL r1, r2, r3;  --  -1.0, 1.0;  --  
+LSR r1, r2, #15;  --  -1.0, 1.0;  --  
+LSR r1, r2, r3;  --  -1.0, 1.0;  --  
+MLA r1, r2, r3, r4;  --  -1.0, 1.0;  --  
+MOV r1, #77;  --  -1.0, 1.0;  --  
+MOV r1, r2;  --  -1.0, 1.0;  --  
+MUL r1, r2, r3;  --  -1.0, 1.0;  --  
+MVN r1, #77;  --  -1.0, 1.0;  --  
+MVN r1, r2, LSL #3;  --  -1.0, 1.0;  --  
+MVN r1, r2;  --  -1.0, 1.0;  --  
+MVN r1, r2, LSL r3;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+NOP;  --  -1.0, 1.0;  --  
+ORR r1, r2, #77;  --  -1.0, 1.0;  --  
+ORR r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  
+ORR r1, r2, r3;  --  -1.0, 1.0;  --  
+ORR r1, r2, r3, LSL r4;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+QADD r1, r3, r2;  --  -1.0, 2.0;  --  
+QADD16 r1, r2, r3;  --  -1.0, 2.0;  --  
+QADD8 r1, r2, r3;  --  -1.0, 2.0;  --  
+QASX r1, r2, r3;  --  -1.0, 2.0;  --  
+QDADD r1, r3, r2;  --  -1.0, 2.0;  --  
+QDSUB r1, r3, r2;  --  -1.0, 2.0;  --  
+QSAX r1, r2, r3;  --  -1.0, 2.0;  --  
+QSUB r1, r3, r2;  --  -1.0, 2.0;  --  
+QSUB16 r1, r2, r3;  --  -1.0, 2.0;  --  
+QSUB8 r1, r2, r3;  --  -1.0, 2.0;  --  
+RBIT r1, r2;  --  -1.0, 1.0;  --  
+REV r1, r2;  --  -1.0, 1.0;  --  
+REV16 r1, r2;  --  -1.0, 1.0;  --  
+REVSH r1, r2;  --  -1.0, 1.0;  --  
+ROR r1, r2, #15;  --  -1.0, 1.0;  --  
+ROR r1, r2, r3;  --  -1.0, 1.0;  --  
+RRX r1, r2;  --  -1.0, 1.0;  --  
+RSB r1, r2, #77;  --  -1.0, 1.0;  --  
+RSB r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  
+RSB r1, r2, r3;  --  -1.0, 1.0;  --  
+RSB r1, r2, r3, LSL r4;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+RSC r1, r2, #77;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+RSC r1, r2, r3, LSL #3;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+RSC r1, r2, r3;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+RSC r1, r2, r3, LSL r4;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SADD16 r1, r2, r3;  --  -1.0, 1.0;  --  
+SADD8 r1, r2, r3;  --  -1.0, 1.0;  --  
+SASX r1, r2, r3;  --  -1.0, 1.0;  --  
+SBC r1, r2, #77;  --  -1.0, 1.0;  --  
+SBC r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  
+SBC r1, r2, r3;  --  -1.0, 1.0;  --  
+SBC r1, r2, r3, LSL r4;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SEL r1, r2, r3;  --  -1.0, 1.0;  --  
+SHADD16 r1, r2, r3;  --  -1.0, 1.0;  --  
+SHADD8 r1, r2, r3;  --  -1.0, 1.0;  --  
+SHASX r1, r2, r3;  --  -1.0, 1.0;  --  
+SHSAX r1, r2, r3;  --  -1.0, 1.0;  --  
+SHSUB16 r1, r2, r3;  --  -1.0, 1.0;  --  
+SHSUB8 r1, r2, r3;  --  -1.0, 1.0;  --  
+SMLABT r1, r2, r3, r4;  --  -1.0, 1.0;  --  
+SMLAD r1, r2, r3, r4;  --  -1.0, 1.0;  --  
+SMLADX r1, r2, r3, r4;  --  -1.0, 1.0;  --  
+SMLAL r1, r2, r3, r4;  --  1.0, 2.0;  --  
+SMLALD r1, r2, r3, r4;  --  1.0, 2.0;  --  
+SMLALDX r1, r2, r3, r4;  --  1.0, 2.0;  --  
+SMLAWT r1, r2, r3, r4;  --  1.0, 2.0;  --  
+SMLSD r1, r2, r3, r4;  --  -1.0, 1.0;  --  
+SMLSDX r1, r2, r3, r4;  --  -1.0, 1.0;  --  
+SMLSLD r1, r2, r3, r4;  --  1.0, 2.0;  --  
+SMLSLDX r1, r2, r3, r4;  --  1.0, 2.0;  --  
+SMMLA r1, r2, r3, r4;  --  1.0, 2.0;  --  
+SMMLAR r1, r2, r3, r4;  --  1.0, 2.0;  --  
+SMMLS r1, r2, r3, r4;  --  1.0, 2.0;  --  
+SMMLSR r1, r2, r3, r4;  --  1.0, 2.0;  --  
+SMMUL r1, r2, r3;  --  -1.0, 2.0;  --  
+SMMULR r1, r2, r3;  --  -1.0, 2.0;  --  
+SMUAD r1, r2, r3;  --  -1.0, 1.0;  --  
+SMUADX r1, r2, r3;  --  -1.0, 1.0;  --  
+SMULBT r1, r2, r3;  --  -1.0, 1.0;  --  
+SMULL r1, r2, r3, r4;  --  1.0, 1.0;  --  
+SMULWT r1, r2, r3;  --  -1.0, 2.0;  --  
+SMUSD r1, r2, r3;  --  -1.0, 1.0;  --  
+SMUSDX r1, r2, r3;  --  -1.0, 1.0;  --  
+SSAT r1, #15, r2, LSL #3;  --  -1.0, 1.0;  --  
+SSAT r1, #15, r2;  --  -1.0, 1.0;  --  
+SSAT16 r1, #15, r2;  --  -1.0, 1.0;  --  
+SSAX r1, r2, r3;  --  -1.0, 1.0;  --  
+SSUB16 r1, r2, r3;  --  -1.0, 1.0;  --  
+SSUB8 r1, r2, r3;  --  -1.0, 1.0;  --  
+SUB r1, r2, #77;  --  -1.0, 1.0;  --  
+SUB r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  
+SUB r1, r2, r3;  --  -1.0, 1.0;  --  
+SUB r1, r2, r3, LSL r4;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SUB r1, SP, #77;  --  -1.0, 1.0;  --  
+SUB r1, SP, r2, LSL #3;  --  -1.0, 1.0;  --  
+SUB r1, SP, r2;  --  -1.0, 1.0;  --  
+SXTAB r1, r2, r3, ROR #8;  --  -1.0, 1.0;  --  
+SXTAB r1, r2, r3;  --  -1.0, 1.0;  --  
+SXTAB16 r1, r2, r3, ROR #8;  --  -1.0, 1.0;  --  
+SXTAB16 r1, r2, r3;  --  -1.0, 1.0;  --  
+SXTAH r1, r2, r3, ROR #8;  --  -1.0, 1.0;  --  
+SXTAH r1, r2, r3;  --  -1.0, 1.0;  --  
+SXTB r1, r2, ROR #8;  --  -1.0, 1.0;  --  
+SXTB r1, r2;  --  -1.0, 1.0;  --  
+SXTB16 r1, r2, ROR #8;  --  -1.0, 1.0;  --  
+SXTB16 r1, r2;  --  -1.0, 1.0;  --  
+SXTH r1, r2, ROR #8;  --  -1.0, 1.0;  --  
+SXTH r1, r2;  --  -1.0, 1.0;  --  
+TEQ r1, r2, LSL #3;  --  -1.0, 1.0;  --  
+TEQ r1, r2;  --  -1.0, 1.0;  --  
+TEQ r1, r2, LSL r3;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+TST r1, #77;  --  -1.0, 1.0;  --  
+TST r1, r2, LSL #3;  --  -1.0, 1.0;  --  
+TST r1, r2;  --  -1.0, 1.0;  --  
+TST r1, r2, LSL r3;  --  -100.0, -100.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+UADD16 r1, r2, r3;  --  -1.0, 1.0;  --  
+UADD8 r1, r2, r3;  --  -1.0, 1.0;  --  
+UASX r1, r2, r3;  --  -1.0, 1.0;  --  
+UBFX r1, r2, #3, #8;  --  -1.0, 1.0;  --  
+UHADD16 r1, r2, r3;  --  -1.0, 1.0;  --  
+UHADD8 r1, r2, r3;  --  -1.0, 1.0;  --  
+UHASX r1, r2, r3;  --  -1.0, 1.0;  --  
+UHSAX r1, r2, r3;  --  -1.0, 1.0;  --  
+UHSUB16 r1, r2, r3;  --  -1.0, 1.0;  --  
+UHSUB8 r1, r2, r3;  --  -1.0, 1.0;  --  
+UMAAL r1, r2, r3, r4;  --  2.0, 2.0;  --  
+UMLAL r1, r2, r3, r4;  --  1.0, 2.0;  --  
+UMULL r1, r2, r3, r4;  --  1.0, 1.0;  --  
+UQADD16 r1, r2, r3;  --  -1.0, 2.0;  --  
+UQADD8 r1, r2, r3;  --  -1.0, 2.0;  --  
+UQASX r1, r2, r3;  --  -1.0, 2.0;  --  
+UQSAX r1, r2, r3;  --  -1.0, 2.0;  --  
+UQSUB16 r1, r2, r3;  --  -1.0, 2.0;  --  
+UQSUB8 r1, r2, r3;  --  -1.0, 2.0;  --  
+USAD8 r1, r2, r3;  --  -1.0, 1.0;  --  
+USADA8 r1, r2, r3, r4;  --  -1.0, 1.0;  --  
+USAT r1, #15, r2, LSL #3;  --  -1.0, 1.0;  --  
+USAT r1, #15, r2;  --  -1.0, 1.0;  --  
+USAT16 r1, #15, r2;  --  -1.0, 1.0;  --  
+USAX r1, r2, r3;  --  -1.0, 1.0;  --  
+USUB16 r1, r2, r3;  --  -1.0, 1.0;  --  
+USUB8 r1, r2, r3;  --  -1.0, 1.0;  --  
+UXTAB r1, r2, r3, ROR #8;  --  -1.0, 1.0;  --  
+UXTAB r1, r2, r3;  --  -1.0, 1.0;  --  
+UXTAB16 r1, r2, r3, ROR #8;  --  -1.0, 1.0;  --  
+UXTAB16 r1, r2, r3;  --  -1.0, 1.0;  --  
+UXTAH r1, r2, r3, ROR #8;  --  -1.0, 1.0;  --  
+UXTAH r1, r2, r3;  --  -1.0, 1.0;  --  
+UXTB r1, r2, ROR #8;  --  -1.0, 1.0;  --  
+UXTB r1, r2;  --  -1.0, 1.0;  --  
+UXTB16 r1, r2, ROR #8;  --  -1.0, 1.0;  --  
+UXTB16 r1, r2;  --  -1.0, 1.0;  --  
+UXTH r1, r2, ROR #8;  --  -1.0, 1.0;  --  
+UXTH r1, r2;  --  -1.0, 1.0;  --  
+UMLAL r1, r2, r3, r4;  --  1.0, 2.0;  --  
+UMULL r1, r2, r3, r4;  --  1.0, 1.0;  --  

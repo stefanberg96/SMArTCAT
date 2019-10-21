@@ -1,0 +1,68 @@
+info from tests based on cortex A8 timing info
+    QDADD en QDSUB have last register (Rn) as an early register. (like shifted registers need to be available a cycle early).
+    All our measurements were with Rn the dependent instruction... so there is also an alternative for this instruction
+        Actually: Rn seems to behave very normal. Instead, Rm seems to be a late register!
+
+info on cortex A8:
+    Only branches with a constant offset are predicted. Branches with a register-based offset are not predicted.
+    
+    STM (and STR?) have a register lock latency where they lock the register from being written to, so it's not overwritten before it was written away to memory. (but here the STR/LDR pipeline is decoupled from the ALU and multipy pipelines)
+    
+    The processor can optimize two sequential instructions with opposite condition codes
+    -> not in A7
+    
+    LDR instructions take one cycle, have a result latency of three (given cache hit), and require their base register as an Early Reg.
+    
+    ADD r1, r2, r3 has timing 1, 1
+    ADD r1, r2, r3 LSL #imm has timing 1, 1 but r3 is an early reg
+    ADD r1, r2, r3 LSL r4 has timing 2, 2 but r4 is an early reg and r2  is a late reg.
+        (given that destination is NOT the PC)
+        ADD can be substituted by any simple data processing instruction
+    
+    if the destination address is the PC timing values are very different (validate?) shifting behavior with early and late regs is the same
+    -> this isn't true for A7 either)
+    
+    more early regs:
+        USAD(A)8    rm, rn      (or is Ra a late reg?)
+        Rm:
+            x   SADDSUBX, SSUBADDX
+            x   UADDSUBX, USUBADDX
+            x   SADD8TO16, SADD8TO32, SADD16TO32        (no a7 equivalent)
+            x   SUNPK8TO16, SUNPK8TO32, SUNPK16TO32     (no a7 equivalent)
+            x   UUNPK8TO16, UUNPK8TO32, UUNPK16TO32     (no a7 equivalent)
+            x   UADD8TO16, UADD8TO32, UADD16TO32        (no a7 equivalent)
+            x   REV, REV16, REVSH
+            V   PKHBT
+            x   SSAT, USAT  no Rm in these functions in a7
+            x   QADDSUBX, QSUBADDX
+            ?   SHADDSUBX, SHSUBADDX
+            ?   UQADDSUBX, UQSUBADDX
+            ?   UHADDSUBX, UHSUBADDX
+            
+    PKHBT Rm may be early reg... or is Rn actually a late reg? (seems to be the latter)
+    
+    
+    Multiplies with 64-bit results take and require two cycles to write the results, consequently they have two result latencies with the low half of the result always available first.
+        (couldnt confirm this for SMLAL nor SMULL)
+    
+    late regs:
+    MLA         Rn (corresponds to our modellerMul results.)
+    (S/U)MLAL   RdLo (verified)
+    SMLALxy       RdLo (verified. a8 manual actually says RdHi (might be true for that arch))
+    SML(A/S)LD(X)   RdLo (verified. a8 manual actually says RdHi (might be true for that arch))
+    UMAAL       RdLo AND RdHi are late regs (verified) (but mul result forwarding can only happen to RdLo (so RdHi is 1 step later if it depends on previous mul)
+    conclusion: every instruction which reads from RdLo has it be a late register. (and UMAAL also has RdHi late)
+    
+    SMML(A/S)(R)    Rn  (can't demonstrate this behavior)
+    
+    for LDR/STR type instructions data address instructions (or instead their offset if available) are early regs.
+    STM waits for all registers to be available before it starts
+    LDM/STM has the base registers Rx as early reg
+    
+forwarding to accumulator:
+    almost all ALU/multiply instructions can forward to the accumulator. Only 2/1 T/F instructions can't forward in a false scenario. some non-ALU instructions such as MOV/MVN can only forward in conditional scenario's (MOVcc / MVNcc). Validate this last thing with assembly inspection of compiled code.
+    SMLAL, SMLALBT, SMLALD, SMLALDX, SMLSLD, SMLSLDX, SMULL, UMAAL, UMLAL, UMULL (, STRcc_False, SVC) can't forward
+    -> these instructions also wrote to R2 instead of just R1.
+    
+    
+    USADA8 has an accumulator step. mul can bypass to the accumulator. conclusion: everything with an Ra register does something accumulator and thus Ra registers are always late registers. RdLo registers which are read are always accumulator regs as well

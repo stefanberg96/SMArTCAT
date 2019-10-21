@@ -1,0 +1,71 @@
+import claripy
+def implies(a,b):
+    return claripy.Or(claripy.Not(a),b)
+
+import timeAnalysis as t
+t.step1()
+#t.step2()
+import cdset
+time1 = claripy.BVS("time",32)
+a0 = claripy.And(time1 == t.tpg.deadended[0].state.time.totalExecutionTime, *(t.tpg.deadended[0].state.se._stored_solver.constraints))
+a1 = claripy.And(time1 == t.tpg.deadended[1].state.time.totalExecutionTime, *(t.tpg.deadended[1].state.se._stored_solver.constraints))
+a2 = claripy.And(time1 == t.tpg.deadended[2].state.time.totalExecutionTime, *(t.tpg.deadended[2].state.se._stored_solver.constraints))
+solver = claripy.Solver()
+solver.add(claripy.Or(a0, a1, a2))
+set1 = cdset.CDSet(solver, t.secret)
+
+
+set2 = set1.copyUnique()
+pub1 = t.public.reversed
+
+#set2.solver.constraints
+#########################################################################################################
+pub2 = t.u.stringToVar("publicArgument_0_32_u0_167_32", set2.solver.constraints).reversed
+time2 = t.u.stringToVar("time_165_32_u0_168_32", set2.solver.constraints)
+######################################################################################################### 
+sec1 = set1.symbol.reversed
+sec2 = set2.symbol.reversed
+
+s = claripy.Solver()
+s.add(set1.solver.constraints)
+s.add(set2.solver.constraints)
+s.add(pub1 != pub2)
+s.add(sec1 == sec2)
+implication = claripy.And(implies(time1 == time2, claripy.And(claripy.SGT(sec1,2), claripy.SGT(sec2,2))), implies(time1 != time2, claripy.And(claripy.SLE(sec1, 2), claripy.SLE(sec2, 2))))
+sImplication = s.branch()
+sImplication.add(implication)
+
+sImplication.eval(pub1, 10)
+import ctypes
+pub1Concrete = ctypes.c_int(sImplication.eval(pub1, 1)[0]).value
+sp1c = set1.solver
+sp1c.add(pub1 == pub1Concrete)
+sp2c = set2.solver
+sImplication.add(pub1 == pub1Concrete)
+sImplication.eval(pub2, 10)
+pub2Concrete = ctypes.c_int(sImplication.eval(pub2, 1)[0]).value
+sp2c.add(pub2 == pub2Concrete)
+
+solving1 = sp1c.branch()
+solving1.add(sec1 == 1)
+solving2 = sp2c.branch()
+solving2.add(sec2 == 1)
+measurement1 = solving1.eval(time1, 10)
+measurement1
+measurement2 = solving2.eval(time2, 10)
+measurement2
+assert (len(measurement1) == 1)
+assert (len(measurement2) == 1)
+assert (measurement1 != measurement2)
+
+solving1 = sp1c.branch()
+solving1.add(sec1 == 4)
+solving2 = sp2c.branch()
+solving2.add(sec2 == 4)
+measurement1 = solving1.eval(time1, 10)
+measurement1
+measurement2 = solving2.eval(time2, 10)
+measurement2
+assert (len(measurement1) == 1)
+assert (len(measurement2) == 1)
+assert (measurement1 == measurement2)

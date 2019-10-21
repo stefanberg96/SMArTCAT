@@ -1,0 +1,29 @@
+info from tests based on cortex A8 timing info
+    late regs:
+        MLA         Ra is a late reg
+        QDADD       Rm is a late reg
+        QDSUB       Rm is a late reg
+        PKHBT       Rn is a late reg
+        
+        (S/U)MLAL   RdLo (verified)
+        SMLALxy       RdLo (verified. a8 manual actually says RdHi (might be true for that arch))
+        SML(A/S)LD(X)   RdLo (verified. a8 manual actually says RdHi (might be true for that arch))
+        UMAAL       RdLo AND RdHi are late regs (verified) (but mul result forwarding can only happen to RdLo (so RdHi is 1 step later if it depends on previous mul)
+        conclusion: every instruction which reads from RdLo has it be a late register. (and UMAAL also has RdHi late)
+        
+        late registers which are also accumulators probably shouldn't be modelled as late regs because we don't want to give them a double timing bonus
+    
+    
+forwarding to accumulator:
+    almost all ALU/multiply instructions can forward to the accumulator. Only 2/1 T/F instructions can't forward in a false scenario. some non-ALU instructions such as MOV/MVN can only forward in conditional scenario's (MOVcc / MVNcc). Validate this last thing with assembly inspection of compiled code. (actually Rn of MLA is a late reg
+    
+    USADA8 has an accumulator step. mul can bypass to the accumulator.
+    conclusion: everything with an Ra register does something accumulator and thus Ra registers are always late registers. RdLo registers which are read are always accumulator regs as well.
+    USADA8, MLS, MLA, SMLABB, SMLABT, SMLATB, SMLATT, SMLAD, SMLAWB, SMLAWT, SMLSD, SMMLA, SMMLS
+    
+    how to deal with the accumulator: if everything can forward to it we never have to wait for the register to become available... except of course with load instructions and the like.
+    We really need to determine which instructions are arithmetic instructions...
+        -> if it is not a ldr or str instruction
+    
+TODO: which instructions can dual issue as later?
+    (DONE)

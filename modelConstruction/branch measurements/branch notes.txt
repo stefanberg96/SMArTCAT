@@ -1,0 +1,190 @@
+(take into account that branch prediction will manage to predict the right branch most of the time?)
+
+
+b / bl are the same
+branch to label:
+    branch forward to directly following address:
+        noc cc_True cc_False
+    b   1   1       1
+
+    branch forward to offset address:       -> this still holds with (very linear) messing up with the branch predictor
+        noc cc_True cc_False
+    b   1   1       1                       -> branch predictor active
+        1   1       1                       (predictable)   (surrounded by many true ne cc's, cc_True tested with ne, false with eq)
+        1   8(mspr) 1                       (predictable)   (surrounded by many false eq cc's, cc_True tested with ne, false with eq)
+    b   1   4.5     4.5                     -> branch predictor confused from LFSR; average times.
+    
+        --> 4.7-4.8 (sometimes we even get 5... how do we manage dual issuing!?!) when not using a branch to close the loop.. (this suggests 7.5 cycles recovery time from branch mispredict on average... (on top of basic 1 cycle issue time)
+            -> dual issue happening somewhere?
+            yes, it was dual issuing. fixed by using more circles round the loop
+
+mspr = misspredict
+    
+branch to register-contained address
+    bx noc cc_True cc_False                     (no instruction set change)     (no early reg)
+        10   10       2                           (predictable)   (surrounded by many true ne cc's, cc_True tested with ne, false with eq)
+        10   10(mspr) 2                           (predictable)   (surrounded by many false eq cc's, cc_True tested with ne, false with eq) 
+               ~8.6                             (unpredictable)   (surrounded by many true ne cc's, cc_True tested with ne, false with eq)    jump is taken half the time (6 cycles), mispredict causes 2.5 extra cycles flush on average?
+             6      6                           (unpredictable)   (surrounded by many false eq cc's, cc_True tested with ne, false with eq) 
+             
+                cc true   cc false
+miss  predict:    10+x      2+y?
+right predict:    10        2
+each with 25% chance... x = y = 5, or x=0, y=10?
+NOTE: we can't really explain the 8.6 timing, assuming no prediction although it doesn't seem completely correct. modelled as 2 cycle bailout, 10 cycle execution
+
+        --> 11 / 2 when not using a branch to close the loop.. with 8.25 AVG on mispredicts.
+        
+        
+        
+    blx noc cc_True cc_False                    (no instruction set change)     (no early reg)
+        2    2        2                         (predictable)   (surrounded by many true ne cc's, cc_True tested with ne, false with eq)
+             10(mspr) 2                         (predictable)   (surrounded by many false eq cc's, cc_True tested with ne, false with eq)
+        2      ~5.6                             (unpredictable)   (surrounded by many true ne cc's, cc_True tested with ne, false with eq)
+                 6                              (unpredictable)   (surrounded by many false eq cc's, cc_True tested with ne, false with eq) 
+
+-> it doesn't matter whether the instruction that was jumped to is, the following instruction; the pipeline stall happens anyway
+
+        --> 2 / 2 when not using a branch to close the loop.. with 6.4 AVG on mispredicts.
+
+
+branch by adding to pc:
+                noc cc_True cc_False
+    add pc, #0;  9    9       2     (predictable)   (surrounded by many true ne cc's, cc_True tested with ne, false with eq) (this actually skips an instruction, sub pc, #4 doesn't, this takes 10 cycles as well. makes a lot more sense because it would be strange if mov was faster than add)
+                      9       2     (predictable)   (surrounded by many true ne cc's, cc_True tested with eq, false with ne) 
+                          5.5       (unpredictable)   (surrounded by many true ne cc's, cc_True tested with ne, false with eq)
+    mov pc, r5;  10   10       2    (predictable)   (surrounded by many true ne cc's, cc_True tested with ne, false with eq) (r5 was prepared)
+                      10       2    (predictable)   (surrounded by many true ne cc's, cc_True tested with eq, false with ne) 
+                          6       (unpredictable)   (surrounded by many true ne cc's, cc_True tested with ne, false with eq)
+    orr is the same
+    should check for load operations    -> 10 / 2 as well.      11 / 3 when last in list of 3 registers popped.
+    table branch byte??
+
+    b/bl seems to be: 1/8, bx/blx: 2/10, other pc changing ops: issue time + 1/9. it is not exactly clear how the branch predictor behaves, but gladly that isn't the scope of our project.
+    seems to be: issue time + 9/1,
+
+CONCLUSIE:
+    b/bl take 1 cycle when predicted correctly and 8 cycles when predicted wrongly.
+    bx/blx take 2 cycles when predicted correctly and 10 cycles when predicted wrongly.     (without switching instruction set)
+    
+    
+    validate with loop where loop end jump back is implemented as mov on pc
+    
+confused branch prediction interpretation:
+there are 2 conditional branches in each loop: one to test and one at the end.
+    confused branch prediction means confused prediction predicts right 50% of the time.
+
+H0: the 4 cycles slowdown exist in the tested branch only, the loop branch is still taken correctly
+H1: the 4 cycles slowdown are spread over both branch: both have 2 cycles slow down
+H2: the 4 cycles slowdown are generally spread over all branches, but because of some regularity it happens to identify the loopbranch in this scenario specifically.
+    
+H0:
+    It will be wrong 50% of the time if we'd measure just the test branch.
+    4 cycles added latency on average means 8 cycles stall per branch miss
+    
+
+if we don't use immediate branches to lfsr but bl and mov pc lr, we only create a 2.4 cycle slowdown by testing a conditional branch based on lfsr result :S
+    
+adding an extra conditional jump (based on either of the compares) increases time by only 0,5 cycle, whereas adding an unconditional branch always increases time by an entire cycle.
+-> the added conditional branch influences the branch predictor, and it fails to be predicted correctly a large portion of the time.?
+    actually, it doesn't seem to influence the branch predictor really...
+        -> what if branching actually takes more time than not branching, independent of condition. (actually we should have been able to identify this before.)
+    we could theorize that the added branch conditions increase the strength of the branch predictor on the loop branch, with negligable overhead for the newly introduced conditions. However, this means that the time we win from adding conditions, reduces branch failure time for the loop instruction.
+    ---> This implies that the time we measured from cache misses is spread accross both the test branch and the loop branch.
+        we should be able to validate this by looking for a correlation between more random conditions and more predictable conditions.
+        -> it would explain why instruction time goes up just a bit more than 4 cycles AVG when adding a couple of unpredictable branches:
+            4 cycles AVG for the instruction which is always unpredictable, and some noise is introduced which generates some mispredictions for the loop branch.
+            the more are unpredictable, the larger this noise becomes.
+            The half cycle reduction seems to be the achievable, as this comes at 1 unpredictable branch together with 2 predictable branches, but doesn't increase after that (even with 6 predictable branches it doesn't become better than that)
+            thus:
+                x branch situation: 1 unpredictable test branch + x-1 predictable branches (among which the loop branch)
+                    unpredictable branch has negligeable affect on branch predictor state: predictable branches get predicted correctly most of the time.
+                    unpredictable branch can never be predicted better than 50%
+                    we measure 3.5 cycles slowdown. this must all be generated by the unpredictible branch. Because it is averaged over 50% of predictions, a miss costs us 7 cycles.
+                
+                2 branch situation: 1 unpredictable test branch + 1 loop branch:
+                    branch predictor get's confused by half the branches AND half the branches are unpredictable
+                        worst case scenario: predictor doesn't take into account branch cardinality, and averages branch predictions over all branches:
+                            (predictor has 50% chance of picking random(0.5 chance on right) + 50% of picking well predicted: 75% correct)
+                                -> then, a predictable branch will be correctly predicted 75% of the time.
+                                unpredictable branch can never be predicted better than 50%
+                            test branch is predicted wrong 50% of the time, loop branch is predicted wrong 25% of the time
+                            We get a 37.5% chance of cache misses
+                            
+                            But probably the averaging weight is distributed differently!
+                            in this situation we measure a 4 cycle slowdown
+                                3.5 of those cycles come from the unpredictable branch.
+                                hypothesis: ~0.5 comes from the loop branch
+                                    a miss takes 7 cycles.
+                                    the loop branch is mispredicted in 1 in 14 cases. 
+                                        in fact, we often measured slightly smaller increase, like 3.9
+                                            -> we assume the loop branch is mispredicted in 1 in 16 times, because that makes more sense ratio and computer-wise.
+                                            if the predictor predicts the loop-branch based on 1/8th unpredictable and 7/8th predictable we get this probability, doesn't sound very strange!
+                                            
+!           but how do we explain a 7 cycle slowdown? (just accept it already)
+!           and it's even worse for register/computation-based branches (TODO: make sure these get correctly modelled in any instructions which write to the PC)
+
+
+-> chances an equals branch are taken seem to be slightly larger than chances than an unequals branch is taken.
+-> using an unequals branch condition takes slightly shorter than an equals condition. probably because our loop branch is unequals based so this slightly biasses the branch predictor
+
+It is optional in ARMv7-A and, if supported, may be in the Thumb instruction set only or in both Thumb and ARM.
+is div implemented in thumb? that might be interesting!
+
+
+IT SEEMS BL (or it's subsequent or returning instruction) can dual issue! (I suppose this isn't very stranged as long as correctly predicted instructions exist in the pipeline)
+    -> considering how hard it was to return from a link register this probably was a dual issue of BL as older and the jumped-to instruction as younger.
+        (TODO: if so, lsr rd, rm, #imm can dual issue as younger, do validate!)
+
+mov pc, lr takes significantly longer than branching to a constant label! (13 cycles more maybe?!?)
+
+
+
+
+we should inline the LFSRs to see if the unconditional branches affect the branch predictor or are affected by it themselves. 
+
+
+INLINED DOUBLE LFSR LESS OVERHEAD:    (test branches skip no instructions)
+2 test branch unconditional, 1 loop branch:   0 cycles
+2 test branch 1 con 1 uncon, 1 loop branch:   4 cycles (again minor difference between eq/ne)
+2 test branch 2 conditional, 1 loop branch:   ~ 8.5; 8.6; 8.7; 8.8 cycles (eq,ne; eq,eq; ne,ne; ne,eq;)                 +4 / 5 cycles
+
+
+INLINED TRIPLE LFSR LESS OVERHEAD:    (test branches skip no instructions)
+3 test branch unconditional, 1 loop branch:   0 cycles
+3 test branch 1 con 2 uncon, 1 loop branch:   3.9 cycles (for all possible 1 uncon combinations)                            +4 cycles
+3 test branch 2 conditional, 1 loop branch:   ~ 7.86, 8.1; 7.9; 7.8 cycles (eq,ne,b; eq,eq,b; ne,ne,b; ne,eq,b;)
+                                              ~ 8.5, 8.5; 8.5; 8.5 cycles (eq,b,ne; eq,b,eq; ne,b,ne; ne,b,eq;)             +4 / 4.5 cycles     (however, I still can't explain the +0.5 slowdown caused by having an unconditional branch in the center)
+                                              ~ 7.9, 8.2; 8.0; 8.0 cycles (b,eq,ne; b,eq,eq; b,ne,ne; b,ne,eq;)
+3 test branch 3 conditional, 1 loop branch:   ~ 13.7; 13.6; 13.5; 13.6 cycles (eq,eq,eq; eq,eq,ne; eq,ne,ne; eq,ne,eq;)
+                                              ~ 13.8; 13.5; 13.7; 13.4 cycles (ne,eq,eq; ne,eq,ne; ne,ne,ne; ne,ne,eq;)     + 5 - 6 cycles (probably noise is stacking up here)
+
+minor differences between orderings are to be expected: this influences branch predictor state and thus amount of hits and misses
+with a triple test (4 branches total) it is very clear that having the unconditional branch in the center, execution time is both most consistent and slowest.
+
+these tests were run with unpredictable conditional branches. Should now see the affect of predictable conditional ones
+         
+
+
+
+         
+                                              
+pipeline:
+3 cycle op fetch
+1 cycle decode
+1 cycle issue   (update of ip, pipeline flush occurs.
+
+
+
+lfsr reference implementation:
+lfsr:
+lsr r1, r0, #8;\        1
+lsr r2, r0, #4;\        1
+eor r1, r2;\            1
+and r1, #1;\            1   (Do)
+mov r2, #0x200;\        0   (Dy)
+lsl r0, #1;\            1
+orr r0, r1;\            1   (Do)
+sub r2, #1;\            0   (Dy)
+and r0, r2;\            1
+and r9, r10, r8         1

@@ -1,0 +1,57 @@
+instructions no R1:
+    lacking R1 means latency timing is wrong because followup instructions don't depend on test instructions
+    TODO: investigate which instructions don't have a destination register, same will apply. (e.g. STR instructions)
+
+
+    UNSUPPORTED on Pi:
+    CLREX
+    SEV
+    WFE
+    WFI
+    yield
+    
+    
+    ILLEGAL INSTRUCTION:
+    UDF (permanently undefined... only legal with cc false)     may need to correct... but not really interesting instruction to model
+    
+    BREAKPOINT TRAP:
+    BKPT not really interesting instruction to model.
+    
+    LEGAL INSTRUCTIONS:
+    SVC (supervisor call, requires correct call immediate to work) probably need to correct
+        (-1, -1) on illegal call, (0.5, 0.0) on cc false, (13.5, 13.0) on cc true legal code (#0)
+    NOP. need to correct
+        (0.5, -1) on no cc, (1.0, -1) with cc. (latency zero might make sense... issue time doesn't look strange)
+        
+instructions no R2:
+    lacking R2 source register means the instruction doesn't depend on the leading instructions so both issue and latency time is too low.
+    TODO: investigate which instrsuctions have R2 not as a source but as a destination register, these have the same issue.
+    
+    SP SOURCE INSTRUCTIONS (these instructions actually don't seem different than normal instructions had they used any other register.)
+    ADD{S/cc} Rd, SP, #imm
+    SUB{S/cc} Rd, SP, #imm
+    
+    SAME INSTRUCTIONS LACKING r1
+    (no instruction should have r2 but no r1)
+    
+    UNSUPPORTED on Pi:
+    BFC
+    MOVT
+    PLI
+    
+    BRANCH INSTRUCTIONS: (TODO: figure out a way to time these?)
+    BLX (perhaps we can test this with smart jumps? rather just not model it (right now))
+    BX
+    BXJ
+    
+    COMPARES: best measurement: "CMN r2 #0; CMN r2 #0; BLXvs r4; MLA r1, lr, r0, r1;" note: double compare, r2 for dependenc. BLXvs for stall until finished with comparisons
+    CMN(cc) r1 #imm  (0.0, -1.0) (actually (0.5, 0.5)? time with dual issue)
+    CMP(cc) r1 #imm  (0.0, -1.0) (actually (0.5, 0.5)? time with dual issue)
+    TEQ(cc) r1 #imm  (0.0, -1.0)
+    TST(cc) r1 #imm  (0.0, -1.0)
+    
+    
+    OTHER: these moves are hard to measure... how about we prepend with a BLXvs? (can this stall execution? it seems to work for NOPs)
+    MOV r1, #imm
+    MOV(cc) r1, #imm
+    MVN(cc) r1, #imm

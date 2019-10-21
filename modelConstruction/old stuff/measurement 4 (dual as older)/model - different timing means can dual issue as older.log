@@ -1,0 +1,785 @@
+ADC r1, r2, #77;  --  3.0, 2.0;  --  
+ADCeq r1, r2, #77;  --  3.0, 2.0;  --  cc TRUE
+ADCeq r1, r2, #77;  --  3.0, 2.0;  --  cc FALSE
+ADC r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  
+ADCeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+ADCeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+ADC r1, r2, r3;  --  3.0, 2.0;  --  
+ADCeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+ADCeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+ADC r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  
+ADCeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc TRUE
+ADCeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc FALSE
+ADD r1, r2, #77;  --  2.0, 2.0;  --  
+ADDeq r1, r2, #77;  --  2.0, 2.0;  --  cc TRUE
+ADDeq r1, r2, #77;  --  2.0, 2.0;  --  cc FALSE
+ADD r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  
+ADDeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+ADDeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+ADD r1, r2, r3;  --  3.0, 2.0;  --  
+ADDeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+ADDeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+ADD r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  
+ADDeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc TRUE
+ADDeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc FALSE
+ADD r1, SP, #77;  --  2.0, 2.0;  --  
+ADDeq r1, SP, #77;  --  2.0, 2.0;  --  cc TRUE
+ADDeq r1, SP, #77;  --  2.0, 2.0;  --  cc FALSE
+ADD r1, SP, r2, LSL #3;  --  3.0, 2.0;  --  
+ADDeq r1, SP, r2, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+ADDeq r1, SP, r2, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+ADD r1, SP, r2;  --  3.0, 2.0;  --  
+ADDeq r1, SP, r2;  --  3.0, 2.0;  --  cc TRUE
+ADDeq r1, SP, r2;  --  3.0, 2.0;  --  cc FALSE
+AND r1, r2, #77;  --  2.0, 2.0;  --  
+ANDeq r1, r2, #77;  --  2.0, 2.0;  --  cc TRUE
+ANDeq r1, r2, #77;  --  2.0, 2.0;  --  cc FALSE
+AND r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  
+ANDeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+ANDeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+AND r1, r2, r3;  --  3.0, 2.0;  --  
+ANDeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+ANDeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+AND r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  
+ANDeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc TRUE
+ANDeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc FALSE
+ASR r1, r2, #15;  --  3.0, 2.0;  --  
+ASReq r1, r2, #15;  --  3.0, 2.0;  --  cc TRUE
+ASReq r1, r2, #15;  --  3.0, 2.0;  --  cc FALSE
+ASR r1, r2, r3;  --  3.0, 2.0;  --  
+ASReq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+ASReq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+BIC r1, r2, #77;  --  2.0, 2.0;  --  
+BICeq r1, r2, #77;  --  2.0, 2.0;  --  cc TRUE
+BICeq r1, r2, #77;  --  2.0, 2.0;  --  cc FALSE
+BIC r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  
+BICeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+BICeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+BIC r1, r2, r3;  --  3.0, 2.0;  --  
+BICeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+BICeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+BIC r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  
+BICeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc TRUE
+BICeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc FALSE
+BKPT #15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BLX r1;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BLXeq r1;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BLXeq r1;  --  3.0, 3.0;  --  cc FALSE
+BX r1;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BXeq r1;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BXeq r1;  --  3.0, 3.0;  --  cc FALSE
+BXJ r1;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BXJeq r1;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BXJeq r1;  --  3.0, 3.0;  --  cc FALSE
+CLREX;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+CLZ r1, r2;  --  3.0, 2.0;  --  
+CLZeq r1, r2;  --  3.0, 2.0;  --  cc TRUE
+CLZeq r1, r2;  --  3.0, 2.0;  --  cc FALSE
+CMN r1, #77;  --  3.0, 4.0;  --  
+CMNeq r1, #77;  --  3.0, 4.0;  --  cc TRUE
+CMNeq r1, #77;  --  3.0, 4.0;  --  cc FALSE
+CMN r1, r2, LSL #3;  --  3.0, 4.0;  --  
+CMNeq r1, r2, LSL #3;  --  3.0, 4.0;  --  cc TRUE
+CMNeq r1, r2, LSL #3;  --  3.0, 4.0;  --  cc FALSE
+CMN r1, r2;  --  3.0, 4.0;  --  
+CMNeq r1, r2;  --  3.0, 4.0;  --  cc TRUE
+CMNeq r1, r2;  --  3.0, 4.0;  --  cc FALSE
+CMN r1, r2, LSL r3;  --  3.0, 4.0;  --  
+CMNeq r1, r2, LSL r3;  --  3.0, 4.0;  --  cc TRUE
+CMNeq r1, r2, LSL r3;  --  3.0, 4.0;  --  cc FALSE
+CMP r1, #77;  --  3.1, 4.0;  --  
+CMPeq r1, #77;  --  3.0, 4.0;  --  cc TRUE
+CMPeq r1, #77;  --  3.0, 4.0;  --  cc FALSE
+CMP r1, r2, LSL #3;  --  3.0, 4.0;  --  
+CMPeq r1, r2, LSL #3;  --  3.0, 4.0;  --  cc TRUE
+CMPeq r1, r2, LSL #3;  --  3.0, 4.0;  --  cc FALSE
+CMP r1, r2;  --  3.0, 4.0;  --  
+CMPeq r1, r2;  --  3.0, 4.0;  --  cc TRUE
+CMPeq r1, r2;  --  3.0, 4.0;  --  cc FALSE
+CMP r1, r2, LSL r3;  --  3.0, 4.0;  --  
+CMPeq r1, r2, LSL r3;  --  3.0, 4.0;  --  cc TRUE
+CMPeq r1, r2, LSL r3;  --  3.0, 4.0;  --  cc FALSE
+EOR r1, r2, #77;  --  2.0, 2.0;  --  
+EOReq r1, r2, #77;  --  2.0, 2.0;  --  cc TRUE
+EOReq r1, r2, #77;  --  2.0, 2.0;  --  cc FALSE
+EOR r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  
+EOReq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+EOReq r1, r2, r3, LSL #3;  --  3.1, 2.0;  --  cc FALSE
+EOR r1, r2, r3;  --  3.0, 2.0;  --  
+EOReq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+EOReq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+EOR r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  
+EOReq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc TRUE
+EOReq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc FALSE
+LDM r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMeq r1, {r2,r3,r4};  --  9.0, 9.0;  --  cc FALSE
+LDM r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMeq r1!, {r2,r3,r4};  --  9.0, 9.0;  --  cc FALSE
+LDMDA r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDAeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMDAeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMDA r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDAeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMDAeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMDB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDBeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMDBeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMDB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDBeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMDBeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMIB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMIBeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMIBeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMIB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMIBeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDMIBeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDR r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2, #+15];  --  6.0, 5.0;  --  cc FALSE
+LDR r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2];  --  6.0, 5.0;  --  cc FALSE
+LDR r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2,+r3, LSL #3];  --  6.0, 5.0;  --  cc FALSE
+LDR r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2,+r3, LSL #3]!;  --  6.0, 5.0;  --  cc FALSE
+LDR r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2,+r3];  --  3.0, 2.0;  --  cc FALSE
+LDR r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDReq r1, [r2,+r3]!;  --  3.0, 2.0;  --  cc FALSE
+LDRB r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRBeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRB r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBeq r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRBeq r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRB r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBeq r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRBeq r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRB r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBeq r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRBeq r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRB r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRBeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRBeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRBT r1, [r2], #+15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBTeq r1, [r2], #+15;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRBTeq r1, [r2], #+15;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDREX r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDREXeq r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDREXeq r1, [r2];  --  3.0, 2.0;  --  cc FALSE
+LDRH r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRHeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRH r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRHeq r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHeq r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRH r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRHeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRHeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHT r1, [r2] , #+15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHTeq r1, [r2] , #+15;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHTeq r1, [r2] , #+15;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHTeq r1, [r2] ;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHTeq r1, [r2] ;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSB r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSBeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSBeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSB r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSBeq r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSBeq r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSB r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSBeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSBeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSBeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSBeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSH r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSHeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSHeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSH r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSHeq r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSHeq r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSH r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSHeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSHeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSHeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSHeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRT r1, [r2] , #+15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRTeq r1, [r2] , #+15;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRTeq r1, [r2] , #+15;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRTeq r1, [r2] ;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRTeq r1, [r2] ;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LSL r1, r2, #15;  --  3.0, 2.0;  --  
+LSLeq r1, r2, #15;  --  3.0, 2.0;  --  cc TRUE
+LSLeq r1, r2, #15;  --  3.0, 2.0;  --  cc FALSE
+LSL r1, r2, r3;  --  3.0, 2.0;  --  
+LSLeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+LSLeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+LSR r1, r2, #15;  --  3.0, 2.0;  --  
+LSReq r1, r2, #15;  --  3.0, 2.0;  --  cc TRUE
+LSReq r1, r2, #15;  --  3.0, 2.0;  --  cc FALSE
+LSR r1, r2, r3;  --  3.0, 2.0;  --  
+LSReq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+LSReq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+MLA r1, r2, r3, r4;  --  3.0, 3.0;  --  
+MLAeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+MLAeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+MOV r1, #77;  --  2.0, 2.0;  --  
+MOVeq r1, #77;  --  2.0, 2.0;  --  cc TRUE
+MOVeq r1, #77;  --  2.0, 2.0;  --  cc FALSE
+MOV r1, r2;  --  2.0, 2.0;  --  
+MOVeq r1, r2;  --  2.0, 2.0;  --  cc TRUE
+MOVeq r1, r2;  --  2.0, 2.0;  --  cc FALSE
+MUL r1, r2, r3;  --  3.0, 3.0;  --  
+MULeq r1, r2, r3;  --  3.0, 3.0;  --  cc TRUE
+MULeq r1, r2, r3;  --  3.0, 3.0;  --  cc FALSE
+MVN r1, #77;  --  2.0, 2.0;  --  
+MVNeq r1, #77;  --  2.0, 2.0;  --  cc TRUE
+MVNeq r1, #77;  --  2.0, 2.0;  --  cc FALSE
+MVN r1, r2, LSL #3;  --  3.0, 2.0;  --  
+MVNeq r1, r2, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+MVNeq r1, r2, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+MVN r1, r2;  --  3.0, 2.0;  --  
+MVNeq r1, r2;  --  3.0, 2.0;  --  cc TRUE
+MVNeq r1, r2;  --  3.0, 2.0;  --  cc FALSE
+MVN r1, r2, LSL r3;  --  3.0, 2.0;  --  
+MVNeq r1, r2, LSL r3;  --  3.0, 2.0;  --  cc TRUE
+MVNeq r1, r2, LSL r3;  --  3.0, 2.0;  --  cc FALSE
+NOP;  --  2.0, 2.0;  --  
+NOPeq;  --  2.0, 2.0;  --  cc TRUE
+NOPeq;  --  2.0, 2.0;  --  cc FALSE
+ORR r1, r2, #77;  --  2.0, 2.0;  --  
+ORReq r1, r2, #77;  --  2.0, 2.0;  --  cc TRUE
+ORReq r1, r2, #77;  --  2.0, 2.0;  --  cc FALSE
+ORR r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  
+ORReq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+ORReq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+ORR r1, r2, r3;  --  3.0, 2.0;  --  
+ORReq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+ORReq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+ORR r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  
+ORReq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc TRUE
+ORReq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc FALSE
+PKHBT r1, r2, r3, LSL #15;  --  3.0, 2.0;  --  
+PKHBTeq r1, r2, r3, LSL #15;  --  3.0, 2.0;  --  cc TRUE
+PKHBTeq r1, r2, r3, LSL #15;  --  3.0, 2.0;  --  cc FALSE
+PKHBT r1, r2, r3;  --  3.0, 2.0;  --  
+PKHBTeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+PKHBTeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+POP {r1,r2,r3};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+POPeq {r1,r2,r3};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+POPeq {r1,r2,r3};  --  6.0, 5.0;  --  cc FALSE
+PUSH {r1,r2,r3};  --  4.0, 4.0;  --  
+PUSHeq {r1,r2,r3};  --  4.0, 4.0;  --  cc TRUE
+PUSHeq {r1,r2,r3};  --  4.0, 4.0;  --  cc FALSE
+QADD r1, r3, r2;  --  3.0, 2.0;  --  
+QADDeq r1, r3, r2;  --  3.0, 2.0;  --  cc TRUE
+QADDeq r1, r3, r2;  --  3.0, 2.0;  --  cc FALSE
+QADD16 r1, r2, r3;  --  3.0, 2.0;  --  
+QADD16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+QADD16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+QADD8 r1, r2, r3;  --  3.0, 2.0;  --  
+QADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+QADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+QASX r1, r2, r3;  --  3.0, 2.0;  --  
+QASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+QASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+QDADD r1, r3, r2;  --  3.0, 2.0;  --  
+QDADDeq r1, r3, r2;  --  3.0, 2.0;  --  cc TRUE
+QDADDeq r1, r3, r2;  --  3.0, 2.0;  --  cc FALSE
+QDSUB r1, r3, r2;  --  3.0, 2.0;  --  
+QDSUBeq r1, r3, r2;  --  3.0, 2.0;  --  cc TRUE
+QDSUBeq r1, r3, r2;  --  3.0, 2.0;  --  cc FALSE
+QSAX r1, r2, r3;  --  3.0, 2.0;  --  
+QSAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+QSAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+QSUB r1, r3, r2;  --  3.0, 2.0;  --  
+QSUBeq r1, r3, r2;  --  3.0, 2.0;  --  cc TRUE
+QSUBeq r1, r3, r2;  --  3.0, 2.0;  --  cc FALSE
+QSUB16 r1, r2, r3;  --  3.0, 2.0;  --  
+QSUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+QSUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+QSUB8 r1, r2, r3;  --  3.0, 2.0;  --  
+QSUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+QSUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+REV r1, r2;  --  3.0, 2.0;  --  
+REVeq r1, r2;  --  3.0, 2.0;  --  cc TRUE
+REVeq r1, r2;  --  3.0, 2.0;  --  cc FALSE
+REV16 r1, r2;  --  3.0, 2.0;  --  
+REV16eq r1, r2;  --  3.0, 2.0;  --  cc TRUE
+REV16eq r1, r2;  --  3.0, 2.0;  --  cc FALSE
+REVSH r1, r2;  --  3.0, 2.0;  --  
+REVSHeq r1, r2;  --  3.0, 2.0;  --  cc TRUE
+REVSHeq r1, r2;  --  3.0, 2.0;  --  cc FALSE
+ROR r1, r2, #15;  --  3.0, 2.0;  --  
+ROReq r1, r2, #15;  --  3.0, 2.0;  --  cc TRUE
+ROReq r1, r2, #15;  --  3.0, 2.0;  --  cc FALSE
+ROR r1, r2, r3;  --  3.0, 2.0;  --  
+ROReq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+ROReq r1, r2, r3;  --  3.0, 2.2;  --  cc FALSE
+RRX r1, r2;  --  3.0, 2.0;  --  
+RRXeq r1, r2;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+RRXeq r1, r2;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+RSB r1, r2, #77;  --  3.0, 2.0;  --  
+RSBeq r1, r2, #77;  --  3.0, 2.0;  --  cc TRUE
+RSBeq r1, r2, #77;  --  3.0, 2.0;  --  cc FALSE
+RSB r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  
+RSBeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+RSBeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+RSB r1, r2, r3;  --  3.0, 2.0;  --  
+RSBeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+RSBeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+RSB r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  
+RSBeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc TRUE
+RSBeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc FALSE
+RSC r1, r2, #77;  --  3.0, 2.0;  --  
+RSCeq r1, r2, #77;  --  3.0, 2.0;  --  cc TRUE
+RSCeq r1, r2, #77;  --  3.0, 2.0;  --  cc FALSE
+RSC r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  
+RSCeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+RSCeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+RSC r1, r2, r3;  --  3.0, 2.0;  --  
+RSCeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+RSCeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+RSC r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  
+RSCeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc TRUE
+RSCeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc FALSE
+SADD16 r1, r2, r3;  --  3.0, 2.0;  --  
+SADD16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SADD16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SADD8 r1, r2, r3;  --  3.0, 2.0;  --  
+SADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SASX r1, r2, r3;  --  3.0, 2.0;  --  
+SASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SBC r1, r2, #77;  --  3.0, 2.0;  --  
+SBCeq r1, r2, #77;  --  3.0, 2.0;  --  cc TRUE
+SBCeq r1, r2, #77;  --  3.0, 2.0;  --  cc FALSE
+SBC r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  
+SBCeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+SBCeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+SBC r1, r2, r3;  --  3.0, 2.0;  --  
+SBCeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SBCeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SBC r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  
+SBCeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc TRUE
+SBCeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc FALSE
+SEL r1, r2, r3;  --  3.0, 2.0;  --  
+SELeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SELeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SHADD8 r1, r2, r3;  --  3.0, 2.0;  --  
+SHADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SHADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SHASX r1, r2, r3;  --  3.0, 2.0;  --  
+SHASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SHASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SHSAX r1, r2, r3;  --  3.0, 2.0;  --  
+SHSAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SHSAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SHSUB16 r1, r2, r3;  --  3.0, 2.0;  --  
+SHSUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SHSUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SHSUB8 r1, r2, r3;  --  3.0, 2.0;  --  
+SHSUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SHSUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SMLABT r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLABTeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLABTeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLAD r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLADeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLADeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLADX r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLADXeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLADXeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLAL r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLALeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLALeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLALBT r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLALBTeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLALBTeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLALD r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLALDeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLALDeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLALDX r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLALDXeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLALDXeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLAWT r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLAWTeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLAWTeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLSD r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLSDeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLSDeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLSDX r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLSDXeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLSDXeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLSLD r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLSLDeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLSLDeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMLSLDX r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMLSLDXeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMLSLDXeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMMLA r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMMLAeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMMLAeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMMLAR r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMMLAReq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMMLAReq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMMLS r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMMLSeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMMLSeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMMLSR r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMMLSReq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMMLSReq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMMUL r1, r2, r3;  --  3.0, 3.0;  --  
+SMMULeq r1, r2, r3;  --  3.0, 3.0;  --  cc TRUE
+SMMULeq r1, r2, r3;  --  3.0, 3.0;  --  cc FALSE
+SMMULR r1, r2, r3;  --  3.0, 3.0;  --  
+SMMULReq r1, r2, r3;  --  3.0, 3.0;  --  cc TRUE
+SMMULReq r1, r2, r3;  --  3.0, 3.0;  --  cc FALSE
+SMUAD r1, r2, r3;  --  3.0, 3.0;  --  
+SMUADeq r1, r2, r3;  --  3.0, 3.0;  --  cc TRUE
+SMUADeq r1, r2, r3;  --  3.0, 3.0;  --  cc FALSE
+SMUADX r1, r2, r3;  --  3.0, 3.0;  --  
+SMUADXeq r1, r2, r3;  --  3.0, 3.0;  --  cc TRUE
+SMUADXeq r1, r2, r3;  --  3.0, 3.0;  --  cc FALSE
+SMULBT r1, r2, r3;  --  3.0, 3.0;  --  
+SMULBTeq r1, r2, r3;  --  3.0, 3.0;  --  cc TRUE
+SMULBTeq r1, r2, r3;  --  3.0, 3.0;  --  cc FALSE
+SMULL r1, r2, r3, r4;  --  3.0, 3.0;  --  
+SMULLeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+SMULLeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+SMULWT r1, r2, r3;  --  3.0, 3.0;  --  
+SMULWTeq r1, r2, r3;  --  3.0, 3.0;  --  cc TRUE
+SMULWTeq r1, r2, r3;  --  3.0, 3.0;  --  cc FALSE
+SMUSD r1, r2, r3;  --  3.0, 3.0;  --  
+SMUSDeq r1, r2, r3;  --  3.0, 3.0;  --  cc TRUE
+SMUSDeq r1, r2, r3;  --  3.0, 3.0;  --  cc FALSE
+SMUSDX r1, r2, r3;  --  3.0, 3.0;  --  
+SMUSDXeq r1, r2, r3;  --  3.0, 3.0;  --  cc TRUE
+SMUSDXeq r1, r2, r3;  --  3.0, 3.0;  --  cc FALSE
+SSAT r1, #15, r2, LSL #3;  --  3.0, 2.0;  --  
+SSATeq r1, #15, r2, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+SSATeq r1, #15, r2, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+SSAT r1, #15, r2;  --  3.0, 2.0;  --  
+SSATeq r1, #15, r2;  --  3.0, 2.0;  --  cc TRUE
+SSATeq r1, #15, r2;  --  3.0, 2.0;  --  cc FALSE
+SSAT16 r1, #15, r2;  --  3.0, 2.0;  --  
+SSAT16eq r1, #15, r2;  --  3.0, 2.0;  --  cc TRUE
+SSAT16eq r1, #15, r2;  --  3.0, 2.0;  --  cc FALSE
+SSAX r1, r2, r3;  --  3.0, 2.0;  --  
+SSAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SSAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SSUB16 r1, r2, r3;  --  3.0, 2.0;  --  
+SSUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SSUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SSUB8 r1, r2, r3;  --  3.0, 2.0;  --  
+SSUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SSUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+STM r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMeq r1, {r2,r3,r4};  --  8.0, 9.0;  --  cc FALSE
+STM r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMeq r1!, {r2,r3,r4};  --  8.0, 9.0;  --  cc FALSE
+STMDA r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDAeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMDAeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMDA r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDAeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMDAeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMDB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDBeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMDBeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMDB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDBeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMDBeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMIB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMIBeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMIBeq r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMIB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMIBeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STMIBeq r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STR r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2, #+15];  --  6.0, 5.0;  --  cc FALSE
+STR r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2];  --  6.0, 5.0;  --  cc FALSE
+STR r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2,+r3, LSL #3];  --  6.0, 5.0;  --  cc FALSE
+STR r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2,+r3, LSL #3]!;  --  6.0, 5.0;  --  cc FALSE
+STR r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2,+r3];  --  3.0, 2.0;  --  cc FALSE
+STR r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STReq r1, [r2,+r3]!;  --  3.0, 2.0;  --  cc FALSE
+STRB r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRBeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRB r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBeq r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRBeq r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRB r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBeq r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRBeq r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRB r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBeq r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRBeq r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRB r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRBeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRBeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRBT r1, [r2], #+15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBTeq r1, [r2], #+15;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRBTeq r1, [r2], #+15;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STREX r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STREXeq r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STREXeq r1, r2, [r3];  --  3.0, 2.0;  --  cc FALSE
+STRH r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRHeq r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRHeq r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRH r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRHeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRHeq r1, [r2, #+15];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRH r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRHeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRHeq r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRHeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRHeq r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRT r1, [r2] , #+15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRTeq r1, [r2] , #+15;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRTeq r1, [r2] , #+15;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRTeq r1, [r2] ;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRTeq r1, [r2] ;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SUB r1, r2, #77;  --  2.0, 2.0;  --  
+SUBeq r1, r2, #77;  --  2.0, 2.0;  --  cc TRUE
+SUBeq r1, r2, #77;  --  2.0, 2.0;  --  cc FALSE
+SUB r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  
+SUBeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+SUBeq r1, r2, r3, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+SUB r1, r2, r3;  --  3.0, 2.0;  --  
+SUBeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SUBeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SUB r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  
+SUBeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc TRUE
+SUBeq r1, r2, r3, LSL r4;  --  3.0, 2.0;  --  cc FALSE
+SUB r1, SP, #77;  --  2.0, 2.0;  --  
+SUBeq r1, SP, #77;  --  2.0, 2.0;  --  cc TRUE
+SUBeq r1, SP, #77;  --  2.0, 2.0;  --  cc FALSE
+SUB r1, SP, r2, LSL #3;  --  3.0, 2.0;  --  
+SUBeq r1, SP, r2, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+SUBeq r1, SP, r2, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+SUB r1, SP, r2;  --  3.0, 2.0;  --  
+SUBeq r1, SP, r2;  --  3.0, 2.0;  --  cc TRUE
+SUBeq r1, SP, r2;  --  3.0, 2.0;  --  cc FALSE
+SVC #15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SVCeq #15;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SVCeq #15;  --  3.0, 3.0;  --  cc FALSE
+SWP r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SWPeq r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SWPeq r1, r2, [r3];  --  3.0, 3.0;  --  cc FALSE
+SWPB r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SWPBeq r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SWPBeq r1, r2, [r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SXTAB r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  
+SXTABeq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc TRUE
+SXTABeq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc FALSE
+SXTAB r1, r2, r3;  --  3.0, 2.0;  --  
+SXTABeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SXTABeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SXTAB16 r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  
+SXTAB16eq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc TRUE
+SXTAB16eq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc FALSE
+SXTAB16 r1, r2, r3;  --  3.0, 2.0;  --  
+SXTAB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SXTAB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SXTAH r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  
+SXTAHeq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc TRUE
+SXTAHeq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc FALSE
+SXTAH r1, r2, r3;  --  3.0, 2.0;  --  
+SXTAHeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+SXTAHeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+SXTB r1, r2, ROR #8;  --  2.0, 2.0;  --  
+SXTBeq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc TRUE
+SXTBeq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc FALSE
+SXTB r1, r2;  --  2.0, 2.0;  --  
+SXTBeq r1, r2;  --  2.0, 2.0;  --  cc TRUE
+SXTBeq r1, r2;  --  2.0, 2.0;  --  cc FALSE
+SXTB16 r1, r2, ROR #8;  --  2.0, 2.0;  --  
+SXTB16eq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc TRUE
+SXTB16eq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc FALSE
+SXTB16 r1, r2;  --  2.0, 2.0;  --  
+SXTB16eq r1, r2;  --  2.0, 2.0;  --  cc TRUE
+SXTB16eq r1, r2;  --  2.0, 2.0;  --  cc FALSE
+SXTH r1, r2, ROR #8;  --  2.0, 2.0;  --  
+SXTHeq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc TRUE
+SXTHeq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc FALSE
+SXTH r1, r2;  --  2.0, 2.0;  --  
+SXTHeq r1, r2;  --  2.0, 2.0;  --  cc TRUE
+SXTHeq r1, r2;  --  2.0, 2.0;  --  cc FALSE
+TEQ r1, #77;  --  3.0, 4.0;  --  
+TEQeq r1, #77;  --  3.0, 4.0;  --  cc TRUE
+TEQeq r1, #77;  --  3.0, 4.0;  --  cc FALSE
+TEQ r1, r2, LSL #3;  --  3.0, 4.0;  --  
+TEQeq r1, r2, LSL #3;  --  3.0, 4.0;  --  cc TRUE
+TEQeq r1, r2, LSL #3;  --  3.0, 4.0;  --  cc FALSE
+TEQ r1, r2;  --  3.0, 4.0;  --  
+TEQeq r1, r2;  --  3.0, 4.0;  --  cc TRUE
+TEQeq r1, r2;  --  3.0, 4.0;  --  cc FALSE
+TEQ r1, r2, LSL r3;  --  3.0, 4.0;  --  
+TEQeq r1, r2, LSL r3;  --  3.0, 4.0;  --  cc TRUE
+TEQeq r1, r2, LSL r3;  --  3.0, 4.0;  --  cc FALSE
+TST r1, #77;  --  3.0, 4.0;  --  
+TSTeq r1, #77;  --  3.0, 4.0;  --  cc TRUE
+TSTeq r1, #77;  --  3.0, 4.0;  --  cc FALSE
+TST r1, r2, LSL #3;  --  3.0, 4.0;  --  
+TSTeq r1, r2, LSL #3;  --  3.0, 4.0;  --  cc TRUE
+TSTeq r1, r2, LSL #3;  --  3.0, 4.0;  --  cc FALSE
+TST r1, r2;  --  3.0, 4.0;  --  
+TSTeq r1, r2;  --  3.0, 4.0;  --  cc TRUE
+TSTeq r1, r2;  --  3.0, 4.0;  --  cc FALSE
+TST r1, r2, LSL r3;  --  3.0, 4.0;  --  
+TSTeq r1, r2, LSL r3;  --  3.0, 4.0;  --  cc TRUE
+TSTeq r1, r2, LSL r3;  --  3.0, 4.0;  --  cc FALSE
+UADD16 r1, r2, r3;  --  3.0, 2.0;  --  
+UADD16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UADD16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UADD8 r1, r2, r3;  --  3.1, 2.0;  --  
+UADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UASX r1, r2, r3;  --  3.2, 2.0;  --  
+UASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UDF #15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+UDFeq #15;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+UDFeq #15;  --  3.0, 3.0;  --  cc FALSE
+UHADD16 r1, r2, r3;  --  3.0, 2.0;  --  
+UHADD16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UHADD16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UHADD8 r1, r2, r3;  --  3.0, 2.0;  --  
+UHADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UHADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UHASX r1, r2, r3;  --  3.0, 2.0;  --  
+UHASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UHASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UHSAX r1, r2, r3;  --  3.0, 2.0;  --  
+UHSAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UHSAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UHSUB16 r1, r2, r3;  --  3.0, 2.0;  --  
+UHSUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UHSUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UHSUB8 r1, r2, r3;  --  3.0, 2.0;  --  
+UHSUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UHSUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UMAAL r1, r2, r3, r4;  --  4.0, 4.0;  --  
+UMAALeq r1, r2, r3, r4;  --  4.0, 4.0;  --  cc TRUE
+UMAALeq r1, r2, r3, r4;  --  4.0, 4.0;  --  cc FALSE
+UMLAL r1, r2, r3, r4;  --  3.0, 3.0;  --  
+UMLALeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+UMLALeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+UMULL r1, r2, r3, r4;  --  3.0, 3.0;  --  
+UMULLeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+UMULLeq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+UQADD16 r1, r2, r3;  --  3.0, 2.0;  --  
+UQADD16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UQADD16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UQADD8 r1, r2, r3;  --  3.0, 2.0;  --  
+UQADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UQADD8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UQASX r1, r2, r3;  --  3.0, 2.0;  --  
+UQASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UQASXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UQSAX r1, r2, r3;  --  3.0, 2.0;  --  
+UQSAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UQSAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UQSUB16 r1, r2, r3;  --  3.0, 2.0;  --  
+UQSUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UQSUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UQSUB8 r1, r2, r3;  --  3.0, 2.0;  --  
+UQSUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UQSUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+USAD8 r1, r2, r3;  --  3.0, 3.0;  --  
+USAD8eq r1, r2, r3;  --  3.0, 3.0;  --  cc TRUE
+USAD8eq r1, r2, r3;  --  3.0, 3.0;  --  cc FALSE
+USADA8 r1, r2, r3, r4;  --  3.0, 3.0;  --  
+USADA8eq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc TRUE
+USADA8eq r1, r2, r3, r4;  --  3.0, 3.0;  --  cc FALSE
+USAT r1, #15, r2, LSL #3;  --  3.0, 2.0;  --  
+USATeq r1, #15, r2, LSL #3;  --  3.0, 2.0;  --  cc TRUE
+USATeq r1, #15, r2, LSL #3;  --  3.0, 2.0;  --  cc FALSE
+USAT r1, #15, r2;  --  3.0, 2.0;  --  
+USATeq r1, #15, r2;  --  3.0, 2.0;  --  cc TRUE
+USATeq r1, #15, r2;  --  3.0, 2.0;  --  cc FALSE
+USAT16 r1, #15, r2;  --  3.0, 2.0;  --  
+USAT16eq r1, #15, r2;  --  3.0, 2.0;  --  cc TRUE
+USAT16eq r1, #15, r2;  --  3.0, 2.0;  --  cc FALSE
+USAX r1, r2, r3;  --  3.0, 2.0;  --  
+USAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+USAXeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+USUB16 r1, r2, r3;  --  3.0, 2.0;  --  
+USUB16eq r1, r2, r3;  --  3.2, 2.0;  --  cc TRUE
+USUB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+USUB8 r1, r2, r3;  --  3.0, 2.0;  --  
+USUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+USUB8eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UXTAB r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  
+UXTABeq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc TRUE
+UXTABeq r1, r2, r3, ROR #8;  --  3.2, 2.0;  --  cc FALSE
+UXTAB r1, r2, r3;  --  3.0, 2.0;  --  
+UXTABeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UXTABeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UXTAB16 r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  
+UXTAB16eq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc TRUE
+UXTAB16eq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc FALSE
+UXTAB16 r1, r2, r3;  --  3.0, 2.0;  --  
+UXTAB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UXTAB16eq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UXTAH r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  
+UXTAHeq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc TRUE
+UXTAHeq r1, r2, r3, ROR #8;  --  3.0, 2.0;  --  cc FALSE
+UXTAH r1, r2, r3;  --  3.0, 2.0;  --  
+UXTAHeq r1, r2, r3;  --  3.0, 2.0;  --  cc TRUE
+UXTAHeq r1, r2, r3;  --  3.0, 2.0;  --  cc FALSE
+UXTB r1, r2, ROR #8;  --  2.0, 2.0;  --  
+UXTBeq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc TRUE
+UXTBeq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc FALSE
+UXTB r1, r2;  --  2.0, 2.0;  --  
+UXTBeq r1, r2;  --  2.0, 2.0;  --  cc TRUE
+UXTBeq r1, r2;  --  2.0, 2.0;  --  cc FALSE
+UXTB16 r1, r2, ROR #8;  --  2.0, 2.0;  --  
+UXTB16eq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc TRUE
+UXTB16eq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc FALSE
+UXTB16 r1, r2;  --  2.0, 2.0;  --  
+UXTB16eq r1, r2;  --  2.0, 2.0;  --  cc TRUE
+UXTB16eq r1, r2;  --  2.0, 2.0;  --  cc FALSE
+UXTH r1, r2, ROR #8;  --  2.0, 2.0;  --  
+UXTHeq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc TRUE
+UXTHeq r1, r2, ROR #8;  --  2.0, 2.0;  --  cc FALSE
+UXTH r1, r2;  --  2.0, 2.0;  --  
+UXTHeq r1, r2;  --  2.0, 2.0;  --  cc TRUE
+UXTHeq r1, r2;  --  2.0, 2.0;  --  cc FALSE

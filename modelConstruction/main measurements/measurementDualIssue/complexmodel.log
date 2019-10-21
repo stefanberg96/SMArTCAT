@@ -1,0 +1,701 @@
+ADCS r1, r2, #0;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, #77;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, #0;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, #77;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, r3, LSR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, r3, ASR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, r3, ROR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, r3, RRX;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, r3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, r3, LSR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, r3, ASR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, r3, ROR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, r3, RRX;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, r3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCS r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADC r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCeq r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCne r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcs r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCcc r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCmi r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCpl r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvs r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCvc r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADChi r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCls r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCge r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADClt r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCgt r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADCle r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, #0;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, #77;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, #0;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, #77;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, #77;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, #77;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, r3, LSR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, r3, ASR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, r3, ROR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, r3, RRX;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, r3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, r3, LSL #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, r3, LSR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, LSR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, r3, ASR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, ASR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, r3, ROR #3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, ROR #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, r3, RRX;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, RRX;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, r3;  --  -1.0, 1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDS r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, LSL r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, LSR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDpl r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvs r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDvc r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDhi r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDls r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDge r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDlt r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDgt r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDle r1, r2, r3, ASR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADD r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDeq r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDne r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcs r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDcc r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+ADDmi r1, r2, r3, ROR r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0

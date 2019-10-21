@@ -1,0 +1,141 @@
+LDR<c> <Rt>, [<Rn>]: set([(1, 2, None, 'cc FALSE'), (1, 3, None, 'no cc'), (1, 3, None, 'cc TRUE')])
+LDRH<c> <Rt>, [<Rn>]: set([(1, 3, None, 'no cc')])
+LDRT<c> <Rt>, [<Rn>] : set([(1, 3, None, 'no cc')])
+LDRSB<c> <Rt>, [<Rn>]: set([(1, 3, None, 'no cc')])
+
+LDRSH<c> <Rt>, [<Rn>]: set([(1, 3, None, 'no cc')])
+LDREX<c> <Rt>, [<Rn>]: set([(3, 5, None, 'no cc'), (3, 5, None, 'cc TRUE'), (1, 2, None, 'cc FALSE')])
+LDRB<c> <Rt>, [<Rn>]: set([(1, 3, None, 'no cc')])
+
+ LDRSB<c> <Rt>, [<Rn>, #+/-<imm8>]: set([(1, 3, None, 'no cc')])
+ LDRSH<c> <Rt>, [<Rn>, #+/-<imm8>]: set([(1, 3, None, 'no cc')])
+  LDRH<c> <Rt>, [<Rn>, #+/-<imm8>]: set([(1, 3, None, 'no cc')])
+ LDRB<c> <Rt>, [<Rn>, #+/-<imm12>]: set([(1, 3, None, 'no cc')])
+LDRT<c> <Rt>, [<Rn>] , #+/-<imm12>: set([(1, 3, None, 'no cc')])
+LDRBT<c> <Rt>, [<Rn>], #+/-<imm12>: set([(1, 3, None, 'no cc')])
+LDR<c> <Rt>, [<Rn>, #+/-<imm12>]: set([(1, 2, None, 'cc FALSE'), (2, 4, None, 'cc TRUE'), (2, 3, None, 'cc FALSE'), (1, 3, None, 'no cc'), (1, 3, None, 'cc TRUE'), (2, 4, None, 'no cc')])
+
+ LDRH<c> <Rt>, [<Rn>,+/-<Rm>]{!}: set([(1, 3, 3, 'no cc'), (3, 5, 3, 'no cc'), (1, 3, 2, 'no cc'), (4, 6, 2, 'no cc')])
+ LDRB<c> <Rt>, [<Rn>,+/-<Rm>]{!}: set([(1, 3, 3, 'no cc'), (3, 5, 2, 'no cc'), (3, 5, 3, 'no cc'), (1, 3, 2, 'no cc')])
+LDRSB<c> <Rt>, [<Rn>,+/-<Rm>]{!}: set([(1, 3, 3, 'no cc'), (3, 5, 2, 'no cc'), (3, 5, 3, 'no cc'), (1, 3, 2, 'no cc')])
+LDRSH<c> <Rt>, [<Rn>,+/-<Rm>]{!}: set([(1, 3, 3, 'no cc'), (3, 5, 3, 'no cc'), (1, 3, 2, 'no cc'), (4, 6, 2, 'no cc')])
+  LDR<c> <Rt>, [<Rn>,+/-<Rm>]{!}: set([(1, 3, 3, 'cc TRUE'), (1, 2, 3, 'cc FALSE'), (4, 5, 2, 'cc FALSE'), (1, 3, 2, 'cc TRUE'), (3, 5, 3, 'no cc'), (4, 6, 2, 'cc TRUE'), (1, 2, 2, 'cc FALSE'), (1, 3, 3, 'no cc'), (1, 3, 2, 'no cc'), (4, 5, 3, 'cc FALSE'), (3, 5, 3, 'cc TRUE'), (4, 6, 2, 'no cc')])
+
+LDR<c> <Rt>, [<Rn>,+/-<Rm>, <shift>]{!}: set([(1, 3, 3, 'cc TRUE'), (1, 2, 3, 'cc FALSE'), (4, 5, 2, 'cc FALSE'), (1, 3, 2, 'cc TRUE'), (3, 5, 3, 'no cc'), (4, 6, 2, 'cc TRUE'), (1, 2, 2, 'cc FALSE'), (1, 3, 3, 'no cc'), (1, 3, 2, 'no cc'), (4, 5, 3, 'cc FALSE'), (3, 5, 3, 'cc TRUE'), (4, 6, 2, 'no cc')])
+LDRB<c> <Rt>, [<Rn>,+/-<Rm>, <shift>]{!}: set([(1, 3, 3, 'no cc'), (3, 5, 2, 'no cc'), (3, 5, 3, 'no cc'), (1, 3, 2, 'no cc')])
+
+
+LDM<c> <Rn>{!}, <registers>: set([(1, 2, 1, 'cc FALSE'), (1, 3, 1, 'no cc'), (1, 3, 1, 'cc TRUE'), (1, 2, 2, 'cc FALSE'), (1, 3, None, 'no cc'), (1, 3, None, 'cc TRUE')])
+LDMIB<c> <Rn>{!}, <registers>: set([(2, 3, 2, 'no cc'), (2, 3, None, 'no cc')])
+LDMDB<c> <Rn>{!}, <registers>: set([(1, 3, 1, 'no cc'), (1, 3, 2, 'no cc')])
+LDMDA<c> <Rn>{!}, <registers>: set([(2, 3, 3, 'no cc'), (2, 3, 2, 'no cc')])
+
+LDM:
+# loads / issue time,latency/reg    , wback bailout
+(#ops+1)/2  1   2   2   3   3
+        r0  r1  r2  r3  r4  r5  r9          r0  r1  r2  r3  r4  r5  r9  12
+ 1/1,   3                           , 2     2
+ 2/1,   3   3                       , 2     2   3
+ 3/2,   3   3   4                   , 3     2   3   3
+ 4/2,   3   3   4   4               , 3     2   3   3   4
+ 5/3,   3   3   4   4   5           , 4     3   3   3   4   4
+ 6/3,   3   3   4   4   5   5       , 4     3   3   3   4   4   5
+ 7/4,   4   4   4   4   5   5   6   , 5     4   4   4   4   4   5   5
+ 8/4,   4   4   4   4   5   5   6 6                      ...4   5   5   6
+ 
+ early reg Rn 1 cycle early (base address)
+ CC:    no bailout on issue time or writeback.
+        bailout = max (issue_time, 2 + ceil((reg_index_in_list)/2))
+        
+ (it doesn't matter if it's exactly these registers or different ones, no such thing as register locality)
+ 
+LDMIB:
+# loads / issue time,latency/reg    , wback
+        r0  r1  r2  r3  r4  r5  r9         
+ 1/1,   3                           , 2
+ 2/2,   3   4                       , 3
+ 3/2,   3   4   4                   , 3
+ 4/3,   3   4   4   5               , 4
+ 5/3,   3   4   4   5   5           , 4
+ 6/4,   4   4   4   5   5   6       , 5
+ 7/4,   4   4   4   5   5   6   6   , 5
+ 8/5,                ...5   6   6 7    
+ 
+ early reg Rn 1 cycles early (base address)
+ CC: LDMIB has no conditions
+ 
+ 
+LDMDB:
+# loads / issue time,latency/reg    , wback
+        r0  r1  r2  r3  r4  r5  r9     
+ 1/1,   3                           , 2
+ 2/1,   3   3                       , 2
+ 3/2,   3   4   4                   , 3
+ 4/2,   3   3   4   4               , 3
+ 5/3,   3   4   4   5   5           , 4
+ 6/3,   3   3   4   4   5   5       , 4
+ 7/4,   4   4   4   5   5   6   6   , 5
+ 8/4,   4   4   4   4   5   5   6 6    
+ 
+ early reg Rn 1 cycles early (base address)
+ CC: LDMDB has no conditions
+ 
+ LDMDA:
+# loads / issue time,latency/reg    , wback
+        r0  r1  r2  r3  r4  r5  r9         
+ 1/1,   3                           , 2
+ 2/2,   3   4                       , 3
+ 3/2,   3   3   4                   , 3
+ 4/3,   3   4   4   5               , 4
+ 5/3,   3   3   4   4   5           , 4
+ 6/4,   4   4   4   5   5   6       , 5
+ 7/4,   4   4   4   4   5   5   6   , 5
+ 8/5,                ...5   6   6 7    
+ 
+ early reg Rn 1 cycles early (base address)
+ CC: LDMDA has no conditions
+ 
+ 
+-> actually, latency is just the lower value EXCEPT when memory base address/4 is an even memory addresses, which requires a cycle extra
+        This effect applies to normal LDM as well (and probably the others too)
+-> LDMDA seems to have reversed order of accesses which influences which registers have certain access times due to different aligning with word boundaries.
+ 
+
+condition codes only exist for normal LDR<c> and LDREX (and normal LDM<c>)
+shifts only exist for LDR and LDRB
+
+
+
+LDR and LDRB behave similarly (except for cc's which it doesn't have)
+other load instructions always have timing 1,3,2 except with negative register. (then it's all 2 cycles more)
+LDREX always has timing 3,5 except with cc FALSE, then it's 1,2
+
+writebacks are always 1 cycle more than issueing time, even if cc false.
+LDRT/LDRBT have automatic writeback of normal time
+
+early regs:
+    All load instructions:
+        all addressing regs are required 1 cycle early, unless using a negative register offset
+    LDRH, LDRSB
+            all addressing regs are late regs if offset is negative
+    LDR, LDRSH, LDRB    (nonshifted)
+            base reg is a late reg if offset is negative, offset too, just depends on the memory position we hit whether we require an extra cycle for mem lookup
+    Shifting influences early regs (LDR, LDRB):
+        when left shifting with positive offset: both offset and base registers are still required 1 cycle early.
+        with any other shifting (negative offset any shift, or positive offset right shift): offset isn't required early (but isn't a late reg either), base reg is a late reg
+        (shifting which isn't to the left adds 2 cycles, unless alread added by negative reg offset)
+        actually I expect that this might just have to do with the result of shifting negative numbers and the bit string which just becomes an enormous offset into nothingness, which isn't in cache or something. although, does that even make sense? there is no seg fault and after multiple loads from the same address, it should be cached right? Also, the loading number is very exact
+        LSL only becomes more if negative AND atleast 4 shift spaces though.
+
+LDRHT doesn't exist
+
+
+
+measuring tricks:   
+
+mov r1, sp;      (this gives us a base reg which can always be accessed properly and can be written back to)
+OR mov r9, #0;   (this gives us an offset address which doesn't actually affect the base reg, so access time is proper, no segfaults, and can safely be shifted as well)
+OR mov r5, #0;   (to measure a base case time when determining early regs)
+{mul r2,r3,r3; mul r2,r3,r3;) (this makes sure no early reg dependencies influence time, remove these when measuring early regs.)
+LDR r2, [r1,r9]  (with imm and shifted values as alternatives. don't forget to also measure the negative offset due to different timing effects. don't forget to measure different shift types due to different timing effects. (but only shift r9 which is 0 so shifting doesn't influence mem location)
+mul r1, r3, (r3 / r2 / r1 / r9) to measure issue / latency / writeback / lock time  

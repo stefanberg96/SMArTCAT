@@ -1,0 +1,53 @@
+for each instruction, test:
+
+if conditional: execute with condition True / False
+-> determine when true/false for each condition (done, below)
+
+issuing time: each instruction with some independent known timing instructions in between?:     add r0, r0, r0; add r0, r0, r0; add r0, r0, r0;
+latency: each instruction with a dependent known timing instruction in between?:                add r0, r0, r1; add r0, r0, r0; add r0, r0, r0;
+
+
+considering condition flags may be set by instructions... make sure to reset them every time!
+
+
+NOTE: instructions with <registers> need additional measurements because they are probably list length dependent
+
+["eq": ("mov r0, #0; cmp r0, #0", "mov r0, #0; cmp r0, #1")
+,"ne": ("mov r0, #0; cmp r0, #1", "mov r0, #0; cmp r0, #0")
+,"hs": ("mov r0, #0; cmp r0, #0", "mov r0, #0; cmp r0, #1")
+,"lo": ("mov r0, #0; cmp r0, #1", "mov r0, #0; cmp r0, #0")
+,"mi": ("mov r0, #0; cmp r0, #1", "mov r0, #0; cmp r0, #0")
+,"pl": ("mov r0, #0; cmp r0, #0", "mov r0, #0; cmp r0, #1")
+,"vs": ("mov r0, #(2^31)-1; cmn r0, #(2^31)-1", "mov r0, #(2^31)-1; cmn r0, #0")
+,"vc": ("mov r0, #(2^31)-1; cmn r0, #0", "mov r0, #(2^31)-1; cmn r0, #(2^31)-1")
+,"hi": ("mov r0, #1; cmp r0, #0", "mov r0, #1; cmp r0, #1")
+,"ls": ("mov r0, #1; cmp r0, #1", "mov r0, #1; cmp r0, #0")
+,"ge": ("mov r0, #0; cmp r0, #0", "mov r0, #0; cmp r0, #1")
+,"lt": ("mov r0, #0; cmp r0, #1", "mov r0, #0; cmp r0, #0")
+,"gt": ("mov r0, #1; cmp r0, #0", "mov r0, #1; cmp r0, #1")
+,"le": ("mov r0, #1; cmp r0, #1", "mov r0, #1; cmp r0, #0")
+,"": None]
+
+                                                                                    exec / non exec
+                                                                                    
+                                                                                        3 / 2
+
+these tests generate 2 cycles overhead: (, with above add instructions, that totals to 4 cycles)
+                                                                                        
+v    ARMCondEQ = 0 #   /* equal                         : Z=1 */         mov r0, #0; cmp r0, #0/#1
+v    ARMCondNE = 1 #   /* not equal                     : Z=0 */         mov r0, #0; cmp r0, #1/#0
+v    ARMCondHS = 2 #   /* >=u (higher or same)          : C=1 */         mov r0, #0; cmp r0, #0/#1
+v    ARMCondLO = 3 #   /* <u  (lower)                   : C=0 */         mov r0, #0; cmp r0, #1/#0
+v    ARMCondMI = 4 #   /* minus (negative)              : N=1 */         mov r0, #0; cmp r0, #1/#0
+v    ARMCondPL = 5 #   /* plus (zero or +ve)            : N=0 */         mov r0, #0; cmp r0, #0/#1
+v    ARMCondVS = 6 #   /* overflow                      : V=1 */         mov r0, #(2^31)-1; cmn r0, #(2^31)-1/#0
+v    ARMCondVC = 7 #   /* no overflow                   : V=0 */         mov r0, #(2^31)-1; cmn r0, #0/#(2^31)-1
+v    ARMCondHI = 8 #   /* >u   (higher)                 : C=1 && Z=0 */  mov r0, #1; cmp r0, #0/#1
+v    ARMCondLS = 9 #   /* <=u  (lower or same)          : C=0 || Z=1 */  mov r0, #1; cmp r0, #1/#0
+v    ARMCondGE = 10 #  /* >=s (signed greater or equal) : N=V */         mov r0, #0; cmp r0, #0/#1
+v    ARMCondLT = 11 #  /* <s  (signed less than)        : N!=V */        mov r0, #0; cmp r0, #1/#0
+v    ARMCondGT = 12 #  /* >s  (signed greater)          : Z=0 && N=V */  mov r0, #1; cmp r0, #0/#1
+v    ARMCondLE = 13 #  /* <=s (signed less or equal)    : Z=1 || N!=V */ mov r0, #1; cmp r0, #1/#0
+    ARMCondAL = 14 #  /* always (unconditional)        : 1 */           
+    ARMCondNV = 15 #   /* never (unconditional):        : 0 */          
+

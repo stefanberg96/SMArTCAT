@@ -1,0 +1,84 @@
+import claripy
+import cdset
+import ctypes
+import analysisUtils as u
+p1 = claripy.BVS("p", 32)
+t1 = claripy.BVS("t", 32)
+s1 = claripy.BVS("s", 32)
+#b1 = claripy.BVS("b", 32)
+
+sv = claripy.Solver()
+sv.add(claripy.SGT(s1, 0))
+sv.add(claripy.SLE(s1, 255))
+sv.add(claripy.SGT(p1, 0))
+sv.add(claripy.SLE(p1, 255))
+sv.add(t1 == claripy.If(claripy.SGE(p1*s1, 255), claripy.BVV(25, 32), claripy.BVV(26, 32))) #put this one in sn as well?
+set1 = cdset.CDSet(sv, p1)
+
+set2 = set1.copyUnique()
+
+set2.solver.constraints
+#########################################################################################################
+p2 = u.stringToVar("p_0_32_u0_3_32", set2.solver.constraints)
+t2 = u.stringToVar("t_1_32_u0_5_32", set2.solver.constraints)
+#t2 = claripy.BVS("t2", 32)
+s2 = u.stringToVar("s_2_32_u0_4_32", set2.solver.constraints)
+######################################################################################################### 
+
+set1.constrain(claripy.SGE(s1,10))
+set1.constrain(t1 == 25)
+set2.constrain(claripy.SLT(s2,10))
+set2.constrain(t2 == 26)
+
+
+s = claripy.Solver()
+s.add(set1.solver.constraints)
+s.add(set2.solver.constraints)
+
+s.add(p1 == p2)
+s.add(t1 != t2)
+s.add(s1 != s2)
+#s.add(claripy.SGT(s2,s1))
+#s.add(claripy.SGE(s1,10))
+#s.add(claripy.SLT(s2,10))
+
+mergedConstraints = claripy.And(*s.constraints)
+negatedMerged = claripy.Not(mergedConstraints)
+sn = claripy.Solver()
+sn.add(negatedMerged)
+
+snT = claripy.Solver()
+
+snT.add(claripy.SGT(s1, 0))
+snT.add(claripy.SLE(s1, 255))
+snT.add(claripy.SGT(p1, 0))
+snT.add(claripy.SLE(p1, 255))
+snT.add(claripy.SGT(s2, 0))
+snT.add(claripy.SLE(s2, 255))
+snT.add(claripy.SGT(p2, 0))
+snT.add(claripy.SLE(p2, 255))
+snT.add(claripy.Or(t1 == 25, t1 == 26))
+snT.add(claripy.Or(t2 == 25, t2 == 26))
+snT.add(t1 == claripy.If(claripy.SGE(p1*s1, 255), claripy.BVV(25, 32), claripy.BVV(26, 32)))
+snT.add(t2 == claripy.If(claripy.SGE(p2*s2, 255), claripy.BVV(25, 32), claripy.BVV(26, 32)))
+
+snT.add(t1 == 25)
+snT.add(t2 == 26)
+snT.add(p1 == p2)
+snT.add(s1 != s2)
+
+morgedAuxiliaryConstraints = claripy.And(*snT.constraints)
+sn.add(morgedAuxiliaryConstraints)
+
+sn2 = sn.branch()
+
+len(sn2.eval(p1,300))
+len(sn2.eval(s1,300))
+len(sn2.eval(s2,300))
+assert(sn2.solution(p1,25))
+assert(not sn2.solution(p1,26))
+assert(not sn2.solution(p1,27))
+assert(not sn2.solution(p1,28))
+assert(sn2.solution(p1,29))
+
+#this works in so far that the feasibility set of sn2.p1 is now the complement of the feasibility set of the values which actually generate the wanted behavior.

@@ -1,0 +1,77 @@
+
+group 1: all behave according to std STR<c> timing model for this format
+       STRB<c> <Rt>, [<Rn>]: set([(1, 1, None, 'no cc')])
+       STRT<c> <Rt>, [<Rn>]: set([(1, 1, None, 'no cc')])
+        STR<c> <Rt>, [<Rn>]: set([(1, 1, None, 'cc FALSE'), (1, 1, None, 'no cc'), (1, 1, None, 'cc TRUE')])
+STREX<c> <Rd>, <Rt>, [<Rn>]: set([(1, 1, None, 'cc FALSE'), (1, 1, None, 'no cc'), (1, 1, None, 'cc TRUE')])
+
+group 2: these also follow the standard model.
+ STRB<c> <Rt>, [<Rn>, #+/-<imm12>]: set([(1, 1, None, 'no cc')])
+STRBT<c> <Rt>, [<Rn>], #+/-<imm12>: set([(1, 1, None, 'no cc')])
+ STRT<c> <Rt>, [<Rn>], #+/-<imm12>: set([(1, 1, None, 'no cc')])
+ STRH<c> <Rt>, [<Rn>{,#+/-<imm8>}]: set([(1, 1, None, 'no cc')])
+  STR<c> <Rt>, [<Rn>, #+/-<imm12>]: set([(2, 2, None, 'no cc'), (1, 1, None, 'cc FALSE'), (1, 1, None, 'cc TRUE'), (2, 2, None, 'cc TRUE'), (1, 1, None, 'no cc'), (2, 2, None, 'cc FALSE')])
+
+group 3: seem to follow the standard model as well.
+STRB<c> <Rt>, [<Rn>,+/-<Rm>]{!}: set([(3, 3, 3, 'no cc'), (1, 1, 2, 'no cc'), (3, 3, 2, 'no cc')])
+STRH<c> <Rt>, [<Rn>,+/-<Rm>]{!}: set([(3, 3, 3, 'no cc'), (4, 4, 2, 'no cc'), (1, 1, 2, 'no cc')])
+ STR<c> <Rt>, [<Rn>,+/-<Rm>]{!}: set([(3, 3, 3, 'cc TRUE'), (4, 4, 2, 'cc TRUE'), (4, 4, 2, 'no cc'), (4, 4, 3, 'cc FALSE'), (1, 1, 2, 'cc FALSE'), (3, 3, 3, 'no cc'), (1, 1, 3, 'cc FALSE'), (1, 1, 2, 'cc TRUE'), (1, 1, 2, 'no cc'), (4, 4, 2, 'cc FALSE')])
+
+group 4: standard model
+STRB<c> <Rt>, [<Rn>,+/-<Rm>, <shift>]{!}: set([(3, 3, 3, 'no cc'), (1, 1, 2, 'no cc'), (3, 3, 2, 'no cc')])
+ STR<c> <Rt>, [<Rn>,+/-<Rm>, <shift>]{!}: set([(3, 3, 3, 'cc TRUE'), (4, 4, 2, 'cc TRUE'), (4, 4, 2, 'no cc'), (4, 4, 3, 'cc FALSE'), (1, 1, 2, 'cc FALSE'), (3, 3, 3, 'no cc'), (1, 1, 3, 'cc FALSE'), (1, 1, 2, 'cc TRUE'), (1, 1, 2, 'no cc'), (4, 4, 2, 'cc FALSE')])
+
+ 
+STR and STREX are the only ones with condition codes
+
+STR<c> timing:
+no / imm / +reg offset, left shift:         neg reg offset or right shift
+                std                         std
+issue time      1                           3  
+lock time addr  registers aren't locked
+writeback time  2                           4  
+early regs      base&offset (1c)            
+late regs:      Rt (2c)                     Rt (2c) base&offset (1c)
+
+writeback time is actually max((issue_time / availability(base_addr))+1)
+there is no early bailout on any register timings (but of course on memory availability there is)
+
+
+
+STMDB<c> <Rn>{!}, <registers>: set([(1, 1, 1, 'no cc'), (1, 1, 2, 'no cc')])
+STMDA<c> <Rn>{!}, <registers>: set([(2, 2, 2, 'no cc'), (2, 2, 3, 'no cc')])
+STMIB<c> <Rn>{!}, <registers>: set([(2, 2, 2, 'no cc')])
+STM<c> <Rn>{!}, <registers>: set([(1, 1, 1, 'no cc'), (1, 1, 1, 'cc TRUE'), (1, 1, 2, 'cc FALSE'), (1, 1, 1, 'cc FALSE')])
+
+
+STM / STMDB
+#stores / issue time, wback(iss+1)
+ 1/1,   2
+ 2/1,   2
+ 3/2,   3
+ 4/2,   3
+ 5/3,   4
+ 6/3,   4
+ 7/4,   5
+ 8/4,   5
+ 
+ Rn required 1 cycle early
+ regs in list are required 2 cycles late (even if issue time is less than 2 cycles, and they don't stall the pipeline even with dependencies after them)
+ false CC doesn't influence execution time
+
+STMIB / STMDA
+ #stores / issue time, wback,    early Rn
+ 1/1        2
+ 2/2        3
+ 3/2        3
+ 4/3        4
+ 5/3        4
+ 6/4        5
+ 7/4        5
+ 8/5        6
+ 
+ Rn required 1 cycle early
+ regs in list are required 2 cycles late (even if issue time is less than 2 cycles, and they don't stall the pipeline even with dependencies after them)
+ false CC doesn't influence execution time
+
+ 

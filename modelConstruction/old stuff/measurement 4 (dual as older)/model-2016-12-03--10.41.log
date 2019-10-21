@@ -1,0 +1,957 @@
+ADCS r1, r2, #0;  --  0.5, 1.0;  --  
+ADC r1, r2, #0;  --  0.5, 1.0;  --  
+ADC r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+ADC r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+ADCS r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+ADCS r1, r2, r3;  --  0.5, 1.0;  --  
+ADC r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+ADC r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+ADC r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+ADC r1, r2, r3;  --  0.5, 1.0;  --  
+ADC r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+ADC r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+ADCS r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+ADC r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+ADC r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc TRUE
+ADC r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc FALSE
+ADDS r1, r2, #0;  --  0.5, 1.0;  --  
+ADD r1, r2, #0;  --  0.5, 1.0;  --  
+ADD r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+ADD r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+ADDS r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+ADDS r1, r2, r3;  --  0.5, 1.0;  --  
+ADD r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+ADD r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+ADD r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+ADD r1, r2, r3;  --  0.5, 1.0;  --  
+ADD r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+ADD r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+ADDS r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+ADD r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+ADD r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc TRUE
+ADD r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc FALSE
+ADDS r1, SP, #0;  --  0.5, 1.0;  --  
+ADD r1, SP, #0;  --  0.5, 1.0;  --  
+ADD r1, SP, #0;  --  1.5, 3.0;  --  cc TRUE
+ADD r1, SP, #0;  --  1.5, 3.0;  --  cc FALSE
+ADDS r1, SP, r2, LSL #3;  --  1.0, 2.0;  --  
+ADDS r1, SP, r2;  --  0.5, 1.0;  --  
+ADD r1, SP, r2, LSL #3;  --  1.0, 2.0;  --  
+ADD r1, SP, r2, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+ADD r1, SP, r2, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+ADD r1, SP, r2;  --  0.5, 1.0;  --  
+ADD r1, SP, r2;  --  1.5, 3.0;  --  cc TRUE
+ADD r1, SP, r2;  --  1.5, 3.0;  --  cc FALSE
+ANDS r1, r2, #0;  --  0.5, 1.0;  --  
+AND r1, r2, #0;  --  0.5, 1.0;  --  
+AND r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+AND r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+ANDS r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+ANDS r1, r2, r3;  --  0.5, 1.0;  --  
+AND r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+AND r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+AND r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+AND r1, r2, r3;  --  0.5, 1.0;  --  
+AND r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+AND r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+ANDS r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+AND r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+AND r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc TRUE
+AND r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc FALSE
+ASRS r1, r2, #0;  --  0.5, 1.0;  --  
+ASR r1, r2, #0;  --  0.5, 1.0;  --  
+ASR r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+ASR r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+ASRS r1, r2, r3;  --  1.0, 2.0;  --  
+ASR r1, r2, r3;  --  1.0, 2.0;  --  
+ASR r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+ASR r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+BFC r1, #3, #8;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+BFC r1, #3, #8;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+BFC r1, #3, #8;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+BFI r1, r2, #3, #8;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+BFI r1, r2, #3, #8;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+BFI r1, r2, #3, #8;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+BICS r1, r2, #0;  --  0.5, 1.0;  --  
+BIC r1, r2, #0;  --  0.5, 1.0;  --  
+BIC r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+BIC r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+BICS r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+BICS r1, r2, r3;  --  0.5, 1.0;  --  
+BIC r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+BIC r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+BIC r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+BIC r1, r2, r3;  --  0.5, 1.0;  --  
+BIC r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+BIC r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+BICS r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+BIC r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+BIC r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc TRUE
+BIC r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc FALSE
+BKPT #0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BLX r1;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BLX r1;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BLX r1;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BX r1;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BX r1;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BX r1;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BXJ r1;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BXJ r1;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BXJ r1;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+CLREX;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+CLZ r1, r2;  --  0.5, 1.0;  --  
+CLZ r1, r2;  --  1.5, 3.0;  --  cc TRUE
+CLZ r1, r2;  --  1.5, 3.0;  --  cc FALSE
+CMN r1, #0;  --  1.0, 1.0;  --  
+CMN r1, #0;  --  3.0, 5.0;  --  cc TRUE
+CMN r1, #0;  --  3.0, 5.0;  --  cc FALSE
+CMN r1, r2, LSL #3;  --  2.0, 3.0;  --  
+CMN r1, r2, LSL #3;  --  3.0, 5.0;  --  cc TRUE
+CMN r1, r2, LSL #3;  --  3.0, 5.0;  --  cc FALSE
+CMN r1, r2;  --  1.5, 2.0;  --  
+CMN r1, r2;  --  3.0, 5.0;  --  cc TRUE
+CMN r1, r2;  --  3.0, 5.0;  --  cc FALSE
+CMN r1, r2, LSL r3;  --  2.0, 3.0;  --  
+CMN r1, r2, LSL r3;  --  3.0, 5.0;  --  cc TRUE
+CMN r1, r2, LSL r3;  --  3.0, 5.0;  --  cc FALSE
+CMP r1, #0;  --  1.0, 1.0;  --  
+CMP r1, #0;  --  3.0, 5.0;  --  cc TRUE
+CMP r1, #0;  --  3.0, 5.0;  --  cc FALSE
+CMP r1, r2, LSL #3;  --  2.0, 3.0;  --  
+CMP r1, r2, LSL #3;  --  3.0, 5.0;  --  cc TRUE
+CMP r1, r2, LSL #3;  --  3.0, 5.0;  --  cc FALSE
+CMP r1, r2;  --  1.5, 2.0;  --  
+CMP r1, r2;  --  3.0, 5.0;  --  cc TRUE
+CMP r1, r2;  --  3.0, 5.0;  --  cc FALSE
+CMP r1, r2, LSL r3;  --  2.0, 3.0;  --  
+CMP r1, r2, LSL r3;  --  3.0, 5.0;  --  cc TRUE
+CMP r1, r2, LSL r3;  --  3.0, 5.0;  --  cc FALSE
+EORS r1, r2, #0;  --  0.5, 1.0;  --  
+EOR r1, r2, #0;  --  0.5, 1.0;  --  
+EOR r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+EOR r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+EORS r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+EORS r1, r2, r3;  --  0.5, 1.0;  --  
+EOR r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+EOR r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+EOR r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+EOR r1, r2, r3;  --  0.5, 1.0;  --  
+EOR r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+EOR r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+EORS r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+EOR r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+EOR r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc TRUE
+EOR r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc FALSE
+LDM r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDM r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDM r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDM r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDM r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDM r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDA r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDA r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDA r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDA r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDA r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDA r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMIB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMIB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMIB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMIB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMIB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMIB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2, #+0];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2, #+0];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2, #+0];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2, #+0];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBT r1, [r2], #+0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBT r1, [r2], #+0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBT r1, [r2], #+0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRD r1, r2, [r3, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3, #+0];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3, #+0];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3,+r4];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3,+r4];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3,+r4];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3,+r4]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3,+r4]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRD r1, r2, [r3,+r4]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDREX r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDREX r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDREX r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDREXB r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDREXB r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDREXB r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDREXD r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDREXD r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDREXD r1, r2, [r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDREXH r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDREXH r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDREXH r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRH r1, [r2, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2, #+0];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2, #+0];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRHT r1, [r2] , #+0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHT r1, [r2] ;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRHT r1, [r2] ;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSB r1, [r2, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2, #+0];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2, #+0];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSBT r1, [r2] , #+0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSBT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSBT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSBT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSBT r1, [r2] ;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSBT r1, [r2] ;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSH r1, [r2, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2, #+0];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2, #+0];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSHT r1, [r2] , #+0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSHT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSHT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSHT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSHT r1, [r2] ;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRSHT r1, [r2] ;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+LDRT r1, [r2] , #+0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRT r1, [r2] ;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRT r1, [r2] ;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LSLS r1, r2, #0;  --  0.5, 1.0;  --  
+LSL r1, r2, #0;  --  0.5, 1.0;  --  
+LSL r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+LSL r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+LSLS r1, r2, r3;  --  1.0, 2.0;  --  
+LSL r1, r2, r3;  --  1.0, 2.0;  --  
+LSL r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+LSL r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+LSRS r1, r2, #0;  --  0.5, 1.0;  --  
+LSR r1, r2, #0;  --  0.5, 1.0;  --  
+LSR r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+LSR r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+LSRS r1, r2, r3;  --  1.0, 2.0;  --  
+LSR r1, r2, r3;  --  1.0, 2.0;  --  
+LSR r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+LSR r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+MLAS r1, r2, r3, r4;  --  2.0, 3.0;  --  
+MLA r1, r2, r3, r4;  --  2.0, 3.0;  --  
+MLA r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+MLA r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+MLS r1, r2, r3, r4;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+MLS r1, r2, r3, r4;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+MLS r1, r2, r3, r4;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+MOVS r1, #0;  --  0.5, 1.0;  --  
+MOV r1, #0;  --  0.5, 1.0;  --  
+MOV r1, #0;  --  1.5, 3.0;  --  cc TRUE
+MOV r1, #0;  --  1.5, 3.0;  --  cc FALSE
+MOVS r1, r2;  --  0.5, 1.0;  --  
+MOV r1, r2;  --  0.5, 1.0;  --  
+MOV r1, r2;  --  1.5, 3.0;  --  cc TRUE
+MOV r1, r2;  --  1.5, 3.0;  --  cc FALSE
+MOVT r1, #0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+MOVT r1, #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+MOVT r1, #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+MULS r1, r2, r3;  --  2.0, 3.0;  --  
+MUL r1, r2, r3;  --  2.0, 3.0;  --  
+MUL r1, r2, r3;  --  2.5, 4.0;  --  cc TRUE
+MUL r1, r2, r3;  --  2.5, 4.0;  --  cc FALSE
+MVNS r1, #0;  --  0.5, 1.0;  --  
+MVN r1, #0;  --  0.5, 1.0;  --  
+MVN r1, #0;  --  1.5, 3.0;  --  cc TRUE
+MVN r1, #0;  --  1.5, 3.0;  --  cc FALSE
+MVNS r1, r2, LSL #3;  --  1.0, 2.0;  --  
+MVNS r1, r2;  --  0.5, 1.0;  --  
+MVN r1, r2, LSL #3;  --  1.0, 2.0;  --  
+MVN r1, r2, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+MVN r1, r2, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+MVN r1, r2;  --  0.5, 1.0;  --  
+MVN r1, r2;  --  1.5, 3.0;  --  cc TRUE
+MVN r1, r2;  --  1.5, 3.0;  --  cc FALSE
+MVNS r1, r2, LSL r3;  --  1.0, 2.0;  --  
+MVN r1, r2, LSL r3;  --  1.0, 2.0;  --  
+MVN r1, r2, LSL r3;  --  1.5, 3.0;  --  cc TRUE
+MVN r1, r2, LSL r3;  --  1.5, 3.0;  --  cc FALSE
+NOP;  --  0.5, 1.0;  --  
+NOP;  --  1.5, 3.0;  --  cc TRUE
+NOP;  --  1.5, 3.0;  --  cc FALSE
+ORRS r1, r2, #0;  --  0.5, 1.0;  --  
+ORR r1, r2, #0;  --  0.5, 1.0;  --  
+ORR r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+ORR r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+ORRS r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+ORRS r1, r2, r3;  --  0.5, 1.0;  --  
+ORR r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+ORR r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+ORR r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+ORR r1, r2, r3;  --  0.5, 1.0;  --  
+ORR r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+ORR r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+ORRS r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+ORR r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+ORR r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc TRUE
+ORR r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc FALSE
+PKHBT r1, r2, r3, LSL #0;  --  0.5, 1.0;  --  
+PKHBT r1, r2, r3, LSL #0;  --  1.5, 3.0;  --  cc TRUE
+PKHBT r1, r2, r3, LSL #0;  --  1.5, 3.0;  --  cc FALSE
+PKHBT r1, r2, r3;  --  0.5, 1.0;  --  
+PKHBT r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+PKHBT r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+PLI [r1, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+PLI [r1,+r2, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+PLI [r1,+r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+POP {r1,r2,r3};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+POP {r1,r2,r3};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+POP {r1,r2,r3};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+PUSH {r1,r2,r3};  --  2.0, 3.0;  --  
+PUSH {r1,r2,r3};  --  3.0, 5.0;  --  cc TRUE
+PUSH {r1,r2,r3};  --  3.0, 5.0;  --  cc FALSE
+QADD r1, r3, r2;  --  1.0, 1.0;  --  
+QADD r1, r3, r2;  --  2.0, 3.0;  --  cc TRUE
+QADD r1, r3, r2;  --  2.0, 3.0;  --  cc FALSE
+QADD16 r1, r2, r3;  --  1.0, 1.0;  --  
+QADD16 r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+QADD16 r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+QADD8 r1, r2, r3;  --  1.0, 1.0;  --  
+QADD8 r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+QADD8 r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+QASX r1, r2, r3;  --  1.0, 1.0;  --  
+QASX r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+QASX r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+QDADD r1, r3, r2;  --  1.5, 2.0;  --  
+QDADD r1, r3, r2;  --  2.0, 3.0;  --  cc TRUE
+QDADD r1, r3, r2;  --  2.0, 3.0;  --  cc FALSE
+QDSUB r1, r3, r2;  --  1.5, 2.0;  --  
+QDSUB r1, r3, r2;  --  2.0, 3.0;  --  cc TRUE
+QDSUB r1, r3, r2;  --  2.0, 3.0;  --  cc FALSE
+QSAX r1, r2, r3;  --  1.0, 1.0;  --  
+QSAX r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+QSAX r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+QSUB r1, r3, r2;  --  1.0, 1.0;  --  
+QSUB r1, r3, r2;  --  2.0, 3.0;  --  cc TRUE
+QSUB r1, r3, r2;  --  2.0, 3.0;  --  cc FALSE
+QSUB16 r1, r2, r3;  --  1.0, 1.0;  --  
+QSUB16 r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+QSUB16 r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+QSUB8 r1, r2, r3;  --  1.0, 1.0;  --  
+QSUB8 r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+QSUB8 r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+RBIT r1, r2;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+RBIT r1, r2;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+RBIT r1, r2;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+REV r1, r2;  --  1.0, 2.0;  --  
+REV r1, r2;  --  1.5, 3.0;  --  cc TRUE
+REV r1, r2;  --  1.5, 3.0;  --  cc FALSE
+REV16 r1, r2;  --  1.0, 2.0;  --  
+REV16 r1, r2;  --  1.5, 3.0;  --  cc TRUE
+REV16 r1, r2;  --  1.5, 3.0;  --  cc FALSE
+REVSH r1, r2;  --  1.0, 2.0;  --  
+REVSH r1, r2;  --  1.5, 3.0;  --  cc TRUE
+REVSH r1, r2;  --  1.5, 3.0;  --  cc FALSE
+RORS r1, r2, #0;  --  0.5, 1.0;  --  
+ROR r1, r2, #0;  --  0.5, 1.0;  --  
+ROR r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+ROR r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+RORS r1, r2, r3;  --  1.0, 2.0;  --  
+ROR r1, r2, r3;  --  1.0, 2.0;  --  
+ROR r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+ROR r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+RRXS r1, r2;  --  1.0, 2.0;  --  
+RRX r1, r2;  --  1.0, 2.0;  --  
+RRX r1, r2;  --  1.5, 3.0;  --  cc TRUE
+RRX r1, r2;  --  1.5, 3.0;  --  cc FALSE
+RSBS r1, r2, #0;  --  0.5, 1.0;  --  
+RSB r1, r2, #0;  --  0.5, 1.0;  --  
+RSB r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+RSB r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+RSBS r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+RSBS r1, r2, r3;  --  0.5, 1.0;  --  
+RSB r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+RSB r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+RSB r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+RSB r1, r2, r3;  --  0.5, 1.0;  --  
+RSB r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+RSB r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+RSBS r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+RSB r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+RSB r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc TRUE
+RSB r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc FALSE
+RSCS r1, r2, #0;  --  0.5, 1.0;  --  
+RSC r1, r2, #0;  --  0.5, 1.0;  --  
+RSC r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+RSC r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+RSCS r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+RSCS r1, r2, r3;  --  0.5, 1.0;  --  
+RSC r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+RSC r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+RSC r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+RSC r1, r2, r3;  --  0.5, 1.0;  --  
+RSC r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+RSC r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+RSCS r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+RSC r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+RSC r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc TRUE
+RSC r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc FALSE
+SADD16 r1, r2, r3;  --  0.5, 1.0;  --  
+SADD16 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SADD16 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SADD8 r1, r2, r3;  --  0.5, 1.0;  --  
+SADD8 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SADD8 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SASX r1, r2, r3;  --  0.5, 1.0;  --  
+SASX r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SASX r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SBCS r1, r2, #0;  --  0.5, 1.0;  --  
+SBC r1, r2, #0;  --  0.5, 1.0;  --  
+SBC r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+SBC r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+SBCS r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+SBCS r1, r2, r3;  --  0.5, 1.0;  --  
+SBC r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+SBC r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+SBC r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+SBC r1, r2, r3;  --  0.5, 1.0;  --  
+SBC r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SBC r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SBCS r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+SBC r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+SBC r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc TRUE
+SBC r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc FALSE
+SBFX r1, r2, #3, #8;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SBFX r1, r2, #3, #8;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SBFX r1, r2, #3, #8;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SDIV r1, r2, r3;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SDIV r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SDIV r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SEL r1, r2, r3;  --  0.5, 1.0;  --  
+SEL r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SEL r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SEV;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SEV;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SEV;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SHADD16 r1, r2, r3;  --  0.5, 1.0;  --  
+SHADD16 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SHADD16 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SHADD8 r1, r2, r3;  --  0.5, 1.0;  --  
+SHADD8 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SHADD8 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SHASX r1, r2, r3;  --  0.5, 1.0;  --  
+SHASX r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SHASX r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SHSAX r1, r2, r3;  --  0.5, 1.0;  --  
+SHSAX r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SHSAX r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SHSUB16 r1, r2, r3;  --  0.5, 1.0;  --  
+SHSUB16 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SHSUB16 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SHSUB8 r1, r2, r3;  --  0.5, 1.0;  --  
+SHSUB8 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SHSUB8 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SMLABT r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLABT r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLABT r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLAD r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLAD r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLAD r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLADX r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLADX r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLADX r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLALS r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLAL r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLAL r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLAL r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLALBT r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLALBT r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLALBT r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLALD r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLALD r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLALD r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLALDX r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLALDX r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLALDX r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLAWT r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLAWT r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLAWT r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLSD r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLSD r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLSD r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLSDX r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLSDX r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLSDX r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLSLD r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLSLD r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLSLD r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMLSLDX r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMLSLDX r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMLSLDX r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMMLA r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMMLA r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMMLA r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMMLAR r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMMLAR r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMMLAR r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMMLS r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMMLS r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMMLS r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMMLSR r1, r2, r3, r4;  --  2.0, 3.0;  --  
+SMMLSR r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMMLSR r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMMUL r1, r2, r3;  --  2.0, 3.0;  --  
+SMMUL r1, r2, r3;  --  2.5, 4.0;  --  cc TRUE
+SMMUL r1, r2, r3;  --  2.5, 4.0;  --  cc FALSE
+SMMULR r1, r2, r3;  --  2.0, 3.0;  --  
+SMMULR r1, r2, r3;  --  2.5, 4.0;  --  cc TRUE
+SMMULR r1, r2, r3;  --  2.5, 4.0;  --  cc FALSE
+SMUAD r1, r2, r3;  --  2.0, 3.0;  --  
+SMUAD r1, r2, r3;  --  2.5, 4.0;  --  cc TRUE
+SMUAD r1, r2, r3;  --  2.5, 4.0;  --  cc FALSE
+SMUADX r1, r2, r3;  --  2.0, 3.0;  --  
+SMUADX r1, r2, r3;  --  2.5, 4.0;  --  cc TRUE
+SMUADX r1, r2, r3;  --  2.5, 4.0;  --  cc FALSE
+SMULBT r1, r2, r3;  --  2.0, 3.0;  --  
+SMULBT r1, r2, r3;  --  2.5, 4.0;  --  cc TRUE
+SMULBT r1, r2, r3;  --  2.5, 4.0;  --  cc FALSE
+SMULLS r1, r2, r3, r4;  --  1.5, 2.0;  --  
+SMULL r1, r2, r3, r4;  --  1.5, 2.0;  --  
+SMULL r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+SMULL r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+SMULWT r1, r2, r3;  --  2.0, 3.0;  --  
+SMULWT r1, r2, r3;  --  2.5, 4.0;  --  cc TRUE
+SMULWT r1, r2, r3;  --  2.5, 4.0;  --  cc FALSE
+SMUSD r1, r2, r3;  --  2.0, 3.0;  --  
+SMUSD r1, r2, r3;  --  2.5, 4.0;  --  cc TRUE
+SMUSD r1, r2, r3;  --  2.5, 4.0;  --  cc FALSE
+SMUSDX r1, r2, r3;  --  2.0, 3.0;  --  
+SMUSDX r1, r2, r3;  --  2.5, 4.0;  --  cc TRUE
+SMUSDX r1, r2, r3;  --  2.5, 4.0;  --  cc FALSE
+SSAT r1, #0, r2, LSL #3;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SSAT r1, #0, r2, LSL #3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SSAT r1, #0, r2, LSL #3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SSAT r1, #0, r2;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SSAT r1, #0, r2;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SSAT r1, #0, r2;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SSAT16 r1, #0, r2;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SSAT16 r1, #0, r2;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SSAT16 r1, #0, r2;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+SSAX r1, r2, r3;  --  0.5, 1.0;  --  
+SSAX r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SSAX r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SSUB16 r1, r2, r3;  --  0.5, 1.0;  --  
+SSUB16 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SSUB16 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SSUB8 r1, r2, r3;  --  0.5, 1.0;  --  
+SSUB8 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SSUB8 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+STM r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STM r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STM r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STM r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STM r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STM r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDA r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDA r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDA r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDA r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDA r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDA r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMIB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMIB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMIB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMIB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMIB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMIB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2, #+0];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2, #+0];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2, #+0];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2, #+0];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBT r1, [r2], #+0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBT r1, [r2], #+0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBT r1, [r2], #+0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRD r1, r2, [r3, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3, #+0];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3, #+0];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3,+r4];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3,+r4];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3,+r4];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3,+r4]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3,+r4]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRD r1, r2, [r3,+r4]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STREX r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STREX r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STREX r1, r2, [r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STREXB r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STREXB r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STREXB r1, r2, [r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STREXD r1, r2, r3, [r4];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STREXD r1, r2, r3, [r4];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STREXD r1, r2, r3, [r4];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STREXH r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STREXH r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STREXH r1, r2, [r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRH r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2, #+0];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2, #+0];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2, #+0];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2,+r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2,+r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRHT r1, [r2] , #+0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRHT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRHT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRHT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRHT r1, [r2] ;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRHT r1, [r2] ;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+STRT r1, [r2] , #+0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRT r1, [r2] , #+0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRT r1, [r2] ;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRT r1, [r2] ;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SUBS r1, r2, #0;  --  0.5, 1.0;  --  
+SUB r1, r2, #0;  --  0.5, 1.0;  --  
+SUB r1, r2, #0;  --  1.5, 3.0;  --  cc TRUE
+SUB r1, r2, #0;  --  1.5, 3.0;  --  cc FALSE
+SUBS r1, r2, r3;  --  0.5, 1.0;  --  
+SUBS r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+SUB r1, r2, r3, LSL #3;  --  0.5, 1.0;  --  
+SUB r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+SUB r1, r2, r3, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+SUB r1, r2, r3;  --  0.5, 1.0;  --  
+SUB r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SUB r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SUBS r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+SUB r1, r2, r3, LSL r4;  --  0.5, 1.0;  --  
+SUB r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc TRUE
+SUB r1, r2, r3, LSL r4;  --  1.5, 3.0;  --  cc FALSE
+SUBS r1, SP, #0;  --  0.5, 1.0;  --  
+SUB r1, SP, #0;  --  0.5, 1.0;  --  
+SUB r1, SP, #0;  --  1.5, 3.0;  --  cc TRUE
+SUB r1, SP, #0;  --  1.5, 3.0;  --  cc FALSE
+SUBS r1, SP, r2, LSL #3;  --  1.0, 2.0;  --  
+SUBS r1, SP, r2;  --  0.5, 1.0;  --  
+SUB r1, SP, r2, LSL #3;  --  1.0, 2.0;  --  
+SUB r1, SP, r2, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+SUB r1, SP, r2, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+SUB r1, SP, r2;  --  0.5, 1.0;  --  
+SUB r1, SP, r2;  --  1.5, 3.0;  --  cc TRUE
+SUB r1, SP, r2;  --  1.5, 3.0;  --  cc FALSE
+SVC #0;  --  14.0, 15.0;  --  
+SVC #0;  --  15.1, 17.0;  --  cc TRUE
+SVC #0;  --  15.1, 17.0;  --  cc FALSE
+SWP r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SWP r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SWP r1, r2, [r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SWPB r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SWPB r1, r2, [r3];  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SWPB r1, r2, [r3];  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SXTAB r1, r2, r3, ROR #8;  --  0.5, 1.0;  --  
+SXTAB r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+SXTAB r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+SXTAB r1, r2, r3;  --  0.5, 1.0;  --  
+SXTAB r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SXTAB r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SXTAB16 r1, r2, r3, ROR #8;  --  0.5, 1.0;  --  
+SXTAB16 r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+SXTAB16 r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+SXTAB16 r1, r2, r3;  --  0.5, 1.0;  --  
+SXTAB16 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SXTAB16 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SXTAH r1, r2, r3, ROR #8;  --  0.5, 1.0;  --  
+SXTAH r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+SXTAH r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+SXTAH r1, r2, r3;  --  0.5, 1.0;  --  
+SXTAH r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+SXTAH r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+SXTB r1, r2, ROR #8;  --  0.5, 1.0;  --  
+SXTB r1, r2, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+SXTB r1, r2, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+SXTB r1, r2;  --  0.5, 1.0;  --  
+SXTB r1, r2;  --  1.5, 3.0;  --  cc TRUE
+SXTB r1, r2;  --  1.5, 3.0;  --  cc FALSE
+SXTB16 r1, r2, ROR #8;  --  0.5, 1.0;  --  
+SXTB16 r1, r2, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+SXTB16 r1, r2, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+SXTB16 r1, r2;  --  0.5, 1.0;  --  
+SXTB16 r1, r2;  --  1.5, 3.0;  --  cc TRUE
+SXTB16 r1, r2;  --  1.5, 3.0;  --  cc FALSE
+SXTH r1, r2, ROR #8;  --  0.5, 1.0;  --  
+SXTH r1, r2, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+SXTH r1, r2, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+SXTH r1, r2;  --  0.5, 1.0;  --  
+SXTH r1, r2;  --  1.5, 3.0;  --  cc TRUE
+SXTH r1, r2;  --  1.5, 3.0;  --  cc FALSE
+TEQ r1, #0;  --  1.0, 1.0;  --  
+TEQ r1, #0;  --  3.0, 5.0;  --  cc TRUE
+TEQ r1, #0;  --  3.0, 5.0;  --  cc FALSE
+TEQ r1, r2, LSL #3;  --  2.0, 3.0;  --  
+TEQ r1, r2, LSL #3;  --  3.0, 5.0;  --  cc TRUE
+TEQ r1, r2, LSL #3;  --  3.0, 5.0;  --  cc FALSE
+TEQ r1, r2;  --  1.5, 2.0;  --  
+TEQ r1, r2;  --  3.0, 5.0;  --  cc TRUE
+TEQ r1, r2;  --  3.0, 5.0;  --  cc FALSE
+TEQ r1, r2, LSL r3;  --  2.0, 3.0;  --  
+TEQ r1, r2, LSL r3;  --  3.0, 5.0;  --  cc TRUE
+TEQ r1, r2, LSL r3;  --  3.0, 5.0;  --  cc FALSE
+TST r1, #0;  --  1.0, 1.0;  --  
+TST r1, #0;  --  3.0, 5.0;  --  cc TRUE
+TST r1, #0;  --  3.0, 5.0;  --  cc FALSE
+TST r1, r2, LSL #3;  --  2.0, 3.0;  --  
+TST r1, r2, LSL #3;  --  3.0, 5.0;  --  cc TRUE
+TST r1, r2, LSL #3;  --  3.0, 5.0;  --  cc FALSE
+TST r1, r2;  --  1.5, 2.0;  --  
+TST r1, r2;  --  3.0, 5.0;  --  cc TRUE
+TST r1, r2;  --  3.0, 5.0;  --  cc FALSE
+TST r1, r2, LSL r3;  --  2.0, 3.0;  --  
+TST r1, r2, LSL r3;  --  3.0, 5.0;  --  cc TRUE
+TST r1, r2, LSL r3;  --  3.0, 5.0;  --  cc FALSE
+UADD16 r1, r2, r3;  --  0.5, 1.0;  --  
+UADD16 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UADD16 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UADD8 r1, r2, r3;  --  0.5, 1.0;  --  
+UADD8 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UADD8 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UASX r1, r2, r3;  --  0.5, 1.0;  --  
+UASX r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UASX r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UBFX r1, r2, #3, #8;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+UBFX r1, r2, #3, #8;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+UBFX r1, r2, #3, #8;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+UDF #0;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+UDF #0;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+UDF #0;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+UDIV r1, r2, r3;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+UDIV r1, r2, r3;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+UDIV r1, r2, r3;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+UHADD16 r1, r2, r3;  --  0.5, 1.0;  --  
+UHADD16 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UHADD16 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UHADD8 r1, r2, r3;  --  0.5, 1.0;  --  
+UHADD8 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UHADD8 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UHASX r1, r2, r3;  --  0.5, 1.0;  --  
+UHASX r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UHASX r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UHSAX r1, r2, r3;  --  0.5, 1.0;  --  
+UHSAX r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UHSAX r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UHSUB16 r1, r2, r3;  --  0.5, 1.0;  --  
+UHSUB16 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UHSUB16 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UHSUB8 r1, r2, r3;  --  0.5, 1.0;  --  
+UHSUB8 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UHSUB8 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UMAAL r1, r2, r3, r4;  --  2.5, 3.0;  --  
+UMAAL r1, r2, r3, r4;  --  3.5, 5.0;  --  cc TRUE
+UMAAL r1, r2, r3, r4;  --  3.5, 5.0;  --  cc FALSE
+UMLALS r1, r2, r3, r4;  --  2.0, 3.0;  --  
+UMLAL r1, r2, r3, r4;  --  2.0, 3.0;  --  
+UMLAL r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+UMLAL r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+UMULLS r1, r2, r3, r4;  --  1.5, 2.0;  --  
+UMULL r1, r2, r3, r4;  --  1.5, 2.0;  --  
+UMULL r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+UMULL r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+UQADD16 r1, r2, r3;  --  1.0, 1.0;  --  
+UQADD16 r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+UQADD16 r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+UQADD8 r1, r2, r3;  --  1.0, 1.0;  --  
+UQADD8 r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+UQADD8 r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+UQASX r1, r2, r3;  --  1.0, 1.0;  --  
+UQASX r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+UQASX r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+UQSAX r1, r2, r3;  --  1.0, 1.0;  --  
+UQSAX r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+UQSAX r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+UQSUB16 r1, r2, r3;  --  1.0, 1.0;  --  
+UQSUB16 r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+UQSUB16 r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+UQSUB8 r1, r2, r3;  --  1.0, 1.0;  --  
+UQSUB8 r1, r2, r3;  --  2.0, 3.0;  --  cc TRUE
+UQSUB8 r1, r2, r3;  --  2.0, 3.0;  --  cc FALSE
+USAD8 r1, r2, r3;  --  2.0, 3.0;  --  
+USAD8 r1, r2, r3;  --  2.5, 4.0;  --  cc TRUE
+USAD8 r1, r2, r3;  --  2.5, 4.0;  --  cc FALSE
+USADA8 r1, r2, r3, r4;  --  2.0, 3.0;  --  
+USADA8 r1, r2, r3, r4;  --  2.5, 4.0;  --  cc TRUE
+USADA8 r1, r2, r3, r4;  --  2.5, 4.0;  --  cc FALSE
+USAT r1, #0, r2, LSL #3;  --  1.0, 2.0;  --  
+USAT r1, #0, r2, LSL #3;  --  1.5, 3.0;  --  cc TRUE
+USAT r1, #0, r2, LSL #3;  --  1.5, 3.0;  --  cc FALSE
+USAT r1, #0, r2;  --  0.5, 1.0;  --  
+USAT r1, #0, r2;  --  1.5, 3.0;  --  cc TRUE
+USAT r1, #0, r2;  --  1.5, 3.0;  --  cc FALSE
+USAT16 r1, #0, r2;  --  0.5, 1.0;  --  
+USAT16 r1, #0, r2;  --  1.5, 3.0;  --  cc TRUE
+USAT16 r1, #0, r2;  --  1.5, 3.0;  --  cc FALSE
+USAX r1, r2, r3;  --  0.5, 1.0;  --  
+USAX r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+USAX r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+USUB16 r1, r2, r3;  --  0.5, 1.0;  --  
+USUB16 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+USUB16 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+USUB8 r1, r2, r3;  --  0.5, 1.0;  --  
+USUB8 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+USUB8 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UXTAB r1, r2, r3, ROR #8;  --  0.5, 1.0;  --  
+UXTAB r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+UXTAB r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+UXTAB r1, r2, r3;  --  0.5, 1.0;  --  
+UXTAB r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UXTAB r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UXTAB16 r1, r2, r3, ROR #8;  --  0.5, 1.0;  --  
+UXTAB16 r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+UXTAB16 r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+UXTAB16 r1, r2, r3;  --  0.5, 1.0;  --  
+UXTAB16 r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UXTAB16 r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UXTAH r1, r2, r3, ROR #8;  --  0.5, 1.0;  --  
+UXTAH r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+UXTAH r1, r2, r3, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+UXTAH r1, r2, r3;  --  0.5, 1.0;  --  
+UXTAH r1, r2, r3;  --  1.5, 3.0;  --  cc TRUE
+UXTAH r1, r2, r3;  --  1.5, 3.0;  --  cc FALSE
+UXTB r1, r2, ROR #8;  --  0.5, 1.0;  --  
+UXTB r1, r2, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+UXTB r1, r2, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+UXTB r1, r2;  --  0.5, 1.0;  --  
+UXTB r1, r2;  --  1.5, 3.0;  --  cc TRUE
+UXTB r1, r2;  --  1.5, 3.0;  --  cc FALSE
+UXTB16 r1, r2, ROR #8;  --  0.5, 1.0;  --  
+UXTB16 r1, r2, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+UXTB16 r1, r2, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+UXTB16 r1, r2;  --  0.5, 1.0;  --  
+UXTB16 r1, r2;  --  1.5, 3.0;  --  cc TRUE
+UXTB16 r1, r2;  --  1.5, 3.0;  --  cc FALSE
+UXTH r1, r2, ROR #8;  --  0.5, 1.0;  --  
+UXTH r1, r2, ROR #8;  --  1.5, 3.0;  --  cc TRUE
+UXTH r1, r2, ROR #8;  --  1.5, 3.0;  --  cc FALSE
+UXTH r1, r2;  --  0.5, 1.0;  --  
+UXTH r1, r2;  --  1.5, 3.0;  --  cc TRUE
+UXTH r1, r2;  --  1.5, 3.0;  --  cc FALSE
+WFE;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+WFE;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+WFE;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+WFI;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+WFI;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+WFI;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+YIELD;  --  -1.0, -1.0;  --  ; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+YIELD;  --  -1.0, -1.0;  --  cc TRUE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0
+YIELD;  --  -1.0, -1.0;  --  cc FALSE; issue timing error: error: failed code construction, timing: -1.0; latency timing error: error: failed code construction, timing: -1.0

@@ -1,0 +1,148 @@
+ADC r1, r2, #77;  --  1.0, 1.0;  --  
+ADC r1, r2, r3, LSL #3;  --  1.0, 1.0;  --  
+ADC r1, r2, r3;  --  1.0, 1.0;  --  
+ADC r1, r2, r3, LSL r4;  --  1.0, 1.0;  --  
+ADD r1, r2, #77;  --  0.5, 1.0;  --  
+ADD r1, r2, r3, LSL #3;  --  1.0, 1.0;  --  
+ADD r1, r2, r3;  --  1.0, 1.0;  --  
+ADD r1, r2, r3, LSL r4;  --  1.0, 1.0;  --  
+ADD r1, SP, #77;  --  0.5, 1.0;  --  
+ADD r1, SP, r2, LSL #3;  --  1.0, 1.0;  --  
+ADD r1, SP, r2;  --  1.0, 1.0;  --  
+AND r1, r2, #77;  --  0.5, 1.0;  --  
+AND r1, r2, r3, LSL #3;  --  1.0, 1.0;  --  
+AND r1, r2, r3;  --  1.0, 1.0;  --  
+AND r1, r2, r3, LSL r4;  --  1.0, 1.0;  --  
+ASR r1, r2, #15;  --  1.0, 1.0;  --  
+ASR r1, r2, r3;  --  1.0, 1.0;  --  
+BIC r1, r2, #77;  --  0.5, 1.0;  --  
+BIC r1, r2, r3, LSL #3;  --  1.0, 1.0;  --  
+BIC r1, r2, r3;  --  1.0, 1.0;  --  
+BIC r1, r2, r3, LSL r4;  --  1.0, 1.0;  --  
+BKPT #15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BLX r1;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+BX r1;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+CLZ r1, r2;  --  1.0, 1.0;  --  
+CMN r1, #77;  --  0.5, 1.0;  --  
+CMN r1, r2, LSL #3;  --  1.0, 1.0;  --  
+CMN r1, r2;  --  1.0, 1.0;  --  
+CMN r1, r2, LSL r3;  --  1.0, 1.0;  --  
+CMP r1, #77;  --  0.5, 1.0;  --  
+CMP r1, r2, LSL #3;  --  1.0, 1.0;  --  
+CMP r1, r2;  --  1.0, 1.0;  --  
+CMP r1, r2, LSL r3;  --  1.0, 1.0;  --  
+EOR r1, r2, #77;  --  0.5, 1.0;  --  
+EOR r1, r2, r3, LSL #3;  --  1.0, 1.0;  --  
+EOR r1, r2, r3;  --  1.0, 1.0;  --  
+EOR r1, r2, r3, LSL r4;  --  1.0, 1.0;  --  
+LDM r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDM r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDA r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDA r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMDB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMIB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDMIB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDR r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRBT r1, [r2], #+15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRSH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRT r1, [r2] , #+15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LDRT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+LSL r1, r2, #15;  --  1.0, 1.0;  --  
+LSL r1, r2, r3;  --  1.0, 1.0;  --  
+LSR r1, r2, #15;  --  1.0, 1.0;  --  
+LSR r1, r2, r3;  --  1.0, 1.0;  --  
+MLA r1, r2, r3, r4;  --  1.0, 2.0;  --  
+MOV r1, #77;  --  0.5, 1.0;  --  
+MOV r1, r2;  --  0.5, 1.0;  --  
+MUL r1, r2, r3;  --  1.0, 2.0;  --  
+MVN r1, #77;  --  0.5, 1.0;  --  
+MVN r1, r2, LSL #3;  --  1.0, 1.0;  --  
+MVN r1, r2;  --  1.0, 1.0;  --  
+MVN r1, r2, LSL r3;  --  1.0, 1.0;  --  
+NOP;  --  1.0, 2.0;  --  
+ORR r1, r2, #77;  --  0.5, 1.0;  --  
+ORR r1, r2, r3, LSL #3;  --  1.0, 1.0;  --  
+ORR r1, r2, r3;  --  1.0, 1.0;  --  
+ORR r1, r2, r3, LSL r4;  --  1.0, 1.0;  --  
+POP {r1,r2,r3};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+PUSH {r1,r2,r3};  --  4.0, 4.0;  --  
+ROR r1, r2, #15;  --  1.0, 1.0;  --  
+ROR r1, r2, r3;  --  1.0, 1.0;  --  
+RRX r1, r2;  --  1.0, 1.0;  --  
+RSB r1, r2, #77;  --  1.0, 1.0;  --  
+RSB r1, r2, r3, LSL #3;  --  1.0, 1.0;  --  
+RSB r1, r2, r3;  --  1.0, 1.0;  --  
+RSB r1, r2, r3, LSL r4;  --  1.0, 1.0;  --  
+RSC r1, r2, #77;  --  1.0, 1.0;  --  
+RSC r1, r2, r3, LSL #3;  --  1.0, 1.0;  --  
+RSC r1, r2, r3;  --  1.0, 1.0;  --  
+RSC r1, r2, r3, LSL r4;  --  1.0, 1.0;  --  
+SMLAL r1, r2, r3, r4;  --  1.0, 3.0;  --  
+STM r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STM r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDA r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDA r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMDB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMIB r1, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STMIB r1!, {r2,r3,r4};  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STR r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3, LSL #3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3, LSL #3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRB r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRBT r1, [r2], #+15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2, #+15];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2,+r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRH r1, [r2,+r3]!;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRT r1, [r2] , #+15;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+STRT r1, [r2] ;  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SUB r1, r2, #77;  --  0.5, 1.0;  --  
+SUB r1, r2, r3, LSL #3;  --  1.0, 1.0;  --  
+SUB r1, r2, r3;  --  1.0, 1.0;  --  
+SUB r1, r2, r3, LSL r4;  --  1.0, 1.0;  --  
+SUB r1, SP, #77;  --  0.5, 1.0;  --  
+SUB r1, SP, r2, LSL #3;  --  1.0, 1.0;  --  
+SUB r1, SP, r2;  --  1.0, 1.0;  --  
+SWP r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+SWPB r1, r2, [r3];  --  -1.0, -1.0;  --  ; issue timing error: error: failed to run, timing: -1.0; latency timing error: error: failed to run, timing: -1.0
+TEQ r1, r2, LSL #3;  --  1.0, 1.0;  --  
+TEQ r1, r2;  --  1.0, 1.0;  --  
+TEQ r1, r2, LSL r3;  --  1.0, 1.0;  --  
+TST r1, #77;  --  0.5, 1.0;  --  
+TST r1, r2, LSL #3;  --  1.0, 1.0;  --  
+TST r1, r2;  --  1.0, 1.0;  --  
+TST r1, r2, LSL r3;  --  1.0, 1.0;  --  
+UMLAL r1, r2, r3, r4;  --  1.0, 3.0;  --  
+UMULL r1, r2, r3, r4;  --  1.0, 2.0;  --  

@@ -1,0 +1,6 @@
+dual issuing comparison:
+    NOP; 1.0, 1.0;  --  				      |	NOP;  --  1.0, 2.0;  -- 
+        NOP can be encoded in many ways. this difference isn't a big surprise really.
+    the nanopi's instructionset is more limited: RSC is missing and register-shifted instructions don't work.
+
+    

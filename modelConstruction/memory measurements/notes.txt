@@ -1,0 +1,103 @@
+LDRSB<c> <Rt>, [<Rn>,+/-<Rm>]{!}: [(1.0, 3.0, 2.0, 'no cc'), (-1.0, -1.0, None, 'cc TRUE'), (-1.0, -1.0, None, 'cc FALSE'), (3.0, 5.0, 2.0, 'no cc'), (1.0, 3.0, 3.0, 'no cc'), (3.0, 5.0, 3.0, 'no cc')]
+LDRSB<c> <Rt>, [<Rn>]: [(1.0, 3.0, None, 'no cc'), (-1.0, -1.0, None, 'cc TRUE'), (-1.0, -1.0, None, 'cc FALSE')]
+LDRSB<c> <Rt>, [<Rn>, #+/-<imm8>]: [(1.0, 3.0, None, 'no cc'), (-1.0, -1.0, None, 'cc TRUE'), (-1.0, -1.0, None, 'cc FALSE')]
+
+
+LDRSB r2, [sp,+r9]!;  --  1.0, 3.0;  --  ; wrbackTiming:: 3.0 ::
+LDRSB r2, [sp,-r9]!;  --  3.0, 5.0;  --  ; wrbackTiming:: 3.0 ::
+
+LDRSB r2, [sp, #+2];  --  1.0, 3.0;  --  
+
+LDRSB r2, [sp, #-2];  --  1.0, 3.0;  --  
+
+LDRSB r2, [sp];  --  1.0, 3.0;  --  
+
+LDRSB r2, [sp,+r9];  --  1.0, 3.0;  --  ; wrbackTiming:: 2.0 ::
+LDRSB r2, [sp,-r9];  --  3.0, 5.0;  --  ; wrbackTiming:: 2.0 ::
+
+
+_ALL_ LDRSB with CC can't compile.
+
+base register is kept occupied for 2 cycles in nonwriteback scenario? (actually it isn't)
+1 extra cycle if writeback: 3 cycles.
+writeback doesn't influence total issue time / latency
+
+
+positive immediate offset and positive register offset don't influence time.
+negative immediate offset doesn't influence time.
+
+negative register offset requires 2 extra cycles!
+
+
+questions:
+	v	confirm timings	(basics confirmed, not lock time / writeback)
+	v	confirm no cc possible
+	v	are there any early or late regs in this function? (all registers determining memory address are early regs)
+	x	do register stay locked? (no)
+
+answers:
+	wrbackTiming is our setup is averaged over + and - (due to measurement difficulties)
+	"lock time" base register and offset register for no writeback is equal to issue time, (so there is actually no extra lock time.)
+	
+
+	basecase:	(timing 0)
+		nop; (a third one)
+		mov r9, #2;
+		mul r0, r3, r3;
+
+	measurement 1:	(issue timing 3)
+		nop; (a third one)
+		mov r9, #2;
+		LDRSB r2, [sp, +/-r9]
+		mul r0, r3, r3;
+
+	measurement 2:	(issue timing 3)
+		nop; (a third one)
+		mov sp, sp;
+		LDRSB r2, [sp, +/-r9/#2/0]
+		mul r0, r3, r3;
+
+	measurement 3:	(writeback timing 4)  (conflict with our automated measurement results; probably related to r1 usage instead of sp)
+		nop; (a third one)
+		mov r1, sp;
+		LDRSB r2, [r1, +/-r9/#2/0]!
+		mul r0, r3, r1;
+
+	measurement 4:	(writeback timing 3)  (r9 isn't locked)
+		nop; (a third one)
+		mov r1, sp;
+		LDRSB r2, [r1, +/-r9/#2/0]!
+		mul r0, r3, r9;
+
+	measurement 5:	(latency timing 5)  (using r1 instead of sp adds 2 extra cycles latency; it also removes any extra penalty for negative register usage; still no lock time)
+		nop; (a third one)
+		mov r1, sp;
+		LDRSB r2, [r1, +/-r9/#2/0]
+		mul r0, r3, r2;
+
+	measurement 6:	(issue timing 3)
+		nop; (a third one)
+		mov r1, sp;
+		LDRSB r2, [r1, +/-r9/#2/0]{!}
+		mul r0, r3, r3;
+
+	measurement 7:	(writeback timing 2; 4 for -reg)
+		nop; (a third one)
+		mov r1, sp;
+		...
+		LDRSB r2, [sp, +/-r9/#2/0]!
+		mul r0, r3, sp;
+		mov sp, r1;
+
+
+the registers in [] seem to be early registers after all!	
+
+model for LDRSB:
+	issue timing:	1
+	latency:	3
+	using a negative register offset increases issue and latency by 2 cycles.
+	addressing regs are required 1 cycle early, except when using a negative register!
+	writeback is the latency we measured -1 (or issue +1)
+	there is no register lock
+	there is no semi-bypass from mul to the address calculator
+	due to no cc there is no early bailout

@@ -1,0 +1,5 @@
+[console_scripts]
+pysmt = pysmt.cmd.shell:main
+pysmt-install = pysmt.cmd.install:main
+pysmt-shell = pysmt.cmd.shell:main_interactive
+

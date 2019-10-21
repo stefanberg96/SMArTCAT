@@ -1,0 +1,2 @@
+class ANAError(Exception):
+    pass

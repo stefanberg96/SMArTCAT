@@ -1,0 +1,106 @@
+0.5, 0.0:
+compares(cc) r1 r2 
+UDF False
+BLX/BX false
+SVC False
+SWP False
+
+0.5, 2.0
+All cc True:
+	(u)QADD(8/16/32)(cc)
+	(u)QASX(cc)
+	(u)QSAX(cc)
+	(u)QSUB(8/16/32)(cc)
+	SMULL(cc)
+	UMULL(cc)
+
+1.0, 1.0:
+	shifted comparisons
+	
+0.0, 1.0:
+	(S/U)XT(B/H) (shift)
+	ADDcc immediate
+	AND(cC) immediate
+	MOVcc (ASR/LSL/LSR/ROR (cc) #0)
+	MOVcc imm / register
+	MVNcc imm
+	ORR(cc) imm
+	BIC(cc) imm
+	EOR(cc) imm
+	SUBcc imm
+	
+
+1.5, 2:
+	STRvs False
+	UMAALcc False
+
+1.5, 3:
+	LDRvs, LDMvs, STMvs False
+
+2.0, 2:
+	STRvs
+
+2.0, 3:
+	UMAALcc True
+	LDRvs False
+
+1.0, 3:
+	lot of arithmetic (executed if cc):
+	many signed multiplication operations
+	UMLAL
+	USAD(A)8
+	MLA
+	MUL
+	QDADD
+	QDSUB
+	
+
+1.0, 2:
+	conditional arithmetic from 1.0, 3 but cc False
+	shifts
+	shifted MVNs	(note, shifted operand was required round early but wasn't able)
+	complex additions
+	REV
+	ROR
+	(U/S)SAT (shifted)
+	SUB shifted
+	ADD shifted
+	ASR
+	
+0.5, 1.0
+    ADC(cc) (shift)
+    ADD(cc) registers (shift)
+    ADD(cc) r1, SP, r2; (no shift)
+    AND shift
+    AND(cc) registers (shift imm/reg)
+    BIC(cc) registers (shift imm/reg)
+    CLZ(cc)
+    EOR(cc) registers (shift imm/reg)
+    MVN(cc) registers
+    ORR(cc) registers (shift imm/reg)
+    PKHBT(cc) (shift)
+    QADD(8/16/32)    cc false
+    (U)QASX    cc false
+    (U)QSAX    cc false
+    QSUB(8/16/32)    cc false
+    RSB(cc) imm/reg (shift imm/reg)
+    RSC(cc) imm/reg (shift imm/reg)
+    (U/S)ADD(8/16)(cc)
+    (U/S)ASX(cc)
+    SBC(cc) imm/reg (shift imm/reg)
+    SEL(cc)
+    (U/S)HADD(8/16)(cc)
+    (U/S)HASX(cc)
+    (U/S)HSAX(cc)
+    (U/S)HSUB(8/16)(cc)
+    (U/S)MULL	cc false
+    (U/S)SAT(16)(cc) imm
+    (U/S)SAX(cc)
+    (U/S)SUB(8/16)(cc)
+    SUB(cc) regs (shift imm/reg)
+    SUBS r1, SP, r2; (no shift)
+    SUB(cc) r1, SP, r2;
+    (U/S)XTAB(16)(cc) (shift)
+    (U/S)XTAH(cc) (shift)
+    UQADD(8/16) cc false
+    UQSUB(8/16) cc false

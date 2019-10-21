@@ -1,0 +1,105 @@
+We're getting a lot of segfaults when using memory locations
+        -> perform seperate measurement for these?
+        -> may want to perform tests with fp as memory addresses... set offsets to multiples of 8 or something.
+    
+    There are certain encoding formats which we haven't taken into account.
+        -> perform seperate measurement for these?
+        
+
+EARLY FINDINGS:
+    LDR*cc and STR*cc under false condition codes get noninteger timing behavior (found *.3 results)
+        -> model 2.0 only has .0 and .5 results
+    SVC calls get really high and noninteger issuing time (13.7 without cc, 14.7 with cc). false cc always bails out after 2 cycles. (unable to reproduce .7 timing behavior, even with 49 execution runs) (SVC timing probably depends a lot on the parameters and rest of the system state)
+        -> now more accurately measured at 13.5/13.0 false cc actually bails out latency after 0.0 already, with 0.5 issuing time.... 
+        -> NOTE: when instructions don't use registers, the issuing time is a better indication than latency timing for both (because it's run twice and we get to see 0.5 results instead of 0.0 results)
+    SVC instructions are the slowest instructions by far
+    conditional comparison functions on 2 registers always seem to take 2 cycles (maybe due to both reading and writing status flags)
+        -> in model 2 they rather seem to take up 0.5 cycle
+    it appears conditional instructions based on [ne, cc, mi, vs, vc, ls, ge, gt] conditions perform early execution (and will generate exceptions even if conditions are false). However, as vc is always be true, we cannot yet tell about that instruction.
+        -> there is no sign of early execution, no instruction with cc False fails to run
+    some STRcc instructions take up 4 cycles even if false (like STRle r3, [r1,-r2]!;)
+    {S}{<c>} can never be combined, only either one of the optionsseem to never be able to combine, verify this, as it will significantly speed up testing times
+        -> this is true
+    
+    instruction sequence time differs wildly from single instructions...
+        take sub r0, s2, r2; add r0, r0, #0; cmp r0, #0; [add r0, r0, #1;] muleq r1, r2, r3; LSL r1, #1; add r0, r0, r1; add r0, r0, r0; add r0, r0, r0; add r2, r0, r0;
+            depending on whether or not the add instruction is there, there is a timing difference of about 2.5 to 3 cycles! (12.8-12.9 to 15.3-15.8)
+            normally an add instruction should take a single cycle tops (but maybe this is because the previous add instruction is suddenly no longer an empty instruction)
+            We should probably make it part of our model which instructions demand a new cycle and which can be issued in same cycles. (these are probably already recognizable in our first measurements by timing = 0), although there's more going on with the add instruction followind a conditional mul instruction of course
+            TODO: make this part of our model (will require more measurements)
+            -> this probably has a lot to do with the OS scheduling extra instructions in the middle of the measurements
+   
+    model 2.0 specific notes:         
+        STRcc and LDRcc get wildly different timing depending on the cc used, even if the condition is false. (all cc's false in our measurements because segfaults at cc true) (But: all results are nice .0 and .5 timings so it doesn't seem to include a random factor. (could it actually depend on the code we use to construct the conditions?)
+        STRcc r1, [r2, #+/-0]; these are higher than rest:   eq, cs, pl, ge  (5.5/5.0 vs 2.5/2.0)        (vs extra low at 1.5/2.0)
+        STRcc r1, [r2, #+15]; these are higher than rest:    eq, ne, cs, cc, mi, pl, vc, hi, ge, lt, gt(5.5/5.0)  (so only vs (2.5/3.0), ls(2.5/2.0), le(2.5/2.0) are lower)
+        STRcc r1, [r2, #-15]; all timings equal at 2.5/2.0
+        STRcc r1, [r2]; these are higher than rest:          eq, cs, pl, ge  (5.5/5.0 vs 2.5/2.0)    vs extra low at 1.5/2.0
+        some instructions (such as ADD #imm, AND #imm, ASR #0, BIC #imm, EOR with #imm, LSL/LSR with #imm 0, MOV #imm (and without cc even has 0 issuing time), MOV on registers, MVN #imm, ORR #imm, ROR #0, SUB #imm, SXTB, SXTH, UXTB, UXTH, TEQ/TST/CMN/CMP #imm (with -1 latency (probably due to register independence), ) have 0.0 issuing time.. we should investigate whether the instruction actually get's compiled in or whether it can maybe dual-issue even more than twice
+
+        17738 linse instruction total (with issuing and latency timing for each)
+        16940 of these lines are conditional instructions (2 lines for each of these instructions)
+        8470  instructions are conditional (605 conditional formats)
+        5775  lines failed construction (assume instructions unsupported in Pi 2)
+        1210  lines failed to run
+        1008  of the lines which failed to run, failed in presence of a cc True (non failed to run when cc was false)
+                given 14 different condition codes this means 72 instruction formats failed to run when cc is true (of 605 conditional formats)
+        
+        333   different formats after compilation, from 351 ripped from manual. (18 instsructions with complex operands left out)
+        700   instructions have time depend on cc False / True
+        50    formats have time depend on cc False/True (consistent with 700 instructions and 14 conditions per format)
+                    for all these formats there are exactly 2 different timing pairs
+        59    formats have more than 1 unique pair of iss/lat timing associated with them
+        11    formats have more than 2 unique pairs of iss/lat timing associated with them (SVC (T/F timing and failed run), LDR/LDM and STR/STM (many timing variaties))
+        
+        6985  lines couldn't be compiled or run "(-1.0, -1.0 timing)"
+        232   lines have 0.0,-1.0 timing
+        1     line  has  0.5,-1.0 timing
+        28    lines have 1.0,-1.0 timing
+        16    lines have 0.0, 0.0 timing
+        228   lines have 0.5, 0.0 timing
+        1082  lines have 0.0, 1.0 timing
+        4921  lines have 0.5, 1.0 timing
+        1044  lines have 1.0, 1.0 timing
+        14    lines have 1.5, 1.0 timing
+        28    lines have 2.0, 1.0 timing
+        15    lines have 2.5, 1.0 timing
+        242   lines have 0.5, 2.0 timing
+        1507  lines have 1.0, 2.0 timing
+        19    lines have 1.5, 2.0 timing
+        2     lines have 2.0, 2.0 timing
+        223   lines have 2.5, 2.0 timing
+        469   lines have 1.0, 3.0 timing
+        9     lines have 1.5, 3.0 timing
+        17    lines have 2.0, 3.0 timing
+        238   lines have 2.5, 3.0 timing
+        4     lines have 3.5, 3.0 timing
+        24    lines have 4.5, 3.0 timing
+        4     lines have 2.0, 4.0 timing
+        1     line  has  2.5, 4.0 timing
+        4     lines have 3.5, 4.0 timing
+        24    lines have 4.5, 4.0 timing
+        171   lines have 5.5, 5.0 timing    (STR cc false)
+        171   lines have 5.5, 6.0 timing    (LDR cc false)
+        15    lines have 13.5, 13.0 timing  (SVC)
+
+
+(issue time, latency)
+latency >= issue time
+latency *.5 = latency +0.5        
+        
+        248   lines have 0.0, 0.0 timing
+        1082  lines have 0.0, 1.0 timing
+        6222  lines have 1.0, 1.0 timing
+        1749  lines have 1.0, 2.0 timing
+        469   lines have 1.0, 3.0 timing
+        63    lines have 2.0, 2.0 timing
+        26    lines have 2.0, 3.0 timing
+        4     lines have 2.0, 4.0 timing
+        476   lines have 3.0, 3.0 timing
+        1     line  has  3.0, 4.0 timing
+        8     lines have 4.0, 4.0 timing
+        48    lines have 5.0, 5.0 timing
+        342   lines have 6.0, 6.0 timing    (STR cc false)
+        15    lines have 14.0, 14.0 timing  (SVC)
+

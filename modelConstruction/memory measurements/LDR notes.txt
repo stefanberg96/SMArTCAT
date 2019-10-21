@@ -1,0 +1,130 @@
+LDR<c> <Rt>, [<Rn>]: [(1.0, 3.0, None, 'no cc'), (1.0, 3.0, None, 'cc TRUE'), (1.0, 2.0, None, 'cc FALSE')]
+LDR<c> <Rt>, [<Rn>,+/-<Rm>]{!}: [(1.0, 3.0, 2.5, 'no cc'), (1.0, 3.0, 2.5, 'cc TRUE'), (1.0, 2.1, 2.5, 'cc FALSE'), (1.0, 2.0, 2.5, 'cc FALSE'), (4.0, 6.0, 2.5, 'no cc'), (4.0, 6.0, 2.5, 'cc TRUE'), (4.0, 5.0, 2.5, 'cc FALSE'), (1.4, 3.4, 3.0, 'no cc'), (1.4, 3.4, 3.0, 'cc TRUE'), (1.0, 2.0, 3.5, 'cc FALSE'), (3.4, 5.4, 3.5, 'no cc'), (3.4, 5.4, 3.5, 'cc TRUE'), (4.0, 5.0, 3.5, 'cc FALSE')]
+LDR<c> <Rt>, [<Rn>,+/-<Rm>, <shift>]{!}: [(1.0, 3.0, 2.5, 'no cc'), (1.0, 3.0, 2.5, 'cc TRUE'), (1.0, 2.0, 2.5, 'cc FALSE'), (4.0, 6.0, 2.5, 'no cc'), (4.0, 6.0, 2.5, 'cc TRUE'), (4.0, 5.0, 2.5, 'cc FALSE'), (1.3, 3.3, 3.0, 'no cc'), (1.3, 3.3, 3.0, 'cc TRUE'), (1.0, 2.0, 3.5, 'cc FALSE'), (3.3, 5.3, 3.5, 'no cc'), (3.3, 5.3, 3.5, 'cc TRUE'), (4.0, 5.0, 3.5, 'cc FALSE')]
+LDR<c> <Rt>, [<Rn>, #+/-<imm12>]: [(1.0, 3.0, None, 'no cc'), (1.0, 3.0, None, 'cc TRUE'), (1.0, 2.0, None, 'cc FALSE'), (2.0, 4.0, None, 'no cc'), (2.0, 4.0, None, 'cc TRUE'), (2.0, 3.0, None, 'cc FALSE')]
+
+LDR r2, [sp, #+2];  --  1.0, 3.0;  --  
+LDReq r2, [sp, #+2];  --  1.0, 3.0;  --  cc TRUE
+LDReq r2, [sp, #+2];  --  1.0, 2.0;  --  cc FALSE
+
+LDR r2, [sp, #-2];  --  2.0, 4.0;  --  
+LDReq r2, [sp, #-2];  --  2.0, 4.0;  --  cc TRUE
+LDReq r2, [sp, #-2];  --  2.0, 3.0;  --  cc FALSE
+
+LDR r2, [sp];  --  1.0, 3.0;  --  
+LDReq r2, [sp];  --  1.0, 3.0;  --  cc TRUE
+LDReq r2, [sp];  --  1.0, 2.0;  --  cc FALSE
+
+LDR r2, [sp,+r9, LSL #1];  --  1.0, 3.0;  --  ; wrbackTiming:: 2.5 ::
+LDReq r2, [sp,+r9, LSL #1];  --  1.0, 3.0;  --  cc TRUE; wrbackTiming:: 2.5 ::
+LDReq r2, [sp,+r9, LSL #1];  --  1.0, 2.0;  --  cc FALSE; wrbackTiming:: 2.5 ::
+
+LDR r2, [sp,-r9, LSL #1];  --  4.0, 6.0;  --  ; wrbackTiming:: 2.5 ::               -> actually we get 3,5 during validation... why is this a cycle off? (depends on the memory which is accessed)
+LDReq r2, [sp,-r9, LSL #1];  --  4.0, 6.0;  --  cc TRUE; wrbackTiming:: 2.5 ::          (this timing actually complies with our LSR result)
+LDReq r2, [sp,-r9, LSL #1];  --  4.0, 5.0;  --  cc FALSE; wrbackTiming:: 2.5 ::
+
+LDR r2, [sp,+r9, LSL #1]!;  --  1.3, 3.3;  --  ; wrbackTiming:: 3.0 ::
+LDReq r2, [sp,+r9, LSL #1]!;  --  1.3, 3.3;  --  cc TRUE; wrbackTiming:: 3.0 ::
+LDReq r2, [sp,+r9, LSL #1]!;  --  1.0, 2.0;  --  cc FALSE; wrbackTiming:: 3.5 ::
+
+LDR r2, [sp,-r9, LSL #1]!;  --  3.3, 5.3;  --  ; wrbackTiming:: 3.5 ::
+LDReq r2, [sp,-r9, LSL #1]!;  --  3.3, 5.3;  --  cc TRUE; wrbackTiming:: 3.5 ::
+LDReq r2, [sp,-r9, LSL #1]!;  --  4.0, 5.0;  --  cc FALSE; wrbackTiming:: 3.5 ::
+
+LDR r2, [sp,+r9];  --  1.0, 3.0;  --  ; wrbackTiming:: 2.5 ::
+LDReq r2, [sp,+r9];  --  1.0, 3.0;  --  cc TRUE; wrbackTiming:: 2.5 ::
+LDReq r2, [sp,+r9];  --  1.0, 2.1;  --  cc FALSE; wrbackTiming:: 2.5 ::
+
+LDR r2, [sp,-r9];  --  4.0, 6.0;  --  ; wrbackTiming:: 2.5 ::                       -> actually 3, 5 depending on r9
+LDReq r2, [sp,-r9];  --  4.0, 6.0;  --  cc TRUE; wrbackTiming:: 2.5 ::
+LDReq r2, [sp,-r9];  --  4.0, 5.0;  --  cc FALSE; wrbackTiming:: 2.5 ::
+
+LDR r2, [sp,+r9]!;  --  1.4, 3.4;  --  ; wrbackTiming:: 3.0 ::			(round these down)
+LDReq r2, [sp,+r9]!;  --  1.4, 3.4;  --  cc TRUE; wrbackTiming:: 3.0 ::
+LDReq r2, [sp,+r9]!;  --  1.0, 2.0;  --  cc FALSE; wrbackTiming:: 3.5 ::
+
+LDR r2, [sp,-r9]!;  --  3.4, 5.4;  --  ; wrbackTiming:: 3.5 ::
+LDReq r2, [sp,-r9]!;  --  3.4, 5.4;  --  cc TRUE; wrbackTiming:: 3.5 ::
+LDReq r2, [sp,-r9]!;  --  4.0, 5.0;  --  cc FALSE; wrbackTiming:: 3.5 ::
+
+
+
+
+issue / latency / (writeback)
+LDR r2, [sp{, +#imm/reg}]{!};	1, 3, 2
+LDR r2, [sp, -#imm];			1, 3
+LDR r2, [sp, -reg]{!};			3, 5, 4
+LDR r2, [sp, -reg, LSL #1]{!};		3, 5, 4
+LDR r2, [sp, -reg, LSR #1]{!};		3, 5, 4
+LDR r2, [sp, +reg, LSL #1]{!};		1, 3, 2     (or ASL)
+LDR r2, [sp, +reg, LSR #1]{!};		3, 5, 4
+
+
+
+als #imm niet #1:
+LDR r2, [sp, -reg, LSR #imm]{!};		 , 5,  
+(-reg LSL not influenced by #imm)
+(+reg LSL bij #imm >= 4):                , 5,
+(+reg LSR not influenced by #imm)
+
+This is probably very much influenced by which memory locations are accessed and caching!
+    NOTE: model cache hits/misses as noise, even if consistent?
+    the basis (best case timing) isn't influenced
+
+bailout always happens 1 cycle after issue / 1 cycle before latency.
+bailout doesn't influence lock timing
+
+
+(shift timing differences are about shift direction, not about logic vs arithmetic)
+
+CC TRUE takes no extra issue time / latency over no CC,
+
+false CC writeback might be slower for
+	LDReq r2, [sp,+r9, LSL #1]!;
+	LDReq r2, [sp,+r9]!;
+	
+false cc has bailout latency generally 1 cycle early.
+
+cc false might have 1 extra cycle issue, and latency equal to cc true latency for:
+LDReq r2, [sp,-r9]!;
+LDReq r2, [sp,-r9, LSL #1]!;
+
+
+
+
+
+We're shifting a value of 0 so we know the accessed location is the same for each shift instruction
+
+
+
+model for LDR:
+	issue timing:	1
+	latency:	    3
+	using a negative register offset or a RIGHT shift increases issue and latency by 2 cycles.
+    
+	offset and base reg are required 1 cycle early when using positive offset reg or either positive or negative imm offset
+    -> base reg is required 1 cycle LATE when using negative offset reg, offset reg isn't required early/late.
+    when left shifting with positive offset: both offset and base registers are required 1 cycle early.
+    with any other shifting (negative offset any shift, or positive offset right shift):
+        -> base reg and offset reg are required 1 cycle LATE when using negative offset regor nonleft shift
+    
+    
+	writeback is issue +1 (it's not latency -1 since it's not influenced by bailout)
+	there is generally no register lock other than issuing time (nog regarding lock for bailout or writeback)
+    CC:
+        bailout always drops latency by 1 cycle
+    
+    
+    
+        positive register offset left shift, bailout drops 1 cycle (2 total)
+        positive register offset left shift, bailout drops 1 cycle (4 total)
+        negative register offset any shift, bailout drops 1 cycle (4 total)
+        negative register offset no shift, bailout drops 1 cycle (4 total)
+        positive register offset no shift, bailout drops 1 cycle (2 total)
+        
+        negative immediate offset, bailout drops 1 cycle (3 total)
+        positive immediate offset, bailout drops 1 cycle (2 total)
+        no immediate offset, bailout drops 1 cycle (2 total)
+        
+        writeback lock isn't influenced by bailout
+        

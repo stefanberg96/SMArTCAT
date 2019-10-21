@@ -1,0 +1,30 @@
+measuring: execute instr X, [followup by dependent instr Y with known timing to measure result latency]
+BUT! only measure if instruction isnt a branch (compile and use capstone to analyze)
+NOTE: instructions with <registers> need more timing because they are probably list length dependent
+
+
+<c> branch: eq, ne, cs, cc, mi, pl, vs, vc, hi, ls, ge, lt, gt, le, ()
+<R*> replace with any register, increment c after each register
+    <Rd> R(c)
+    <RdLo> R(c)
+    <RdHi> R(c)
+    <Rn> R(c)
+    <Rm> R(c)
+    <Rt> R(c)
+    <Rs> R(c)
+    <Ra> R(c)
+{X} branch: one perform X one not
+<const> branch: replace with 0, replace with 15665 (high entropy binary number)
+<shift> branch: (LSL, LSR, ASR, ROR + #<const>) or RRX
+<type> branch: LSL, LSR, ASR, ROR
+<lsb> 3
+<width> 8
+<imm##> (also if no ##) branch: 0, 15
+<rotation> ROR #8
++/-    branch: + or -
+<registers> {R(c++),R(c++),R(c++)}
+
+
+<label> don't test these instructions(jumps)
+<endian_specifier> probably don't test this one (otherwise: BE/LE)
+<spec_reg> APSR (unless instr MSR, then: branch: APSR_g, APSR_nzcvq, APSR_nzcvqg)

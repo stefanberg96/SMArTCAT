@@ -1,0 +1,234 @@
+ADC{S}<c> <Rd>, <Rn>, #<const>
+ADC{S}<c> <Rd>, <Rn>, <Rm>{, <shift>}
+ADC{S}<c> <Rd>, <Rn>, <Rm>, <type> <Rs>
+ADD{S}<c> <Rd>, <Rn>, #<const>
+ADD{S}<c> <Rd>, <Rn>, <Rm>{, <shift>}
+ADD{S}<c> <Rd>, <Rn>, <Rm>, <type> <Rs>
+ADD{S}<c> <Rd>, SP, #<const>
+ADD{S}<c> <Rd>, SP, <Rm>{, <shift>}
+ADR<c> <Rd>, <label>
+AND{S}<c> <Rd>, <Rn>, #<const>
+AND{S}<c> <Rd>, <Rn>, <Rm>{, <shift>}
+AND{S}<c> <Rd>, <Rn>, <Rm>, <type> <Rs>
+ASR{S}<c> <Rd>, <Rm>, #<imm>
+ASR{S}<c> <Rd>, <Rn>, <Rm>
+B<c> <label>
+BFC<c> <Rd>, #<lsb>, #<width>
+BFI<c> <Rd>, <Rn>, #<lsb>, #<width>
+BIC{S}<c> <Rd>, <Rn>, #<const>
+BIC{S}<c> <Rd>, <Rn>, <Rm>{, <shift>}
+BIC{S}<c> <Rd>, <Rn>, <Rm>, <type> <Rs>
+BKPT #<imm16>
+BL<c> <label>
+BLX<c> <Rm>
+BX<c> <Rm>
+BXJ<c> <Rm>
+CLREX
+CLZ<c> <Rd>, <Rm>
+CMN<c> <Rn>, #<const>
+CMN<c> <Rn>, <Rm>{, <shift>}
+CMN<c> <Rn>, <Rm>, <type> <Rs>
+CMP<c> <Rn>, #<const>
+CMP<c> <Rn>, <Rm>{, <shift>}
+CMP<c> <Rn>, <Rm>, <type> <Rs>
+DBG<c> #<option>
+DMB <option>
+DSB <option>
+EOR{S}<c> <Rd>, <Rn>, #<const>
+EOR{S}<c> <Rd>, <Rn>, <Rm>{, <shift>}
+EOR{S}<c> <Rd>, <Rn>, <Rm>, <type> <Rs>
+ISB <option>
+LDM<c> <Rn>{!}, <registers>
+LDMDA<c> <Rn>{!}, <registers>
+LDMDB<c> <Rn>{!}, <registers>
+LDMIB<c> <Rn>{!}, <registers>
+LDR<c> <Rt>, [<Rn>{, #+/-<imm12>}]
+LDR<c> <Rt>, <label>
+LDR<c> <Rt>, [<Rn>,+/-<Rm>{, <shift>}]{!}
+LDRB<c> <Rt>, [<Rn>{, #+/-<imm12>}]
+LDRB<c> <Rt>, <label>
+LDRB<c> <Rt>, [<Rn>,+/-<Rm>{, <shift>}]{!}
+LDRBT<c> <Rt>, [<Rn>], #+/-<imm12>
+LDRD<c> <Rt>, <Rt2>, [<Rn>{, #+/-<imm8>}]
+LDRD<c> <Rt>, <Rt2>, <label>
+LDRD<c> <Rt>, <Rt2>, [<Rn>,+/-<Rm>]{!}
+LDREX<c> <Rt>, [<Rn>]
+Operation
+LDREXB<c> <Rt>, [<Rn>]
+LDREXD<c> <Rt>, <Rt2>, [<Rn>]
+LDREXH<c> <Rt>, [<Rn>]
+LDRH<c> <Rt>, [<Rn>{, #+/-<imm8>}]
+LDRH<c> <Rt>, <label>
+LDRH<c> <Rt>, [<Rn>,+/-<Rm>]{!}
+LDRHT<c> <Rt>, [<Rn>] {, #+/-<imm8>}
+LDRSB<c> <Rt>, [<Rn>{, #+/-<imm8>}]
+LDRSB<c> <Rt>, <label>
+LDRSB<c> <Rt>, [<Rn>,+/-<Rm>]{!}
+LDRSBT<c> <Rt>, [<Rn>] {, #+/-<imm8>}
+LDRSH<c> <Rt>, [<Rn>{, #+/-<imm8>}]
+LDRSH<c> <Rt>, <label>
+LDRSH<c> <Rt>, [<Rn>,+/-<Rm>]{!}
+LDRSHT<c> <Rt>, [<Rn>] {, #+/-<imm8>}
+LDRT<c> <Rt>, [<Rn>] {, #+/-<imm12>}
+LSL{S}<c> <Rd>, <Rm>, #<imm5>
+LSL{S}<c> <Rd>, <Rn>, <Rm>
+LSR{S}<c> <Rd>, <Rm>, #<imm>
+LSR{S}<c> <Rd>, <Rn>, <Rm>
+MLA{S}<c> <Rd>, <Rn>, <Rm>, <Ra>
+MLS<c> <Rd>, <Rn>, <Rm>, <Ra>
+MOV{S}<c> <Rd>, #<const>
+MOV{S}<c> <Rd>, <Rm>
+MOVT<c> <Rd>, #<imm16>
+MRS<c> <Rd>, <spec_reg>
+MSR<c> <spec_reg>, #<const>
+MSR<c> <spec_reg>, <Rn>
+MUL{S}<c> <Rd>, <Rn>, <Rm>
+MVN{S}<c> <Rd>, #<const>
+MVN{S}<c> <Rd>, <Rm>{, <shift>}
+MVN{S}<c> <Rd>, <Rm>, <type> <Rs>
+NOP<c>
+ORR{S}<c> <Rd>, <Rn>, #<const>
+ORR{S}<c> <Rd>, <Rn>, <Rm>{, <shift>}
+ORR{S}<c> <Rd>, <Rn>, <Rm>, <type> <Rs>
+PKHBT<c> <Rd>, <Rn>, <Rm>{, LSL #<imm>}
+PLD <label>
+PLI [<Rn>, #+/-<imm12>]
+PLI [<Rn>,+/-<Rm>{, <shift>}]
+POP<c> <registers>
+PUSH<c> <registers>
+QADD<c> <Rd>, <Rm>, <Rn>
+QADD16<c> <Rd>, <Rn>, <Rm>
+QADD8<c> <Rd>, <Rn>, <Rm>
+QASX<c> <Rd>, <Rn>, <Rm>
+QDADD<c> <Rd>, <Rm>, <Rn>
+QDSUB<c> <Rd>, <Rm>, <Rn>
+QSAX<c> <Rd>, <Rn>, <Rm>
+QSUB<c> <Rd>, <Rm>, <Rn>
+QSUB16<c> <Rd>, <Rn>, <Rm>
+QSUB8<c> <Rd>, <Rn>, <Rm>
+RBIT<c> <Rd>, <Rm>
+REV<c> <Rd>, <Rm>
+REV16<c> <Rd>, <Rm>
+REVSH<c> <Rd>, <Rm>
+ROR{S}<c> <Rd>, <Rm>, #<imm>
+ROR{S}<c> <Rd>, <Rn>, <Rm>
+RRX{S}<c> <Rd>, <Rm>
+RSB{S}<c> <Rd>, <Rn>, #<const>
+RSB{S}<c> <Rd>, <Rn>, <Rm>{, <shift>}
+RSB{S}<c> <Rd>, <Rn>, <Rm>, <type> <Rs>
+RSC{S}<c> <Rd>, <Rn>, #<const>
+RSC{S}<c> <Rd>, <Rn>, <Rm>{, <shift>}
+RSC{S}<c> <Rd>, <Rn>, <Rm>, <type> <Rs>
+SADD16<c> <Rd>, <Rn>, <Rm>
+SADD8<c> <Rd>, <Rn>, <Rm>
+SASX<c> <Rd>, <Rn>, <Rm>
+SBC{S}<c> <Rd>, <Rn>, #<const>
+SBC{S}<c> <Rd>, <Rn>, <Rm>{, <shift>}
+SBC{S}<c> <Rd>, <Rn>, <Rm>, <type> <Rs>
+SBFX<c> <Rd>, <Rn>, #<lsb>, #<width>
+SDIV<c> <Rd>, <Rn>, <Rm>
+SEL<c> <Rd>, <Rn>, <Rm>
+SETEND <endian_specifier>
+SEV<c>
+SHADD16<c> <Rd>, <Rn>, <Rm>
+SHADD8<c> <Rd>, <Rn>, <Rm>
+SHASX<c> <Rd>, <Rn>, <Rm>
+SHSAX<c> <Rd>, <Rn>, <Rm>
+SHSUB16<c> <Rd>, <Rn>, <Rm>
+SHSUB8<c> <Rd>, <Rn>, <Rm>
+SMLA<x><y><c> <Rd>, <Rn>, <Rm>, <Ra>
+SMLAD{X}<c> <Rd>, <Rn>, <Rm>, <Ra>
+SMLAL{S}<c> <RdLo>, <RdHi>, <Rn>, <Rm>
+SMLAL<x><y><c> <RdLo>, <RdHi>, <Rn>, <Rm>
+SMLALD{X}<c> <RdLo>, <RdHi>, <Rn>, <Rm>
+SMLAW<y><c> <Rd>, <Rn>, <Rm>, <Ra>
+SMLSD{X}<c> <Rd>, <Rn>, <Rm>, <Ra>
+SMLSLD{X}<c> <RdLo>, <RdHi>, <Rn>, <Rm>
+SMMLA{R}<c> <Rd>, <Rn>, <Rm>, <Ra>
+SMMLS{R}<c> <Rd>, <Rn>, <Rm>, <Ra>
+SMMUL{R}<c> <Rd>, <Rn>, <Rm>
+SMUAD{X}<c> <Rd>, <Rn>, <Rm>
+SMUL<x><y><c> <Rd>, <Rn>, <Rm>
+SMULL{S}<c> <RdLo>, <RdHi>, <Rn>, <Rm>
+SMULW<y><c> <Rd>, <Rn>, <Rm>
+SMUSD{X}<c> <Rd>, <Rn>, <Rm>
+SSAT<c> <Rd>, #<imm>, <Rn>{, <shift>}
+SSAT16<c> <Rd>, #<imm>, <Rn>
+SSAX<c> <Rd>, <Rn>, <Rm>
+SSUB16<c> <Rd>, <Rn>, <Rm>
+SSUB8<c> <Rd>, <Rn>, <Rm>
+STM<c> <Rn>{!}, <registers>
+STMDA<c> <Rn>{!}, <registers>
+STMDB<c> <Rn>{!}, <registers>
+STMIB<c> <Rn>{!}, <registers>
+STR<c> <Rt>, [<Rn>{, #+/-<imm12>}]
+STR<c> <Rt>, [<Rn>,+/-<Rm>{, <shift>}]{!}
+STRB<c> <Rt>, [<Rn>{, #+/-<imm12>}]
+STRB<c> <Rt>, [<Rn>,+/-<Rm>{, <shift>}]{!}
+STRBT<c> <Rt>, [<Rn>], #+/-<imm12>
+STRD<c> <Rt>, <Rt2>, [<Rn>{, #+/-<imm8>}]
+STRD<c> <Rt>, <Rt2>, [<Rn>,+/-<Rm>]{!}
+STREX<c> <Rd>, <Rt>, [<Rn>]
+STREXB<c> <Rd>, <Rt>, [<Rn>]
+STREXD<c> <Rd>, <Rt>, <Rt2>, [<Rn>]
+STREXH<c> <Rd>, <Rt>, [<Rn>]
+STRH<c> <Rt>, [<Rn>{, #+/-<imm8>}]
+STRH<c> <Rt>, [<Rn>,+/-<Rm>]{!}
+STRHT<c> <Rt>, [<Rn>] {, #+/-<imm8>}
+STRT<c> <Rt>, [<Rn>] {, +/-<imm12>}
+SUB{S}<c> <Rd>, <Rn>, #<const>
+SUB{S}<c> <Rd>, <Rn>, <Rm>{, <shift>}
+SUB{S}<c> <Rd>, <Rn>, <Rm>, <type> <Rs>
+SUB{S}<c> <Rd>, SP, #<const>
+SUB{S}<c> <Rd>, SP, <Rm>{, <shift>}
+SVC<c> #<imm24>
+SWP{B}<c> <Rt>, <Rt2>, [<Rn>]
+SXTAB<c> <Rd>, <Rn>, <Rm>{, <rotation>}
+SXTAB16<c> <Rd>, <Rn>, <Rm>{, <rotation>}
+SXTAH<c> <Rd>, <Rn>, <Rm>{, <rotation>}
+SXTB<c> <Rd>, <Rm>{, <rotation>}
+SXTB16<c> <Rd>, <Rm>{, <rotation>}
+SXTH<c> <Rd>, <Rm>{, <rotation>}
+TEQ<c> <Rn>, #<const>
+TEQ<c> <Rn>, <Rm>{, <shift>}
+TEQ<c> <Rn>, <Rm>, <type> <Rs>
+TST<c> <Rn>, #<const>
+TST<c> <Rn>, <Rm>{, <shift>}
+TST<c> <Rn>, <Rm>, <type> <Rs>
+UADD16<c> <Rd>, <Rn>, <Rm>
+UADD8<c> <Rd>, <Rn>, <Rm>
+UASX<c> <Rd>, <Rn>, <Rm>
+UBFX<c> <Rd>, <Rn>, #<lsb>, #<width>
+UDF<c> #<imm16>
+UDIV<c> <Rd>, <Rn>, <Rm>
+UHADD16<c> <Rd>, <Rn>, <Rm>
+UHADD8<c> <Rd>, <Rn>, <Rm>
+UHASX<c> <Rd>, <Rn>, <Rm>
+UHSAX<c> <Rd>, <Rn>, <Rm>
+UHSUB16<c> <Rd>, <Rn>, <Rm>
+UHSUB8<c> <Rd>, <Rn>, <Rm>
+UMAAL<c> <RdLo>, <RdHi>, <Rn>, <Rm>
+UMLAL{S}<c> <RdLo>, <RdHi>, <Rn>, <Rm>
+UMULL{S}<c> <RdLo>, <RdHi>, <Rn>, <Rm>
+UQADD16<c> <Rd>, <Rn>, <Rm>
+UQADD8<c> <Rd>, <Rn>, <Rm>
+UQASX<c> <Rd>, <Rn>, <Rm>
+UQSAX<c> <Rd>, <Rn>, <Rm>
+UQSUB16<c> <Rd>, <Rn>, <Rm>
+UQSUB8<c> <Rd>, <Rn>, <Rm>
+USAD8<c> <Rd>, <Rn>, <Rm>
+USADA8<c> <Rd>, <Rn>, <Rm>, <Ra>
+USAT<c> <Rd>, #<imm5>, <Rn>{, <shift>}
+USAT16<c> <Rd>, #<imm4>, <Rn>
+USAX<c> <Rd>, <Rn>, <Rm>
+USUB16<c> <Rd>, <Rn>, <Rm>
+USUB8<c> <Rd>, <Rn>, <Rm>
+UXTAB<c> <Rd>, <Rn>, <Rm>{, <rotation>}
+UXTAB16<c> <Rd>, <Rn>, <Rm>{, <rotation>}
+UXTAH<c> <Rd>, <Rn>, <Rm>{, <rotation>}
+UXTB<c> <Rd>, <Rm>{, <rotation>}
+UXTB16<c> <Rd>, <Rm>{, <rotation>}
+UXTH<c> <Rd>, <Rm>{, <rotation>}
+WFE<c>
+WFI<c>
+YIELD<c>

@@ -1,0 +1,71 @@
+import angr
+import timing
+b = angr.Project("/home/roeland/Documents/programs/fauxware/fauxware")
+s = b.factory.entry_state()
+s.ip
+s.time.totalExecutionTime
+s.time.countTime(3)
+s.time.totalExecutionTime
+p = b.factory.path(s)
+p.state.time.totalExecutionTime
+p = p.step()[0]
+
+irsb = b.factory.block(p.addr).vex
+irsb.statements
+import timeStmt
+tstmt = timeStmt.Time(irsb)
+irsb.statements.append(tstmt)
+import timeExecution
+
+
+p2=p.step() #this throws an error from https://github.com/angr/simuvex/blob/fd80907da3affaaa51e5b6fd4b509efdaed96e84/simuvex/vex/statements/__init__.py
+
+
+
+#       RUN THE SCRIPT
+import angr
+import timing
+import timedFactory
+b = angr.Project("/home/roeland/Documents/programs/fauxware/fauxware")
+tf = timedFactory.TimedAngrObjectFactory(b)
+b.factory = tf
+
+ts = tf.entry_state()
+tp = tf.path(ts)
+tirsb = tf.block(tp.addr).vex
+tirsb.statements
+tp.step()
+
+
+
+#       disassemble a single instruction
+import capstone
+import angr
+import timing
+import timedFactory
+import angr.lifter
+b = angr.Project("/home/roeland/Documents/programs/fauxware/fauxware")
+tf = timedFactory.TimedAngrObjectFactory(b)
+b.factory = tf
+
+ts = tf.entry_state()
+tp = tf.path(ts)
+tirsb = tf.block(tp.addr).vex
+tirsb.statements
+tp.step()
+bytes = "%s%s" % (b.loader.memory[0x4013d0], b.loader.memory[0x4013d1])
+for d in b.arch.capstone.disasm(bytes, 0x4013d0): print angr.lifter.CapstoneInsn(d).mnemonic
+
+
+#        SET LOGGING TO STDOUT:
+import logging
+import sys
+
+root = logging.getLogger()
+root.setLevel(logging.DEBUG)
+
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+root.addHandler(ch)

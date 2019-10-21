@@ -1,0 +1,154 @@
+INTRODUCTION
+    SMArTCAT, the Symbolically Modelled Architecture Timing Channel Analysis Tool, is a tool which can calculate execution time for binaries, and determine whether secret information influences the execution time, thus causing timing channels. SMArTCAT is an extension of angr, and uses symbolic execution to run programs or program functions. SMArTCAT comes with a detailed timing model of the ARM Cortex-A7, and can also use the abstract program counter model. Alternative timing models can be implemented by overwriting the pipelineModel module.
+
+    SMArTCAT can identify three types of timing channels:
+        type 1: control flow based timing channels: secret information determines control flow through conditional branch instructions
+        type 2: cache based timing channels: secret information determines accessed memory addresses.
+        type 3: instruction-parameter dependent timing channels: secret information determines execution time of single instructions. Certain conditional instructions fall into this category.
+
+    
+SYSTEM REQUIREMENTS
+    Linux system (Tested on Ubuntu 16.04) with:
+        python 2.7
+        angr (6.7.1.13)
+        capstone next branch (version march 2017)   https://github.com/aquynh/capstone/wiki/Next-branch
+        SMArTCAT files
+        
+        
+INSTALLATION
+    Install angr as described on https://docs.angr.io/INSTALL.html
+    Uninstall capstone
+    Install capstone next branch core and bindings https://github.com/aquynh/capstone/wiki/Next-branch
+    
+    angr developers advise PyPy; however, in our experience it is slower than CPpython
+    
+    
+RUNNING
+    SMArTCAT execution starts automatically when the module "tool.py" is imported. To instruct the tool, the settings in settings.py must be overwritten with relevant settings. See section SETTINGS below.
+    
+    Execution consists of three phases:
+    1. Pre-Analysis:
+        The function or program is quickly analyzed for possible conditional instructions (this doesn't work perfectly though, and doesn't follow jumps). This may help in identifying possible type 3 timing channels.
+    2. Symbolic Execution Analysis:
+        This is the main component of SMArTCAT. The program is executed symbolically by angr, and during execution SMArTCAT identifies timing channels. If any timing channel is identified, SMArTCAT shows a warning about it, and continues execution. To manually analyse intermediate results, press Ctrl+C and follow the instructions from the section MANUAL ANALYSIS below.
+    3. Post-Analysis:
+        This can identify pure control-flow based timing channels. It can also determine maximum dynamic range, i.e. the minimum and maximum execution time. Still buggy, and often not reached in complex programs.
+    
+    
+MANUAL ANALYSIS
+    Symbolic execution is far from perfect, and can often hang, not finish, or cause other problems. For perfect control over SMArTCAT, one actually requires understanding of angr, and how to talk to against it through Python. Our experience is that monkey-patching is one of the best approaches to control and analyse symbolic execution. Unfortunately, this requires a deep understanding of angr and SMArTCAT.
+
+    SMArTCAT execution can be stopped with the standard Ctrl+C combination. Intermediate results are stored in the "store.py" module. All identified violations are stored in the list store.violations. A violation entry includes the angr program state from the time of violation, which can be used for full analysis of what was going on. For example, a state gives access to the system's register and memory states, as well as the path constraints. The violation entry also stores the symbolic expression which determines the timing behavior. For cache timing channels, this includes the symbolic memory address expression. This symbolic expression can be used to determine the actual information flow. Because these expressions can be highly unreadable sometimes, we advise to analyse them using the solver from the program state which is contained in the same entry.
+    
+    SMArTCAT can also be used to analyze intermediate program states before or after instructions at arbitrary addresses. The address can be set using the settings module as described in the section below. Stored properties can be:
+        store.props: the timing properties of the instruction.
+        store.insn: the capstone instruction instance.
+        store.state: a copy of the angr program state.
+        store.stmt: a copy of the vex statement representing the instruction.
+        store.cc: a symbolic expression which determines the instruction's conditional execution.
+        store.dependencies: symbolic expressions which determine execution time behavior, such as accessed memory addresses.
+    
+    If other functionality is required for intermediate analysis, pipelineModel.warningFunc can be monkey-patched.
+    
+    
+SETTINGS
+    SMArTCAT uses the module "settings.py" to read different analysis settings at runtime. 
+    The following settings are available:
+        settings.TARGET_BINARY: path to the binary file to analyse.
+        settings.TARGET_FUNCTION: The function label of the function used for pre-analysis. If left empty, pre-analysis is executed on the main function.
+        settings.TARGET_ADDRESS: The address at which to start symbolic execution; should correspond with TARGET_FUNCTION.
+            TARGET_ADDRESS determines start of symbolic execution. If TARGET_ADDRESS is left empty, the tool attempts to find the right starting address based on TARGET_FUNCTION. If both are left empty, the main function is used.
+            Do not rely on automatic address identification with static libraries! Supply the correct TARGET_ADDRESS with the corresponding loading offset of 0x40000 (as described in NOTES below)
+    
+        settings.secret: The symbolic expression about which no information should leak.
+        settings.params: A list of all the parameters with which to call the analyzed function. Function header or reverse engineering required to determine. Accepts symbolic expressions.
+    
+        settings.TIME_STRATEGY: concretization strategy to apply to time differences (delta time) after they have been analyzed for timing channels. This is important to progress deep into an execution path because it limits complexity of the time expression. Options should be imported from "pluginTime.py". Available options are:
+            TIME_STRATEGY_SHORTEST: shortest possible time
+            TIME_STRATEGY_AVERAGE: average between shortest and longest
+            TIME_STRATEGY_LONGEST: longest possible time
+            TIME_STRATEGY_NO_CHANGE: No concretization
+            TIME_STRATEGY_SHORTEST_IF_NONSECRET: shortest possible time, but only if it doesn't depend on a secret.
+            TIME_STRATEGY_AVERAGE_IF_NONSECRET: average between shortest and longest, but only if it doesn't depend on a secret.
+            TIME_STRATEGY_LONGEST_IF_NONSECRET: longest possible time, but only if it doesn't depend on a secret.
+            
+        settings.LATENCY_STRATEGY: concretization strategy similar to TIME_STRATEGY, but for latency. Import from "pipelineModel.py". available options:
+            LATENCY_STRATEGY_SHORTEST
+            LATENCY_STRATEGY_AVERAGE
+            LATENCY_STRATEGY_LONGEST
+            LATENCY_STRATEGY_NO_CHANGE
+            LATENCY_STRATEGY_SHORTEST_IF_NONSECRET
+            LATENCY_STRATEGY_AVERAGE_IF_NONSECRET
+            LATENCY_STRATEGY_LONGEST_IF_NONSECRET
+            The following 3 options only apply concretization to memory instruction latency, if they are nonsecret:
+            LATENCY_STRATEGY_SHORTEST_IF_NONSECRET_MEMORY
+            LATENCY_STRATEGY_AVERAGE_IF_NONSECRET_MEMORY
+            LATENCY_STRATEGY_LONGEST_IF_NONSECRET_MEMORY
+    
+        settings.PG_EXPLORE_ARGUMENTS: a named dictionary of arguments for angr pathgroup explore, e.g. {"find": 0x419DFC, "avoid":0x419DE8}. Look into angr documentation for full possibilities.
+    
+        settings.VERBOSE: (True / False) if True, every symbolically executed instruction and address are printed. With False, a update is printed every OUTPUT_FREQUENCY instructions, to show execution is still progressing.
+        settings.OUTPUT_FREQUENCY: the frequency of updates if VERBOSE is false.
+    
+        settings.PC_ONLY: (True / False) If True, the Program Counter model is used, only counting executed instructions. Thus no intermediate timing channel identification is performed. If False, the Cortex-A7 timing model is used, including intermediate identification of timing channels.
+        
+        settings.stateInit(startState): A function to initialize the startstate after the state has been created by the tool, but before symbolic execution starts. This is important to initialize memory states. It is common to pass program pointers as function arguments, this function can be used to actually make them point to secret symbols.
+    
+        settings.WARNING_ADDRESS: the address at which the program should stop for intermediate analysis as described above.
+        settings.WARNING_MOMENT: (settings.WARNING_BEFORE / settings.WARNING_AFTER), whether to stop and store intermediate results before or after WARNING_ADDRESS.
+        
+        settings.OUTPUT_VEX: (True / False) Output all intermediate VEX instructions.
+        settings.MODEL_CACHE_CHANNELS: (True / False) model cache based timing channels or not.
+        settings.BRANCH_CACHE_CHANNELS: (True / False) model branch predictor based timing channels or not.
+        
+        settings.DEFAULTEXECUTIONTIME: default instruction issue time for unmodeled instructions.
+        settings.DEFAULTRESULTLATENCY: default instruction latency for unmodeled instructions.
+        
+        settings.MAX_STORE_CACHE_MISS_SLOWDOWN: maximum cost in cycles for cache misses in store instructions.
+        settings.MAX_LOAD_CACHE_MISS_SLOWDOWN: maximum cost in cycles for cache misses in load isntructions.
+        
+        settings.MAX_MEM: Maximum memory usage in GB
+        
+        
+DEBUGGING
+    It isn't uncommon that execution fails with an error without rely showing what happened. import store and run store.retry(), it will output a more detailed error trace. Happy debugging :)
+    
+    
+NOTES
+    SMArTCAT may start with a warning about unicorn, this isn't a problem.
+    
+    Static libraries are loaded with an address offset of 0x400000, this should be shown in a warning during analysis initialization. Make sure to add the offset to the addresses in the settings file.
+
+    It is common that symbolic expressions become too complex for angr to handle, angr runs out of memory, or other issues arise. Hit Ctrl-C and perform manual analysis on violations identified so far. Alternatively, buy a machine with more memory. (angr developers advise 32 - 128 GB)
+    
+    Large symbolic expressions can be too complex to print due to some issue in Claripy. However, they can still be evaluated, so the symbolic state can still be used to determine how the expression behaves.
+    
+    
+EXAMPLE
+    #This script was used to analyse AES from OpenSSL 1.1.0e
+    import settings
+    import claripy
+    settings.VERBOSE = True
+    settings.TARGET_ADDRESS = 0x43FDD8  #NOTE: verify that this address corresponds to that of the function label "AES_encrypt" for the binary you analyse
+    settings.TARGET_FUNCTION = "AES_encrypt"
+    settings.TARGET_BINARY = ".../libcrypto.so.1.1" #Path to the OpenSSL crypto library
+    settings.key = claripy.BVS("key", 1024) #just create a large 1024 bit symbol to express the key.
+    settings.message = claripy.BVS("message", 1024) #same for message.
+    settings.pointerToMessage = 100000       #arbitrary offsets into memory, unlikely to mess with internally used memory addresses. (NOTE: do not use negative offsets)
+    settings.outputBufferPointer = 110000
+    settings.pointerToKey = 120000
+    settings.params = [settings.pointerToMessage, settings.outputBufferPointer, settings.pointerToKey]  #ordered list of function parameters
+    settings.secret = settings.key.concat(settings.message) #Both the key and the message should remain secret.
+    from pluginTime import TIME_STRATEGY_SHORTEST
+    settings.TIME_STRATEGY = TIME_STRATEGY_SHORTEST
+
+    def stateInit(startState):
+        #initialize the starting state so that the function parameters actually point to the key and message symbols.
+        startState.memory.store(settings.pointerToKey, settings.key, 128)
+        startState.memory.store(settings.pointerToMessage, settings.message, 128)
+        startState.memory.store(settings.pointerToMessage+1*8, 0, 8) #TODO: is the message actually 0-terminated?
+        return True
+
+    settings.stateInit = stateInit  #monkey-patch the stateInit function
+
+    import tool #start analysis

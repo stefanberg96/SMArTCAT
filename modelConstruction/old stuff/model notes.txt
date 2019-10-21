@@ -1,0 +1,67 @@
+ISSUES:
+    we often see a timing of *.9. I was actually able to verify these. weird
+    leaving out the instruction to test also gives us a number just below 3 (whereas it would be expected to get a result just above it.
+        FIXED -> we ran 49 times instead of 50, so 2% difference. after correction we get times just above integers. makes sense
+
+    Rt (and Rt2) can be a destination register so should receive the value r1.
+        FIXED -> changed order of registers in casm
+
+    filling in immediates happened based on the conststep instead of immstep, so no immediates with value 15 were ever used
+        FIXED
+        
+    STRT has an encoding which has a +/-<imm12> in it without the necessary #.
+        FIXED -> this was a fault in the ARM manual
+        
+    {S}{<c>} seem to never be able to combine, verify this, as it will significantly speed up testing times
+        -> CONFIRMED
+        FIXED -> preprocessed the formats by splitting into 2 formats to contain either of these only
+        
+    Contents of optional parameters unnecessarily loop over all possibilities of the optional parameter. very inefficient
+        FIXED -> preprocessed formats by splitting to contain the option or not (this was most significant with optional shift addresses)
+
+    We made a mistake in latency timing, because the issuing moment of the instruction under test doesn't rely on the previous instruction.
+        FIXED -> last add instruction now writes to r2 (often a soursce register)
+        
+    we're not retrieving the error cause. should atleast log whether something goes wrong during compilation (assume bad instruction), or during execution (assume bad program logic)
+        FIXED -> now logging stage during which measurement failed
+
+    many conditional instructions fail even if their condition is false.
+    validate whether we made a mistake in our condition negation, or that maybe they are caused by segfaults which happen in early execution before bailout
+        -> logic might be wrong. hard to validate. sequencing seems to be weird because mov and cmp gobbles up time differently depending on stuff.. might contain a half timing. can't even validate conditional timing differences in a muleq anymore :S
+            CONFIRMED -> vs is always false and vc is always true; rest seems fine
+        FIXED -> 2^31 wasn't being evaluated properly in the gcc preprocessor
+        
+    timing results seem wildely inconsistent now.
+        -> this is probably because the longer our unrolled loop, the larger the chance that it gets interrupted by the OS.
+            CONFIRMED: making the loop smaller greatly improves consistency in results. (however, at the same time this decreases accuracy due to measurement setup overhead)
+        FIXED -> made loop smaller (512 loops) and put in fewer instructions
+        
+    timing seems to depend quite a lot on the instructions following it... (muleq seems to be able to flow into an add without delay, but not into another mul). can we find an instruction which nothing can just flow into?
+        FIXED -> trying with LSL, although this
+    
+    We're getting a lot of segfaults when using memory locations
+        -> perform seperate measurement for these?
+        -> may want to perform tests with fp as memory addresses... set offsets to multiples of 8 or something.
+    
+    There are certain encoding formats which we haven't taken into account.
+        -> perform seperate measurement for these?
+        
+
+EARLY FINDINGS:
+    LDR*cc and STR*cc under false condition codes get noninteger timing behavior (found *.3 results)
+    SVC calls get really high and noninteger issuing time (13.7 without cc, 14.7 with cc). false cc always bails out after 2 cycles. (unable to reproduce .7 timing behavior, even with 49 execution runs) (SVC timing probably depends a lot on the parameters and rest of the system state)
+    consistency in the noninteger numbers is remarkable (rule of large numbers maybe?)
+    SVC instructions seem to be the slowest instructions by far
+    conditional comparison functions on 2 registers always seem to take 2 cycles (maybe due to both reading and writing status flags)
+    it appears conditional instructions based on [ne, cc, mi, vs, vc, ls, ge, gt] conditions perform early execution (and will generate exceptions even if conditions are false). However, as vc might always be true, we cannot yet tell about that instruction (TODO figure that out).
+    some STRcc instructions take up 4 cycles even if false (like STRle r3, [r1,-r2]!;)
+    {S}{<c>} can never be combined, only either one of the optionsseem to never be able to combine, verify this, as it will significantly speed up testing times
+    
+    timing and conditional delay seems to depend quite a lot on the instructions following it... (muleq seems to be able to flow into an add without delay, but not into another mul). There are more situations where timing takes on like .8/.9 timings as if some instruction is gobbled up some but not all times.
+    
+    instruction sequence time differs wildly from single instructions...
+        take sub r0, s2, r2; add r0, r0, #0; cmp r0, #0; [add r0, r0, #1;] muleq r1, r2, r3; LSL r1, #1; add r0, r0, r1; add r0, r0, r0; add r0, r0, r0; add r2, r0, r0;
+            depending on whether or not the add instruction is there, there is a timing difference of about 2.5 to 3 cycles! (12.8-12.9 to 15.3-15.8)
+            normally an add instruction should take a single cycle tops (but maybe this is because the previous add instruction is suddenly no longer an empty instruction)
+            We should probably make it part of our model which instructions demand a new cycle and which can be issued in same cycles. (these are probably already recognizable in our first measurements by timing = 0), although there's more going on with the add instruction followind a conditional mul instruction of course
+            TODO: make this part of our model (will require more measurements)
