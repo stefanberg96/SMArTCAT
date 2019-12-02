@@ -101,8 +101,11 @@ class I_Instruction(Instruction):
     def get_shift_amount(self):
         return self.constant(int(self.data['I'], 2), Type.int_32)
 
+    def get_optional_func7(self):
+        return self.data['i']
+
     def fetch_operands(self):
-        return self.get_src(), self.get_imm(), self.get_shift_amount()
+        return self.get_src(), self.get_imm()
 
     def commit_result(self, result):
         self.put(result, self.get_dst_reg())
@@ -143,12 +146,13 @@ class S_Instruction(Instruction):
 
     def get_val(self):
         return self.get(int(self.data['S'], 2), Type.int32)
-    
+
     def fetch_operands(self):
         return self.get_val(), self.get_addr()
 
     def commit_result(self, result):
         self.put(result, self.get_addr())
+
 
 class B_Instruction(Instruction):
     '''
@@ -217,7 +221,7 @@ class U_Instruction(Instruction):
 
     def get_imm(self):
         return self.constant(int(self.data['i'], 2), Type.int_32)
-    
+
     def fetch_operands(self):
         return self.get_dst(), self.get_imm()
 
@@ -257,87 +261,265 @@ class J_Instruction(Instruction):
 class Instruction_ADD(R_Instruction):
     func3 = '000'
     func7 = '0000000'
-    opcode = '0000011'
+    opcode = '0110011'
 
-    def compute_result(self, src1, src2 ):
+    def compute_result(self, src1, src2):
         return src1 + src2
+
 
 class Instruction_SUB(R_Instruction):
     func3 = '000'
     func7 = '0100000'
-    opcode = '0000011'
- 
+    opcode = '0110011'
+
     def compute_result(self, src1, src2):
         return src1 - src2
-    
+
+
 class Instruction_XOR(R_Instruction):
     func3 = '100'
     func7 = '0000000'
-    opcode = '0000011'
- 
+    opcode = '0110011'
+
     def compute_result(self, src1, src2):
         return src1 ^ src2
+
 
 class Instruction_OR(R_Instruction):
     func3 = '110'
     func7 = '0000000'
-    opcode = '0000011'
- 
+    opcode = '0110011'
+
     def compute_result(self, src1, src2):
         return src1 | src2
-    
+
+
 class Instruction_AND(R_Instruction):
     func3 = '111'
     func7 = '0000000'
-    opcode = '0000011'
- 
+    opcode = '0110011'
+
     def compute_result(self, src1, src2):
         return src1 & src2
+
 
 class Instruction_SLL(R_Instruction):
     func3 = '001'
     func7 = '0000000'
-    opcode = '0000011'
- 
+    opcode = '0110011'
+
     def compute_result(self, src1, src2):
         return src1 << src2
 
+
 class Instruction_SRL(R_Instruction):
-    func3 = '010'
+    func3 = '101'
     func7 = '0000000'
-    opcode = '0000011'
- 
+    opcode = '0110011'
+
     def compute_result(self, src1, src2):
         return src1 >> src2
 
-#Arithmetic shift is not easily mapped, so leaving this as an TODO
+# Arithmetic shift is not easily mapped, so leaving this as an TODO
+
+
 class Instruction_SRA(R_Instruction):
-    func3 = '011'
+    func3 = '101'
     func7 = '0100000'
-    opcode = '0000011'
- 
+    opcode = '0110011'
+
     def compute_result(self, src1, src2):
         return src1 >> src2
+
 
 class Instruction_SLT(R_Instruction):
     func3 = '010'
     func7 = '0000000'
     opcode = '0110011'
- 
+
     def compute_result(self, src1, src2):
         src1.is_signed = True
         src2.is_signed = True
         val = 1 if src1 < src2 else 0
         return self.constant(val, Type.int_32)
 
+
 class Instruction_SLTU(R_Instruction):
     func3 = '011'
     func7 = '0000000'
     opcode = '0110011'
- 
+
     def compute_result(self, src1, src2):
-        src1.is_signed=False
-        src1.is_signed=False
+        src1.is_signed = False
+        src1.is_signed = False
         val = 1 if src1 < src2 else 0
         return self.constant(val, Type.int_32)
+
+
+class Instruction_ADDI(I_Instruction):
+    func3 = '000'
+    opcode = '0010011'
+
+    def compute_result(self, src1, imm):
+       return src1 + imm 
+
+class Instruction_XORI(I_Instruction):
+    func3='100'
+    opcode='0010011'
+
+    def compute_result(self, src1, imm):
+        return src1 ^ imm
+
+class Instruction_ORI(I_Instruction):
+    func3='110'
+    opcode='0010011'
+    
+    def compute_result(self, src1, imm):
+        return src1 | imm
+
+class Instruction_ANDI(I_Instruction):
+    func3='111'
+    opcode='0010011'
+
+    def compute_result(self, src1, imm):
+        return src1 & imm
+
+class Instruction_SLLI(I_Instruction):
+    func3='001'
+    func7='0000000'
+    opcode='0010011'
+
+    def match_instruction(self, data, bitstream ):
+        super.match_instruction(self, data, bitstream)
+        if(data['i']!= self.func7):
+            raise ParseError("The func7 did not match")
+        return True
+
+    def compute_result(self, src1, _):
+        return src1 << self.get_shift_amount()
+
+class Instruction_SRLI(I_Instruction):
+    func3='101'
+    func7='0000000'
+    opcode='0010011'
+
+    def match_instruction(self, data, bitstream ):
+        super.match_instruction(self, data, bitstream)
+        if(data['i']!= self.func7):
+            raise ParseError("The func7 did not match")
+        return True
+
+    def compute_result(self, src1, _):
+        return src1 >> self.get_shift_amount()
+
+#Once again issue with arithmetic right shifts, so for the moment still a TODO like SRA
+class Instruction_SRAI(I_Instruction):
+    func3='101'
+    func7='0100000'
+    opcode='0010011'
+
+    def match_instruction(self, data, bitstream ):
+        super.match_instruction(self, data, bitstream)
+        if(data['i']!= self.func7):
+            raise ParseError("The func7 did not match")
+        return True
+
+    def compute_result(self, src1, _):
+        return src1 >> self.get_shift_amount()
+
+class Instruction_SLTI(I_Instruction):
+    func3='010'
+    opcode='0010011'
+
+    def match_instruction(self, src1, imm):
+        src1.is_signed = True
+        imm.is_signed = True
+        val = 1 if src1 < imm else 0
+        return self.constant(val, Type.int_32)
+    
+class Instruction_SLTIU(I_Instruction):
+    func3='011'
+    opcode='0010011'
+
+    def match_instruction(self, src1, imm):
+        src1.is_signed = False
+        imm.is_signed = False
+        val = 1 if src1 < imm else 0
+        return self.constant(val, Type.int_32)
+    
+class Instruction_MUL(R_Instruction):
+    func3='000'
+    func7='0000001'
+    opcode='0110011'
+
+    def compute_result(self, src1, src2):
+        return (src1*src2) & self.constant(0xFFFF, Type.int_32)
+
+class Instruction_MULH(R_Instruction):
+    func3='001'
+    func7='0000001'
+    opcode='0110011'
+
+    def compute_result(self, src1, src2):
+        return (src1*src2)>>self.constant(32,Type.int_8)
+
+class Instruction_MULSU(R_Instruction):
+    func3='010'
+    func7='0000001'
+    opcode='0110011'
+
+    def compute_result(self, src1, src2):
+        src1.is_signed = True
+        src2.is_signed = False
+        return (src1*src2) & self.constant(0xFFFF, Type.int_32)
+
+class Instruction_MULHU(R_Instruction):
+    func3='011'
+    func7='0000001'
+    opcode='0110011'
+
+    def compute_result(self, src1, src2):
+        src1.is_signed = False
+        src2.is_signed = False
+        return (src1*src2)>>self.constant(32,Type.int_8)
+
+class Instruction_DIV(R_Instruction):
+    func3='100'
+    func7='0000001'
+    opcode='0110011'
+
+    def compute_result(self, src1, src2):
+        src1.is_signed = True
+        src2.is_signed = True
+        return src1/src2
+
+class Instruction_DIVU(R_Instruction):
+    func3='101'
+    func7='0000001'
+    opcode='0110011'
+
+    def compute_result(self, src1, src2):
+        src1.is_signed = False
+        src2.is_signed = False
+        return src1/src2
+
+class Instruction_REM(R_Instruction):
+    func3='110'
+    func7='0000001'
+    opcode='0110011'
+
+    def compute_result(self, src1, src2):
+        src1.is_signed = True
+        src2.is_signed = True
+        return src1%src2
+
+class Instruction_REMU(R_Instruction):
+    func3='111'
+    func7='0000001'
+    opcode='0110011'
+
+    def compute_result(self, src1, src2):
+        src1.is_signed = False
+        src2.is_signed = False
+        return src1/src2
 
