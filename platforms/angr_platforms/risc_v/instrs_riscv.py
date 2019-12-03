@@ -1,5 +1,4 @@
 import abc
-from .arch_risc_v import ArchRISCV
 from pyvex.lifting.util import Instruction, JumpKind, ParseError, Type
 import bitstring
 from bitstring import Bits
@@ -140,18 +139,20 @@ class S_Instruction(Instruction):
     def get_addr(self):
         addr = int(self.data['s'], 2)
         offset = int(self.data['i'].append(self.data['I']), 2)
-        return self.constant(addr + offset, Type.int_32)
+        res =  self.constant(addr + offset, Type.int_32)
+        res.is_signed = True
+        return res
 
-    '''Value is returned as int32 caller must and it to store half words or bytes'''
+    '''Value is returned as int32 caller must cast it to store half words or bytes'''
 
     def get_val(self):
         return self.get(int(self.data['S'], 2), Type.int32)
 
     def fetch_operands(self):
-        return self.get_val(), self.get_addr()
+        return self.get_val()
 
     def commit_result(self, result):
-        self.put(result, self.get_addr())
+        self.store(result, self.get_addr())
 
 
 class B_Instruction(Instruction):
@@ -192,10 +193,12 @@ class B_Instruction(Instruction):
         x = self.data['i'][5]
         sign = self.data['I'][6]
         offset = begin.append(middle).append(x).append(sign)
-        return self.constant(int(offset, 2), Type.int__32)
+        val = self.constant(int(offset, 2), Type.int__32)
+        val.is_signed = True
+        return val
 
     def fetch_operands(self):
-        return self.get_src1(), self.get_src2()
+        return self.get_src1(), self.get_src2(), self.get_offset()
 
 
 class U_Instruction(Instruction):
@@ -217,13 +220,16 @@ class U_Instruction(Instruction):
         return True
 
     def get_dst(self):
-        return self.get(int(self.data['d'], 2), Type.int_32)
+        return int(self.data['d'], 2)
 
     def get_imm(self):
         return self.constant(int(self.data['i'], 2), Type.int_32)
 
     def fetch_operands(self):
         return self.get_dst(), self.get_imm()
+
+    def commit_result(self, result):
+        self.put(result, self.get_dst())
 
 
 class J_Instruction(Instruction):
@@ -245,7 +251,7 @@ class J_Instruction(Instruction):
         return True
 
     def get_dst(self):
-        return self.get(int(self.data['d'], 2), Type.int_32)
+        return int(self.data['d'], 2)
 
     ''''
     Some weird way to parse the immediate according to risc-v isa
@@ -255,7 +261,10 @@ class J_Instruction(Instruction):
         return self.constant(int(self.data['i'][12:19].append(self.data[11]).append(self.data[1:10]).append(self.data[20]), 2), Type.int_32)
 
     def fetch_operands(self):
-        return self.get_imm(), self.get_dst()
+        return self.get_imm()
+
+    def commit_result(self, result):
+        self.put(result, self.get_dst())
 
 
 class Instruction_ADD(R_Instruction):
@@ -361,6 +370,7 @@ class Instruction_ADDI(I_Instruction):
     opcode = '0010011'
 
     def compute_result(self, src1, imm):
+       imm.is_signed = True
        return src1 + imm 
 
 class Instruction_XORI(I_Instruction):
@@ -523,3 +533,162 @@ class Instruction_REMU(R_Instruction):
         src2.is_signed = False
         return src1/src2
 
+class Instruction_LB(I_Instruction):
+    func3='000'
+    opcode='0000011'
+
+    def compute_result(self, src, imm):
+        imm.is_signed = True
+        addr = src + imm
+        value = self.load(addr, Type.int_8)
+        value._is_signed=True
+        return value
+
+class Instruction_LH(I_Instruction):
+    func3='001'
+    opcode='0000011'
+
+    def compute_result(self, src, imm):
+        addr = src + imm
+        value = self.load(addr, Type.int_16)
+        value._is_signed = True
+        return value
+
+class Instruction_LW(I_Instruction):
+    func3='010'
+    opcode='0000011'
+
+    def compute_result(self, src, imm):
+        imm.is_signed = True
+        addr = src + imm
+        value = self.load(addr, Type.int_32)
+        value._is_signed=True
+        return value
+
+class Instruction_LBU(I_Instruction):
+    func3='100'
+    opcode = '0000011'
+
+    def compute_result(self, src, imm):
+        imm.is_signed = True
+        addr = src + imm
+        return self.load(addr, Type.int_8)
+
+class Instruction_LHU(I_Instruction):
+    func3='101'
+    opcode='0000011'
+
+    def compute_result(self, src, imm):
+        imm.is_signed = True
+        addr= src+imm
+        return self.load(addr, Type.int_16)
+
+class Instruction_SB(S_Instruction):
+    func3='000'
+    opcode= '0100011'
+
+    def compute_result(self, val):
+        return val.cast_to(Type.int_8)
+
+class Instruction_SH(S_Instruction):
+    func3='001'
+    opcode= '0100011'
+
+    def compute_result(self, val):
+        return val.cast_to(Type.int_16)
+
+class Instruction_SW(S_Instruction):
+    func3='010'
+    opcode= '0100011'
+
+    def compute_result(self, val):
+        return val
+
+class Instruction_BEQ(B_Instruction):
+    func3='000'
+    opcode='1100011'
+
+    def compute_result(self, src1, src2, imm):
+        addr = self.addr + imm
+        self.jump(src1 == src2, addr)
+
+class Instruction_BNE(B_Instruction):
+    func3='001'
+    opcode = '1100011'
+
+    def compute_result(self, src1, src2, imm):
+        addr = self.addr+imm
+        self.jump(src1!=src2, addr)
+
+class Instruction_BLT(B_Instruction):
+    func3='100'
+    opcode='1100011'
+
+    def compute_result(self, src1, src2, imm):
+        src1.is_signed = True
+        src2.is_signed = True
+        addr = self.addr + imm
+        self.jump(src1<src2, addr)
+
+class Instruction_BGE(B_Instruction):
+    func3='101'
+    opcode = '1100011'
+
+    def compute_result(self, src1, src2, imm):
+        src1.is_signed = True
+        src2.is_signed = True
+        addr = self.addr + imm
+        self.jump(src1>=src2, addr)
+
+class Instruction_BLTU(B_Instruction):
+    func3='110'
+    opcode='1100011'
+
+    def compute_result(self, src1, src2, imm):
+        src1.is_signed = False
+        src2.is_signed = False
+        addr = self.addr + imm
+        self.jump(src1<src2, addr)
+
+class Instruction_BGEU(B_Instruction):
+    func3='111'
+    opcode='1100011'
+
+    def compute_result(self, src1, src2, imm):
+        src1.is_signed = False
+        src2.is_signed = False
+        addr = self.addr + imm
+        self.jump(src1>= src2, addr)
+
+class Instruction_JALR(I_Instruction):
+    func3='000'
+    opcode = '1100111'
+
+    def compute_result(self, src, imm):
+        imm.is_signed = True
+        return_addr = self.addr + self.constant(4, Type.int_32)
+        addr = src + imm
+        self.jump(None, addr, JumpKind.Call)
+        return return_addr
+
+class Instruction_JAL(J_Instruction):
+    opcode = '1101111'
+
+    def compute_result(self, imm):
+        imm.is_signed = True
+        return_addr = self.addr + self.constant(4, Type.int_32)
+        addr = self.addr+imm
+        self.jump(None, addr)
+        return return_addr
+
+class Instruction_LUI(U_Instruction):
+    opcode='0110111'
+
+    def compute_result(self, imm):
+        return imm << self.constant(12, Type.int_8)
+
+class Instruction_AUIPC(U_Instruction):
+    opcode='0010111'
+
+    def compute_result(self, imm):
+        return self.addr + (imm << self.constant(12, Type.int_8))
