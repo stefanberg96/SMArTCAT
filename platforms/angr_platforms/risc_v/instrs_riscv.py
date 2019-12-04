@@ -25,11 +25,11 @@ class R_Instruction(Instruction):
     f = func3 
     F = func7
     '''
-    opcode = NotImplemented  # binary string of length 6 consisting of the opcode
+    opcode = NotImplemented  # binary string of length 7 consisting of the opcode
     func7 = NotImplemented  # binary string of length 7 consisting of the func7 code
     func3 = NotImplemented  # binary string of length 3 consisting of the func3 code
 
-    bit_format = "oooooodddddfffsssssSSSSSFFFFFFF"
+    bin_format = "ooooooodddddfffsssssSSSSSFFFFFFF"
 
     def match_instruction(self, data, bitstream):
         if data['o'] != self.opcode:
@@ -72,10 +72,10 @@ class I_Instruction(Instruction):
     A split was made between i and I since the shift instruction use on the first 5 bits of the
     immediate to determine what the shift amount. The other 7 are used as a func7 value.
     '''
-    opcode = NotImplemented  # binary string of length 6 consisting of the opcode
+    opcode = NotImplemented  # binary string of length 7 consisting of the opcode
     func3 = NotImplemented  # binary string of length 3 consisting of the func3 code
 
-    bit_format = "oooooodddddfffsssssIIIIIiiiiiii"
+    bin_format = "ooooooodddddfffsssssIIIIIiiiiiii"
 
     '''In the shift instruction extend this function to also check the last 7 bits of the immediate'''
 
@@ -120,10 +120,10 @@ class S_Instruction(Instruction):
     S = value to be stored
     I = last 7 bits of the immediate
     '''
-    opcode = NotImplemented  # binary string of length 6 consisting of the opcode
+    opcode = NotImplemented  # binary string of length 7 consisting of the opcode
     func3 = NotImplemented  # binary string of length 3 consisting of the func3 code
 
-    bit_format = 'ooooooiiiiifffsssssSSSSSIIIIIII'
+    bin_format = 'oooooooiiiiifffsssssSSSSSIIIIIII'
 
     def match_instruction(self, data, bitstream):
         if data['o'] != self.opcode:
@@ -165,10 +165,10 @@ class B_Instruction(Instruction):
     S = source 2 register
     I = last 7 bits of the immediate
     '''
-    opcode = NotImplemented  # binary string of length 6 consisting of the opcode
+    opcode = NotImplemented  # binary string of length 7 consisting of the opcode
     func3 = NotImplemented  # binary string of length 3 consisting of the func3 code
 
-    bit_format = 'ooooooiiiiifffsssssSSSSSIIIIIII'
+    bin_format = 'oooooooiiiiifffsssssSSSSSIIIIIII'
 
     def match_instruction(self, data, bitstream):
         if data['o'] != self.opcode:
@@ -209,9 +209,9 @@ class U_Instruction(Instruction):
     i = immediate
     '''
 
-    opcode = NotImplemented  # binary string of length 6 consisting of the opcode
+    opcode = NotImplemented  # binary string of length 7 consisting of the opcode
 
-    bit_format = 'oooooodddddiiiiiiiiiiiiiiiiiiii'
+    bin_format = 'ooooooodddddiiiiiiiiiiiiiiiiiiii'
 
     def match_instruction(self, data, bitstream):
         if data['o'] != self.opcode:
@@ -240,9 +240,9 @@ class J_Instruction(Instruction):
     i = immediate
     '''
 
-    opcode = NotImplemented  # binary string of length 6 consisting of the opcode
+    opcode = NotImplemented  # binary string of length 7 consisting of the opcode
 
-    bit_format = 'oooooodddddiiiiiiiiiiiiiiiiiiii'
+    bin_format = 'ooooooodddddiiiiiiiiiiiiiiiiiiii'
 
     def match_instruction(self, data, bitstream):
         if data['o'] != self.opcode:
@@ -271,6 +271,7 @@ class Instruction_ADD(R_Instruction):
     func3 = '000'
     func7 = '0000000'
     opcode = '0110011'
+    name = 'ADD'
 
     def compute_result(self, src1, src2):
         return src1 + src2
@@ -280,6 +281,7 @@ class Instruction_SUB(R_Instruction):
     func3 = '000'
     func7 = '0100000'
     opcode = '0110011'
+    name = 'SUB'
 
     def compute_result(self, src1, src2):
         return src1 - src2
@@ -289,6 +291,7 @@ class Instruction_XOR(R_Instruction):
     func3 = '100'
     func7 = '0000000'
     opcode = '0110011'
+    name= 'XOR'
 
     def compute_result(self, src1, src2):
         return src1 ^ src2
@@ -298,6 +301,7 @@ class Instruction_OR(R_Instruction):
     func3 = '110'
     func7 = '0000000'
     opcode = '0110011'
+    name = 'OR'
 
     def compute_result(self, src1, src2):
         return src1 | src2
@@ -307,6 +311,7 @@ class Instruction_AND(R_Instruction):
     func3 = '111'
     func7 = '0000000'
     opcode = '0110011'
+    name = 'AND'
 
     def compute_result(self, src1, src2):
         return src1 & src2
@@ -316,6 +321,7 @@ class Instruction_SLL(R_Instruction):
     func3 = '001'
     func7 = '0000000'
     opcode = '0110011'
+    name = 'SLL'
 
     def compute_result(self, src1, src2):
         return src1 << src2
@@ -325,6 +331,7 @@ class Instruction_SRL(R_Instruction):
     func3 = '101'
     func7 = '0000000'
     opcode = '0110011'
+    name = 'SRL'
 
     def compute_result(self, src1, src2):
         return src1 >> src2
@@ -336,6 +343,7 @@ class Instruction_SRA(R_Instruction):
     func3 = '101'
     func7 = '0100000'
     opcode = '0110011'
+    name = 'SRA'
 
     def compute_result(self, src1, src2):
         return src1 >> src2
@@ -345,6 +353,7 @@ class Instruction_SLT(R_Instruction):
     func3 = '010'
     func7 = '0000000'
     opcode = '0110011'
+    name='SLT'
 
     def compute_result(self, src1, src2):
         src1.is_signed = True
@@ -357,6 +366,7 @@ class Instruction_SLTU(R_Instruction):
     func3 = '011'
     func7 = '0000000'
     opcode = '0110011'
+    name = 'SLTU'
 
     def compute_result(self, src1, src2):
         src1.is_signed = False
@@ -368,40 +378,54 @@ class Instruction_SLTU(R_Instruction):
 class Instruction_ADDI(I_Instruction):
     func3 = '000'
     opcode = '0010011'
+    name='ADDI'
 
     def compute_result(self, src1, imm):
        imm.is_signed = True
-       return src1 + imm 
+       return src1 + imm
+
 
 class Instruction_XORI(I_Instruction):
-    func3='100'
-    opcode='0010011'
+    func3 = '100'
+    opcode = '0010011'
+    name = 'XORI'
 
     def compute_result(self, src1, imm):
         return src1 ^ imm
 
+
 class Instruction_ORI(I_Instruction):
-    func3='110'
-    opcode='0010011'
-    
+    func3 = '110'
+    opcode = '0010011'
+    name = 'ORI'
+
     def compute_result(self, src1, imm):
         return src1 | imm
 
+
 class Instruction_ANDI(I_Instruction):
-    func3='111'
-    opcode='0010011'
+    func3 = '111'
+    opcode = '0010011'
+    name = 'ANDI'
 
     def compute_result(self, src1, imm):
         return src1 & imm
 
-class Instruction_SLLI(I_Instruction):
-    func3='001'
-    func7='0000000'
-    opcode='0010011'
 
-    def match_instruction(self, data, bitstream ):
-        super.match_instruction(self, data, bitstream)
-        if(data['i']!= self.func7):
+class Instruction_SLLI(I_Instruction):
+    func3 = '001'
+    func7 = '0000000'
+    opcode = '0010011'
+    name='SLLI'
+
+    def match_instruction(self, data, bitstream):
+        if data['o'] != self.opcode:
+            raise ParseError("Invalid opcode, expected %s, got %s" %
+                             (self.opcode, data['o']))
+        elif data['f'] != self.func3:
+            raise ParseError("Invalid func3, expected %s, got %s" %
+                             (self.func3, data['f']))
+        elif(data['i'] != self.func7):
             raise ParseError("The func7 did not match")
         return True
 
@@ -412,10 +436,17 @@ class Instruction_SRLI(I_Instruction):
     func3='101'
     func7='0000000'
     opcode='0010011'
+    name= "SRLI"
 
     def match_instruction(self, data, bitstream ):
-        super.match_instruction(self, data, bitstream)
-        if(data['i']!= self.func7):
+        if data['o'] != self.opcode:
+            raise ParseError("Invalid opcode, expected %s, got %s" %
+                             (self.opcode, data['o']))
+        elif data['f'] != self.func3:
+            raise ParseError("Invalid func3, expected %s, got %s" %
+                             (self.func3, data['f']))
+ 
+        elif(data['i']!= self.func7):
             raise ParseError("The func7 did not match")
         return True
 
@@ -427,9 +458,17 @@ class Instruction_SRAI(I_Instruction):
     func3='101'
     func7='0100000'
     opcode='0010011'
+    name="SRAI"
 
     def match_instruction(self, data, bitstream ):
-        super.match_instruction(self, data, bitstream)
+        if data['o'] != self.opcode:
+            raise ParseError("Invalid opcode, expected %s, got %s" %
+                             (self.opcode, data['o']))
+        elif data['f'] != self.func3:
+            raise ParseError("Invalid func3, expected %s, got %s" %
+                             (self.func3, data['f']))
+ 
+
         if(data['i']!= self.func7):
             raise ParseError("The func7 did not match")
         return True
@@ -440,8 +479,9 @@ class Instruction_SRAI(I_Instruction):
 class Instruction_SLTI(I_Instruction):
     func3='010'
     opcode='0010011'
+    name='SLTI'
 
-    def match_instruction(self, src1, imm):
+    def compute_result(self, src1, imm):
         src1.is_signed = True
         imm.is_signed = True
         val = 1 if src1 < imm else 0
@@ -450,8 +490,9 @@ class Instruction_SLTI(I_Instruction):
 class Instruction_SLTIU(I_Instruction):
     func3='011'
     opcode='0010011'
+    name = 'SLTIU'
 
-    def match_instruction(self, src1, imm):
+    def compute_result(self, src1, imm):
         src1.is_signed = False
         imm.is_signed = False
         val = 1 if src1 < imm else 0
@@ -461,6 +502,7 @@ class Instruction_MUL(R_Instruction):
     func3='000'
     func7='0000001'
     opcode='0110011'
+    name='MUL'
 
     def compute_result(self, src1, src2):
         return (src1*src2) & self.constant(0xFFFF, Type.int_32)
@@ -469,6 +511,7 @@ class Instruction_MULH(R_Instruction):
     func3='001'
     func7='0000001'
     opcode='0110011'
+    name='MULH'
 
     def compute_result(self, src1, src2):
         return (src1*src2)>>self.constant(32,Type.int_8)
@@ -477,6 +520,7 @@ class Instruction_MULSU(R_Instruction):
     func3='010'
     func7='0000001'
     opcode='0110011'
+    name='MULSU'
 
     def compute_result(self, src1, src2):
         src1.is_signed = True
@@ -487,6 +531,7 @@ class Instruction_MULHU(R_Instruction):
     func3='011'
     func7='0000001'
     opcode='0110011'
+    name='MULHU'
 
     def compute_result(self, src1, src2):
         src1.is_signed = False
@@ -497,6 +542,7 @@ class Instruction_DIV(R_Instruction):
     func3='100'
     func7='0000001'
     opcode='0110011'
+    name='DIV'
 
     def compute_result(self, src1, src2):
         src1.is_signed = True
@@ -507,6 +553,7 @@ class Instruction_DIVU(R_Instruction):
     func3='101'
     func7='0000001'
     opcode='0110011'
+    name='DIVU'
 
     def compute_result(self, src1, src2):
         src1.is_signed = False
@@ -517,6 +564,7 @@ class Instruction_REM(R_Instruction):
     func3='110'
     func7='0000001'
     opcode='0110011'
+    name='REM'
 
     def compute_result(self, src1, src2):
         src1.is_signed = True
@@ -527,6 +575,7 @@ class Instruction_REMU(R_Instruction):
     func3='111'
     func7='0000001'
     opcode='0110011'
+    name ='REMU'
 
     def compute_result(self, src1, src2):
         src1.is_signed = False
@@ -536,6 +585,7 @@ class Instruction_REMU(R_Instruction):
 class Instruction_LB(I_Instruction):
     func3='000'
     opcode='0000011'
+    name='LB'
 
     def compute_result(self, src, imm):
         imm.is_signed = True
@@ -547,6 +597,7 @@ class Instruction_LB(I_Instruction):
 class Instruction_LH(I_Instruction):
     func3='001'
     opcode='0000011'
+    name='LH'
 
     def compute_result(self, src, imm):
         addr = src + imm
@@ -557,6 +608,7 @@ class Instruction_LH(I_Instruction):
 class Instruction_LW(I_Instruction):
     func3='010'
     opcode='0000011'
+    name='LW'
 
     def compute_result(self, src, imm):
         imm.is_signed = True
@@ -568,6 +620,7 @@ class Instruction_LW(I_Instruction):
 class Instruction_LBU(I_Instruction):
     func3='100'
     opcode = '0000011'
+    name='LBU'
 
     def compute_result(self, src, imm):
         imm.is_signed = True
@@ -577,6 +630,7 @@ class Instruction_LBU(I_Instruction):
 class Instruction_LHU(I_Instruction):
     func3='101'
     opcode='0000011'
+    name="LHU"
 
     def compute_result(self, src, imm):
         imm.is_signed = True
@@ -586,6 +640,7 @@ class Instruction_LHU(I_Instruction):
 class Instruction_SB(S_Instruction):
     func3='000'
     opcode= '0100011'
+    name="SB"
 
     def compute_result(self, val):
         return val.cast_to(Type.int_8)
@@ -593,6 +648,7 @@ class Instruction_SB(S_Instruction):
 class Instruction_SH(S_Instruction):
     func3='001'
     opcode= '0100011'
+    name='SH'
 
     def compute_result(self, val):
         return val.cast_to(Type.int_16)
@@ -600,6 +656,7 @@ class Instruction_SH(S_Instruction):
 class Instruction_SW(S_Instruction):
     func3='010'
     opcode= '0100011'
+    name='SW'
 
     def compute_result(self, val):
         return val
@@ -607,6 +664,7 @@ class Instruction_SW(S_Instruction):
 class Instruction_BEQ(B_Instruction):
     func3='000'
     opcode='1100011'
+    name='BEQ'
 
     def compute_result(self, src1, src2, imm):
         addr = self.addr + imm
@@ -615,6 +673,7 @@ class Instruction_BEQ(B_Instruction):
 class Instruction_BNE(B_Instruction):
     func3='001'
     opcode = '1100011'
+    name='BNE'
 
     def compute_result(self, src1, src2, imm):
         addr = self.addr+imm
@@ -623,6 +682,7 @@ class Instruction_BNE(B_Instruction):
 class Instruction_BLT(B_Instruction):
     func3='100'
     opcode='1100011'
+    name='BLT'
 
     def compute_result(self, src1, src2, imm):
         src1.is_signed = True
@@ -633,6 +693,7 @@ class Instruction_BLT(B_Instruction):
 class Instruction_BGE(B_Instruction):
     func3='101'
     opcode = '1100011'
+    name='BGE'
 
     def compute_result(self, src1, src2, imm):
         src1.is_signed = True
@@ -643,6 +704,7 @@ class Instruction_BGE(B_Instruction):
 class Instruction_BLTU(B_Instruction):
     func3='110'
     opcode='1100011'
+    name='BLTU'
 
     def compute_result(self, src1, src2, imm):
         src1.is_signed = False
@@ -653,6 +715,7 @@ class Instruction_BLTU(B_Instruction):
 class Instruction_BGEU(B_Instruction):
     func3='111'
     opcode='1100011'
+    name='BGEU'
 
     def compute_result(self, src1, src2, imm):
         src1.is_signed = False
@@ -663,6 +726,7 @@ class Instruction_BGEU(B_Instruction):
 class Instruction_JALR(I_Instruction):
     func3='000'
     opcode = '1100111'
+    name='JALR'
 
     def compute_result(self, src, imm):
         imm.is_signed = True
@@ -673,6 +737,7 @@ class Instruction_JALR(I_Instruction):
 
 class Instruction_JAL(J_Instruction):
     opcode = '1101111'
+    name='JAL'
 
     def compute_result(self, imm):
         imm.is_signed = True
@@ -683,12 +748,14 @@ class Instruction_JAL(J_Instruction):
 
 class Instruction_LUI(U_Instruction):
     opcode='0110111'
+    name='LUI'
 
     def compute_result(self, imm):
         return imm << self.constant(12, Type.int_8)
 
 class Instruction_AUIPC(U_Instruction):
     opcode='0010111'
+    name='AUIPC'
 
     def compute_result(self, imm):
         return self.addr + (imm << self.constant(12, Type.int_8))

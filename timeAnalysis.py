@@ -25,6 +25,9 @@ import store
 #settings.TARGET_BINARY = "MULEQtestARM"
 ##targetAddress = 0x000104b0 #fun
 
+##objdump = "/usr/arm-linux-gnueabi/bin/objdump"
+objdump = "/home/stefan/Documents/Graduation/RISC-V-toolchain/riscv-gnu-toolchain/build-binutils-newlib/binutils/objdump"
+
 def step0():
     """
     preprocessing
@@ -33,9 +36,9 @@ def step0():
     print("running pre-analysis on %s; function: %s" % (settings.TARGET_BINARY, settings.TARGET_FUNCTION))
     try:
         if settings.TARGET_FUNCTION == "":
-            conditionals = subprocess.check_output("/usr/arm-linux-gnueabi/bin/objdump -d %s | grep -P '\t*(eq|ne|cs|cc|mi|pl|vs|vc|hi|ls|ge|lt|gt|le)(\.w)?\t'" % settings.TARGET_BINARY, shell=True)
+            conditionals = subprocess.check_output("%s -d %s | grep -P '\t*(eq|ne|cs|cc|mi|pl|vs|vc|hi|ls|ge|lt|gt|le)(\.w)?\t'" % (objdump,settings.TARGET_BINARY), shell=True)
         else:
-            conditionals = subprocess.check_output("/usr/arm-linux-gnueabi/bin/objdump -d %s | awk '/<%s>:/{flag=1;next}/<.*>:/{flag=0}flag'| grep -P '\t*(eq|ne|cs|cc|mi|pl|vs|vc|hi|ls|ge|lt|gt|le)(\.w)?\t'" % (settings.TARGET_BINARY, settings.TARGET_FUNCTION), shell=True)
+            conditionals = subprocess.check_output("%s -d %s | awk '/<%s>:/{flag=1;next}/<.*>:/{flag=0}flag'| grep -P '\t*(eq|ne|cs|cc|mi|pl|vs|vc|hi|ls|ge|lt|gt|le)(\.w)?\t'" % (objdump, settings.TARGET_BINARY, settings.TARGET_FUNCTION), shell=True)
         
         print("(possible) conditional instructions identified (note, no jumps to other functions were followed)")
         print(conditionals)
@@ -48,16 +51,13 @@ def step1():
     """
     print("\n==================== Symbolic Execution =====================\n")
     if settings.TARGET_ADDRESS == None:
-        print("target address not set")
         if settings.TARGET_FUNCTION != "":
-            targetAddress = int(subprocess.check_output("/usr/arm-linux-gnueabi/bin/objdump -d %s | awk '/<%s>:/' | grep -o '^[0-9a-f]*'" % (settings.TARGET_BINARY, settings.TARGET_FUNCTION), shell=True), base=16)
+            targetAddress = int(subprocess.check_output("%s -d %s | awk '/<%s>:/' | grep -o '^[0-9a-f]*'" % (objdump, settings.TARGET_BINARY, settings.TARGET_FUNCTION), shell=True), base=16)
         else: 
             #execute the main function.
-            targetAddress = int(subprocess.check_output("/usr/arm-linux-gnueabi/bin/objdump -d %s | awk '/<main>:/' | grep -o '^[0-9a-f]*'" % settings.TARGET_BINARY, shell=True), base=16)
+            targetAddress = int(subprocess.check_output("%s -d %s | awk '/<main>:/' | grep -o '^[0-9a-f]*'" % (objdump, settings.TARGET_BINARY), shell=True), base=16)
     else:
-        print("target address set")
         targetAddress = settings.TARGET_ADDRESS
-    print(hex(targetAddress))
     print("running simple analysis on %s" % settings.TARGET_BINARY)
     b = store.b
     global startState
@@ -76,7 +76,7 @@ def step1():
     startState.options.discard('OPTIMIZE_IR') #OMG make sure to keep this here or optimisation level will be overriden all the time
     tpg = b.factory.simgr(startState, save_unsat = True)
     store.tpg = tpg
-    b.arch.capstone.detail=True #set this so we have access to instruction details required for our timing model
+#    b.arch.capstone.detail=True #set this so we have access to instruction details required for our timing model
     
     #add the self-composition connectors to the self-composition solver
     startState.solver._solver.addInequalityConnector(settings.secret)
