@@ -25,7 +25,7 @@ import store
 #settings.TARGET_BINARY = "MULEQtestARM"
 ##targetAddress = 0x000104b0 #fun
 
-##objdump = "/usr/arm-linux-gnueabi/bin/objdump"
+#objdump = "/usr/arm-linux-gnueabi/bin/objdump"
 objdump = "/home/stefan/Documents/Graduation/RISC-V-toolchain/riscv-gnu-toolchain/build-binutils-newlib/binutils/objdump"
 
 def step0():
@@ -76,7 +76,7 @@ def step1():
     startState.options.discard('OPTIMIZE_IR') #OMG make sure to keep this here or optimisation level will be overriden all the time
     tpg = b.factory.simgr(startState, save_unsat = True)
     store.tpg = tpg
-#    b.arch.capstone.detail=True #set this so we have access to instruction details required for our timing model
+    b.arch.capstone.detail=True #set this so we have access to instruction details required for our timing model
     
     #add the self-composition connectors to the self-composition solver
     startState.solver._solver.addInequalityConnector(settings.secret)

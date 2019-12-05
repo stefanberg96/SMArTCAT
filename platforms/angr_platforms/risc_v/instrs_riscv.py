@@ -29,7 +29,8 @@ class R_Instruction(Instruction):
     func7 = NotImplemented  # binary string of length 7 consisting of the func7 code
     func3 = NotImplemented  # binary string of length 3 consisting of the func3 code
 
-    bin_format = "ooooooodddddfffsssssSSSSSFFFFFFF"
+#    bin_format = "ooooooodddddfffsssssSSSSSFFFFFFF"
+    bin_format = "FFFFFFFSSSSSsssssfffdddddooooooo"
 
     def match_instruction(self, data, bitstream):
         if data['o'] != self.opcode:
@@ -75,7 +76,8 @@ class I_Instruction(Instruction):
     opcode = NotImplemented  # binary string of length 7 consisting of the opcode
     func3 = NotImplemented  # binary string of length 3 consisting of the func3 code
 
-    bin_format = "ooooooodddddfffsssssIIIIIiiiiiii"
+#    bin_format = "ooooooodddddfffsssssIIIIIiiiiiii"
+    bin_format =  "iiiiiiiIIIIIsssssfffdddddooooooo"
 
     '''In the shift instruction extend this function to also check the last 7 bits of the immediate'''
 
@@ -95,10 +97,11 @@ class I_Instruction(Instruction):
         return self.get(int(self.data['s'], 2), Type.int_32)
 
     def get_imm(self):
-        return self.constant(int(self.data['I'].append(self.data(['i'])), 2), Type.int_32)
+        data = "{0}{1}".format(self.data['I'],self.data['i'])
+        return self.constant(int(data , 2), Type.int_32)
 
     def get_shift_amount(self):
-        return self.constant(int(self.data['I'], 2), Type.int_32)
+        return self.constant(int(self.data['I'], 2), Type.int_8)
 
     def get_optional_func7(self):
         return self.data['i']
@@ -123,7 +126,8 @@ class S_Instruction(Instruction):
     opcode = NotImplemented  # binary string of length 7 consisting of the opcode
     func3 = NotImplemented  # binary string of length 3 consisting of the func3 code
 
-    bin_format = 'oooooooiiiiifffsssssSSSSSIIIIIII'
+#    bin_format = 'oooooooiiiiifffsssssSSSSSIIIIIII'
+    bin_format = 'IIIIIIISSSSSsssssfffiiiiiooooooo'
 
     def match_instruction(self, data, bitstream):
         if data['o'] != self.opcode:
@@ -168,7 +172,8 @@ class B_Instruction(Instruction):
     opcode = NotImplemented  # binary string of length 7 consisting of the opcode
     func3 = NotImplemented  # binary string of length 3 consisting of the func3 code
 
-    bin_format = 'oooooooiiiiifffsssssSSSSSIIIIIII'
+#    bin_format = 'oooooooiiiiifffsssssSSSSSIIIIIII'
+    bin_format = 'IIIIIIISSSSSsssssfffiiiiiooooooo'
 
     def match_instruction(self, data, bitstream):
         if data['o'] != self.opcode:
@@ -190,10 +195,10 @@ class B_Instruction(Instruction):
     def get_offset(self):
         begin = self.data['i'][1:4]
         middle = self.data['I'][0:5]
-        x = self.data['i'][5]
+        x = self.data['i'][0]
         sign = self.data['I'][6]
-        offset = begin.append(middle).append(x).append(sign)
-        val = self.constant(int(offset, 2), Type.int__32)
+        offset = "{0}{1}{2}{3}".format(begin, middle, x, sign)
+        val = self.constant(int(offset, 2), Type.int_32)
         val.is_signed = True
         return val
 
@@ -211,7 +216,8 @@ class U_Instruction(Instruction):
 
     opcode = NotImplemented  # binary string of length 7 consisting of the opcode
 
-    bin_format = 'ooooooodddddiiiiiiiiiiiiiiiiiiii'
+#    bin_format = 'ooooooodddddiiiiiiiiiiiiiiiiiiii'
+    bin_format = 'iiiiiiiiiiiiiiiiiiiiddddd0000000'
 
     def match_instruction(self, data, bitstream):
         if data['o'] != self.opcode:
@@ -242,7 +248,8 @@ class J_Instruction(Instruction):
 
     opcode = NotImplemented  # binary string of length 7 consisting of the opcode
 
-    bin_format = 'ooooooodddddiiiiiiiiiiiiiiiiiiii'
+#    bin_format = 'ooooooodddddiiiiiiiiiiiiiiiiiiii'
+    bin_format = 'iiiiiiiiiiiiiiiiiiiiddddd0000000'
 
     def match_instruction(self, data, bitstream):
         if data['o'] != self.opcode:

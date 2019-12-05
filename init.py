@@ -8,6 +8,7 @@ def init():
     import pyvex
     import angr
     import pluginTime
+    from platforms.angr_platforms import risc_v
     print("Initialized execution time plugin")
     import metaPlugin
     print("Initialized meta-state plugin")
@@ -32,7 +33,7 @@ def init():
     
     import store
     store.b = angr.Project(settings.TARGET_BINARY)
-    store.b.arch.capstone.detail=True #set this so we have access to instruction details required for our timing model
+#    store.b.arch.capstone.detail=True #set this so we have access to instruction details required for our timing model
     store.b.factory.default_engine._default_opt_level = 0
     print("Loaded binary %s" % settings.TARGET_BINARY)
     
