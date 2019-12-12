@@ -26,7 +26,7 @@ class ArchRISCV(Arch):
 
     register_list = [
        Register(name="x0", size = 4, alias_names=('zero',), vex_offset=0, default_value=(0,False, 0)),
-       Register(name='x1', size = 4, alias_names=('ra',), general_purpose=True, vex_offset = 4),
+       Register(name='x1', size = 4, alias_names=('ra','lr',), general_purpose=True, vex_offset = 4),
        Register(name='x2', size = 4, alias_names=('sp',), general_purpose=True, default_value=(Arch.initial_sp, True, 'global'), vex_offset=8),
        Register(name='x3', size = 4, alias_names=('gp',), general_purpose=True, vex_offset=12),
        Register(name='x4', size = 4, alias_names=('tp',), general_purpose=True, vex_offset=16),

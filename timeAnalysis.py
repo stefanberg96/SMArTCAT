@@ -88,8 +88,9 @@ def step1():
     for i in range(0,10):
         try:
             if i == 0:
-                tpg.explore(**settings.PG_EXPLORE_ARGUMENTS)
+                tpg.explore(**settings.PG_EXPLORE_ARGUMENTS, n=1000)
             if len(tpg.errored) > 0 or len(tpg.active) > 0:
+                pass
                 tpg.run()
         except (MemoryError, resource.error):
             print("ran out of memory... freeing memory")

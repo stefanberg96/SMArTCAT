@@ -154,11 +154,11 @@ def computePipelineTime(_self, state, stmt):
         
         #we're performing double disassembling because the lifter is also doing it... probably not the most efficient thing... but it doesn't seem to be a bottleneck
         insn = next(cs.disasm(bytes, stmt.addr))
-        props = Properties(insn)
+        #props = Properties(insn)
         
         if settings.VERBOSE:
             print("%x:\t%s\t%s" % (insn.address, insn.mnemonic, insn.op_str))
-        
+        return
         if insn.address == settings.WARNING_ADDRESS and settings.WARNING_MOMENT == settings.WARNING_BEFORE:
             warningFunc(_self, props, insn, timingModel)
         
