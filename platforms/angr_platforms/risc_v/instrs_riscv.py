@@ -144,10 +144,10 @@ class S_Instruction(RISCV_Instruction):
     '''This is the address + offset'''
 
     def get_addr(self):
-        addr = int(self.data['s'], 2)
+        addr = self.get(int(self.data['s'], 2), Type.int_32)
+        
         offset = BitArray(bin = '{0}{1}'.format(self.data['I'], self.data['i'])).int
-        res =  self.constant(addr + offset, Type.int_32)
-        return res
+        return addr+offset
 
     '''Value is returned as int32 caller must cast it to store half words or bytes'''
 

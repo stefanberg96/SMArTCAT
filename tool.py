@@ -117,6 +117,7 @@ if not settings.PC_ONLY:
     sys.stdout.flush()
     
     symbols = solver.symbols()
+    
     if not (public in symbols and secret in symbols and time in symbols):
         print("program execution constraints do not depend on both public and secret symbols")
     elif not public in symbols:

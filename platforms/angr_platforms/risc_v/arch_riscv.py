@@ -20,14 +20,14 @@ class ArchRISCV(Arch):
     max_inst_bytes = 4
     instruction_alignment = 4
     persistent_regs = []
-    ret_instruction=b"\x37\x00\x08\x00"
+    ret_instruction=b"\x00\x00\x80\x67"
     nop_instruction=b"\x13\x00\x00\x00"
     elf_tls = TLSArchInfo(1, 8, [], [0], [], 0, 0)
 
     register_list = [
        Register(name="x0", size = 4, alias_names=('zero',), vex_offset=0, default_value=(0,False, 0)),
        Register(name='x1', size = 4, alias_names=('ra','lr',), general_purpose=True, vex_offset = 4),
-       Register(name='x2', size = 4, alias_names=('sp',), general_purpose=True, default_value=(Arch.initial_sp, True, 'global'), vex_offset=8),
+       Register(name='x2', size = 4, alias_names=('sp','bp'), general_purpose=True, default_value=(Arch.initial_sp, True, 'global'), vex_offset=8),
        Register(name='x3', size = 4, alias_names=('gp',), general_purpose=True, vex_offset=12),
        Register(name='x4', size = 4, alias_names=('tp',), general_purpose=True, vex_offset=16),
        Register(name='x5', size = 4, alias_names=('t0',), general_purpose=True, vex_offset=20),
@@ -59,6 +59,5 @@ class ArchRISCV(Arch):
        Register(name='x31', size = 4, alias_names=('t6',), general_purpose=True, vex_offset=124),
        Register(name='ip', alias_names={'pc',}, size=4, vex_offset=128),
     ]
-
 
 register_arch([r'riscv32|riscv|RISCV|em_riscv|em_riscv32'], 32, 'Iend_LE' , ArchRISCV)

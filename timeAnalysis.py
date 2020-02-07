@@ -80,31 +80,35 @@ def step1():
     
     #add the self-composition connectors to the self-composition solver
     startState.solver._solver.addInequalityConnector(settings.secret)
+    # add constraints defined in the settings
+    for con in settings.constraints:
+        startState.solver._solver.add(con)
     
     import resource
     import gc
     import timingModel
+    from angr.exploration_techniques import LoopSeer
+
 
     for i in range(0,10):
         try:
-            if i == 0:
-                tpg.explore(**settings.PG_EXPLORE_ARGUMENTS, n=1000)
-            if len(tpg.errored) > 0 or len(tpg.active) > 0:
-                pass
-                tpg.run()
+                if i == 0:
+                    tpg.explore(**settings.PG_EXPLORE_ARGUMENTS, n=1000)
+                if len(tpg.errored) > 0 or len(tpg.active) > 0:
+                    tpg.run()
         except (MemoryError, resource.error):
-            print("ran out of memory... freeing memory")
-            if len(store.tpg.active) > 0:
-                store.tpg.active[0].state.se._solver._solver_backend.downsize()
-            if i % 20 == 0:
-                timingModel.cacheSwitchInstances = {}
-                timingModel.branchSwitchInstances = {}
-            gc.collect()
-            print("continuing analysis...")
+                print("ran out of memory... freeing memory")
+                if len(store.tpg.active) > 0:
+                    store.tpg.active[0].state.se._solver._solver_backend.downsize()
+                if 2 % 20 == 0:
+                    timingModel.cacheSwitchInstances = {}
+                    timingModel.branchSwitchInstances = {}
+                gc.collect()
+                print("continuing analysis...")
 
     print("\n-------------------------------------------------------------\n")
     print("Finished execution")
-    step1_1(tpg.deadended)
+    step1_1(tpg.unconstrained)
     
 def step1_1(pathList):
     print("identified %d distinct paths" % len(pathList))
