@@ -47,8 +47,6 @@ class PluginTime(SimStatePlugin):
         self.registers = {} #timewise availability of registers in this state
         self.memory = {} #timewise availability of memory in this state
 
-        self.canLastInsnDualWithYounger = claripy.false
-        self.didLastInsnDualIssue = claripy.false
         
         self.lastInsn = None #(insn, format)
         
@@ -58,7 +56,6 @@ class PluginTime(SimStatePlugin):
             self.registers = time.registers
             self.memory = time.memory
             self.lastInsn = time.lastInsn
-            self.canLastInsnDualWithYounger = time.canLastInsnDualWithYounger
             self.instructionCount = time.instructionCount
 
     def countTime(self, deltaTime, compositionCheck=None, props=None, dependencies=None):
@@ -168,7 +165,7 @@ class PluginTime(SimStatePlugin):
         self.__init__()
         self.state = s
 
-    def updateTimeFromDependencies(self, regs, memory, testBubble):
+    def updateTimeFromDependencies(self, regs, memory):
         """
         Sets the execution time to the max of the execution time and the time required to access the dependencies.
         The max function is symbolic so it can handle symbolic expressions with overlapping feasibility space
@@ -206,10 +203,6 @@ class PluginTime(SimStatePlugin):
                         if settings.VERBOSE:
                             print("Waiting for %s..." % registerName)
                     regsInfluencingMaxTime.append(r)
-                    if testBubble:
-                        bubble = claripy.Or(bubble, compute)
-                elif testBubble:
-                        dualPrevented = claripy.Or(dualPrevented, self.registers[r][0] == self.totalExecutionTime)
 
         #check whether we have to wait for a memory
         for m in memory:
@@ -231,11 +224,7 @@ class PluginTime(SimStatePlugin):
                             else:
                                 print("Waiting for memory [%s]..." % m)
                     memsInfluencingMaxTime.append(m)
-                    if testBubble:
-                        bubble = claripy.Or(bubble, compute)
-                elif testBubble:
-                    dualPrevented = claripy.Or(dualPrevented, self.memory[m][0] == self.totalExecutionTime)
-        
+
         global type1violations
         global type2violations
         global type3violations

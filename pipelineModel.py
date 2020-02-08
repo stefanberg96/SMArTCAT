@@ -47,41 +47,11 @@ LATENCY_STRATEGY_LONGEST_IF_NONSECRET_MEMORY = 9
 
 
 def parseReg(reg):
-    if reg in SPECIAL_REG_MAPPING:
-        return SPECIAL_REG_MAPPING[reg]
-    elif reg != None:
-        return reg#.encode('ascii', 'ignore')
-    else:
-        print("Tried to parse None reg")
-
+    ''' returns the register number as x$reg'''
+    return "x"+str(reg)
 
 _shift = None        
 noneRegInsn = None
-def computeMultiMemLocs(insn, state):
-    """computes a list of memory locations from an LDM or STM instruction"""
-    locationCount = len(insn.operands)
-    if insn.insn_name() == "pop" or insn.insn_name() == "push":
-        locationCount += 1
-        baseVal = state.regs.get('sp')
-    else:
-        theRegister = insn.operands[0].reg              #
-        if theRegister == None:                         #   not sure if this is the right approach
-            theRegister = insn.operands[0].mem.base     #
-        baseReg = state.meta.factory._project.arch.capstone.reg_name(theRegister)
-        baseVal = state.regs.get(parseReg(baseReg)) if insn.operands[0].reg != 0 else 0
-    if insn.insn_name() in ["stmib", "stm", "ldmib", "ldm", "pop"]:
-        step = 1    #increment
-    else:
-        step = -1   #decrement
-    if insn.insn_name() in ["stmib", "ldmib", "stmdb", "ldmdb", "push"]:
-        start = 1
-    else:
-        start = 0
-    addresses = []
-    for i in range(0,locationCount):
-        address = baseVal+ (start*step + i*step)*MEMORY_ADDRESSES_PER_INT
-        addresses.append(address)
-    return addresses
 
 def computeMemLocation(operand, state):
     """
@@ -96,32 +66,7 @@ def computeMemLocation(operand, state):
         global noneRegInsn
         noneRegInsn = operand
     baseVal = state.regs.get(parseReg(baseReg)) if memOperand.base != 0 else 0
-    indexVal = state.regs.get(parseReg(indexReg)) if memOperand.index != 0 else 0
-    if memOperand.lshift != 0:
-        if index != 0:
-            indexVal <<= memOperand.lshift
-        else:
-            baseVal <<= memOperand.lshift
-    elif operand.shift != None and operand.shift.type != 0:
-        global _shift
-        _shift = operand.shift
-        if operand.shift.type == capcon.ARM_SFT_ASR:
-            indexVal = indexVal.__rshift__(operand.shift.value)
-        elif operand.shift.type == capcon.ARM_SFT_LSL:
-            indexVal = indexVal.__lshift__(operand.shift.value)
-        elif operand.shift.type == capcon.ARM_SFT_LSR:
-            indexVal = claripy.LShR(indexVal,operand.shift.value)
-        elif operand.shift.type == capcon.ARM_SFT_ROR:
-            indexVal = indexVal.__ror__(operand.shift.value)
-        elif operand.shift.type == capcon.ARM_SFT_RRX:
-            carryflag = ccall.armg_calculate_flag_c(state, state.regs.cc_op, state.regs.cc_dep1, state.regs.cc_dep2, state.regs.cc_ndep)
-            indexVal = carryflag[0][0].concat(indexVal[31:1])
-        else:
-            print("Warning, register based register shift not modelled")
-            
-    if operand.subtracted:
-        index = -index
-    return (baseVal + indexVal*memOperand.scale + memOperand.disp)
+    return (baseVal + memOperand.disp)
     
 
 def warningFunc(_self, props, insn, timingModel, dependencies = None):    
@@ -168,17 +113,6 @@ def computePipelineTime(_self, state, stmt):
         #registers = insn.regs_access() #actually don't want to use this, might just use insn.operands and loop over it... since it containts regs and mem as well
         dependencies = [set(),set()]
         
-        #Manage accumulator register:
-        accReg = props.accumulatorReg()
-            
-        #decrease timing for late regs and increase for early regs. (only for this instruction, we correct this at the end of this instruction)
-        altRegTimings = props.altRegTimings()
-        for r in altRegTimings:
-            if r[0] in registers: #If the register wasn't in the plugin's registers yet, there's no need to decrement time
-                registers[r[0]][0] -= r[1]
-            
-        canDualIssueAsYounger = props.canDualIssueAsYounger()
-            
         #maintain list of semiBypassedRegs for cleanup
         semiBypassedRegs = []
         canReceiveSemiBypass = props.canReceiveSemiBypass()
@@ -186,17 +120,11 @@ def computePipelineTime(_self, state, stmt):
         for operand in insn.operands:
             if operand.access == cap.CS_AC_READ:
                 if operand.type == cap.CS_OP_REG:
-                    if not (operand.reg == accReg and registers[accReg][3].canForwardToAccumulator() and not registers[accReg][3].isRdHi(operand.reg)): #in case of an accumulator reg, just skip the register
-                        if (operand.reg == accReg and registers[accReg][3].canForwardToAccumulator()): #it is actually an accumulator reg but the register was written by a RdHi, so implement half-bypass by subtracting 1 from reg
-                            registers[operand.reg][0] -= 1
-                        dependencies[0].add(operand.reg)
-                        #check whether this insn can receive a semi-bypass:
-                        if canReceiveSemiBypass and operand.reg in registers and not registers[operand.reg][3].resultsBypassed:
-                            semiBypassedRegs.append(operand.reg)
-                    #check whether can dual issue with previous instruction
-                    if canDualIssueAsYounger and operand.reg in registers and registers[operand.reg][2] == timeplugin.lastInsn[0]:
-                        canDualIssueAsYounger = False #if this instruction depends on the previous instruction, it cannot dual issue with it
-                elif operand.type == cap.CS_OP_MEM:
+                    dependencies[0].add(operand.reg)
+                    #check whether this insn can receive a semi-bypass:
+                    if canReceiveSemiBypass and operand.reg in registers and not registers[operand.reg][3].resultsBypassed:
+                        semiBypassedRegs.append(operand.reg)
+                elif operand.type == cap.CS_OP_MEM: #TODO Think about how to do memory
                     dependencies[0].add(operand.reg) #this is the register which determines the memory location
                     if (operand.mem.index != 0):
                         dependencies[0].add(operand.mem.index) #this is the register which determines the memory location
@@ -210,43 +138,19 @@ def computePipelineTime(_self, state, stmt):
                                 registers[operand.mem.index][0] += 1
             elif operand.access == cap.CS_AC_WRITE and operand.type == cap.CS_OP_MEM:
                 dependencies[0].add(operand.reg)
-                if (operand.mem.index != 0):
-                    dependencies[0].add(operand.mem.index) #this is the register which determines the memory location
                 memloc = computeMemLocation(operand, state)
                 dependencies[1].add(memloc)
-                if operand.mem.lshift != 0: #if shift and register already in timeplugin
-                    if operand.mem.index == 0:  #there's no index register, shift is applied to base reg:
-                        if operand.reg in registers:
-                            registers[operand.reg][0] += 1
-                    elif operand.mem.index in registers: #shift is applied to index reg:
-                            registers[operand.mem.index][0] += 1
-                                
           
-        #add memory address list for multi mem access:
-        if props.stm or props.ldm or props.pop or props.push:
-            dependencies = (dependencies[0], dependencies[1].union(set(computeMultiMemLocs(insn, state))))
-            if props.pop or props.push:
-                dependencies[0].add(REG_MAPPING['sp']) #add sp as pop and push depend on it
-            
         #perform semi-bypasses
         for r in semiBypassedRegs:
             registers[r][0] -= 1 #we don't care about taking into account that latency cannot be less than 1 cycle, because issue time will prevent instructions from executing too early like that
             registers[r][3].resultsBypassed = True
             
-        #add implicitly read registers to dependencies
-        for reg in insn.regs_read:
-            dependencies[0].add(reg)
-                 
-        #add flag registers to dependencies
-        if insn.cc != 0 and insn.cc != 15:
-            dependencies[0].add(pluginTime.FLAGS_REGISTER)
-                 
-                 
         #print "started updating time from depependencies"
                  
         #update current time to max of current time and availability of registers
         #if the instruction can dual issue as younger, immediately see whether there is a bubble or dual issuing is otherwise prevented
-        (bubble, dualPrevented) = timeplugin.updateTimeFromDependencies(dependencies[0], dependencies[1], canDualIssueAsYounger)
+        timeplugin.updateTimeFromDependencies(dependencies[0], dependencies[1])
                  
         #if insn.address == settings.WARNING_ADDRESS:
         #    print dependencies
@@ -257,59 +161,22 @@ def computePipelineTime(_self, state, stmt):
             if props.str:
                 if insn.operands[0].reg in dependencies[0]:
                     dependencies[0].remove(insn.operands[0].reg)
-                elif insn.insn_name() == "strex" and insn.operands[1].reg in dependencies[0]:
-                    dependencies[0].remove(insn.operands[1].reg)
-            if props.stm:   #somehow, registers in register list for push instruction don't have a acces type read, but acces type value 3, which doesn't exist. long story sthort: push doesn't have to be modelled
-                for i in range(1,len(insn.operands)):
-                    if insn.operands[i].reg in dependencies[0]:
-                        dependencies[0].remove(insn.operands[i].reg)
-                    #else:
-                    #    print "warning, reg not found in dependencies list!"
-                    #    print dependencies[0]
-                    #    print insn.operands[i].reg
             depends.extend(dependencies[1]) #these are the memory addresses accessed by the instruction, self-composition can determine whether they are secret-dependent.
             for r in dependencies[0]:
-                if r != -1:
-                    regname = state.meta.factory.project.arch.capstone.reg_name(r)
-                    regval = state.regs.get(parseReg(regname)) if insn.operands[0].reg != 0 else 0
-                else:
-                    #add flag register dependency:
-                    regval = timingModel.computeCondition(insn.cc-1, state)
+                regname = state.meta.factory.project.arch.capstone.reg_name(r)
+                regval = state.regs.get(parseReg(regname)) if insn.operands[0].reg != 0 else 0
                 depends.append(regval)
                 #print "regname: %s" % regname
                 #print "regval: %s" % (regval,)
+        #TODO if conditional branch add the value of the register to the depends
         if props.isTrueBranch():
-            if insn.insn_name() == "blx":
-                for r in dependencies[0]:
-                    if r != -1:
-                        regname = state.meta.factory.project.arch.capstone.reg_name(r)
-                        regval = state.regs.get(parseReg(regname)) if insn.operands[0].reg != 0 else 0
-                    else:
-                        #add flag register dependency:
-                        regval = timingModel.computeCondition(insn.cc-1, state)
-                    depends.append(regval)
-            else:
-                depends.append(pluginTime.FLAGS_REGISTER) #b and bl are true branches iff they are conditional, which creates the only dependency. flags register is already in dependencies[0] for blx
-        
-        if canDualIssueAsYounger: #nothing has yet prevented this instruction from dual issuing
-            #we can dual issue if there was no pipeline dualPrevented and the last instruction can dual issue as older.
-            dualIssue = claripy.And(claripy.Not(dualPrevented), timeplugin.canLastInsnDualWithYounger)
-            #if we dual issue, we don't increment the time, otherwise we do
-            if state.solver.satisfiable([dualIssue]):
-                if state.solver.satisfiable([claripy.Not(dualIssue)]):
-                    #symbolically dual issue
-                    dualLatencyCompensation = claripy.If(dualIssue, claripy.BVV(1, 32), claripy.BVV(0, 32))
-                else:
-                    #always dual issue
-                    dualLatencyCompensation = 1
-            else:
-                #never dual issue
-                dualLatencyCompensation = 0
-        else:
-            #never dual issue
-            dualLatencyCompensation = 0
+            for r in dependencies[0]:
+                regname = state.meta.factory.project.arch.capstone.reg_name(r)
+                regval = state.regs.get(parseReg(regname)) if insn.operands[0].reg != 0 else 0
+                depends.append(regval)
         
         #2 get issuing time and result latencies for this instruction
+        #TODO
         timing = timingModel.time(props, insn, state)
         
         #the strategyEffect switch tells whether we should follow a concretization strategy for latency on the current run.
@@ -321,16 +188,10 @@ def computePipelineTime(_self, state, stmt):
             result = None
             if props.hasSpecialLatencyNeeds():
                 lattiming = timingModel.time(props, insn, state, reg)
-                #check if there is a special timing case for the flag register, otherwise return issue time:
-                if reg == pluginTime.FLAGS_REGISTER and lattiming[1] == None:
-                    result = lattiming[0]
             else:
                 lattiming = timing
             if result == None:
-                if reg == pluginTime.FLAGS_REGISTER:
-                    result = lattiming[0] #flags register is updated at issue time
-                else:
-                    result = lattiming[1]
+                result = lattiming[1]
             if type(result) == claripy.ast.bv.BV:
                 if strategyEffect:
                     solverCopy = state.solver._stored_solver.branch()
@@ -342,7 +203,6 @@ def computePipelineTime(_self, state, stmt):
                         result = solverCopy.max(result)
                 else:
                     result = claripy.backends.z3.simplify(result)
-            result =  result-dualLatencyCompensation
             if isinstance(result, float) and  result.is_integer():
                  return int(result)
             return result
@@ -382,69 +242,19 @@ def computePipelineTime(_self, state, stmt):
             if operand.access == cap.CS_AC_WRITE:
                 if operand.type == cap.CS_OP_REG:
                     latencyReg = getLatency(operand.reg)
-                    latencyEntry = [getLatency(operand.reg) + timeplugin.totalExecutionTime, channelInstruction, insn, props]
-                    if insn.writeback and operand == insn.operands[0] and operand.reg in registers: #the writeback availability relies on base address availability
-                        alternativeTimeAvailability = 0
-                        for r in altRegTimings: #determine whether the timing was changed (it probably was because this entire scenario is written for writeback registers)
-                            if r[0] == operand.reg:
-                                alternativeTimeAvailability = r[1]  #relative time offset
-                                break
-                        latency = au.symMax(latencyEntry[0], registers[operand.reg][0]+1+alternativeTimeAvailability, state.solver._solver)
-                        writebackEntry = [latency, latencyEntry[1], latencyEntry[2], latencyEntry[3]]
-                        registers[operand.reg] = writebackEntry
-                        writtenRegs.append(operand.reg)
-                    else:
-                        registers[operand.reg] = latencyEntry
-                        writtenRegs.append(operand.reg)
+                    latencyEntry = [latencyReg + timeplugin.totalExecutionTime, channelInstruction, insn, props]
+                    registers[operand.reg] = latencyEntry
+                    writtenRegs.append(operand.reg)
                 elif operand.type == cap.CS_OP_MEM:
                     memloc = computeMemLocation(operand, state)
                     latencyEntry = [getLatency(timingModel.MEMORY_PLACEHOLDER) + timeplugin.totalExecutionTime, channelInstruction, insn, props]
                     timeplugin.memory[memloc] = latencyEntry
                     
-        #writes to implicit registers:
-        for r in insn.regs_write:
-            latencyEntry = [getLatency(r) + timeplugin.totalExecutionTime, channelInstruction, insn, props]
-            registers[r] = latencyEntry
-            writtenRegs.append(r)
-        
-        #writes to flag registers:
-        #(virtually available 1 cycle earlier than latency)
-        if insn.update_flags != 0:
-            latencyEntry = [getLatency(pluginTime.FLAGS_REGISTER) + timeplugin.totalExecutionTime, channelInstruction, insn, props]
-            registers[pluginTime.FLAGS_REGISTER] = latencyEntry
-            writtenRegs.append(pluginTime.FLAGS_REGISTER)
-        
         #print "starting counttime update"
         
         
         #5 update current time
-        if canDualIssueAsYounger: #nothing has yet prevented this instruction from dual issuing
-            #if we dual issue, we don't increment the time, otherwise we do
-            if state.solver.satisfiable([dualIssue]):
-                if state.solver.satisfiable([claripy.Not(dualIssue)]):
-                    possibleDualIssueTime = claripy.If(dualIssue, claripy.BVV(0, 32), timing[0])    #symbolic dual issue
-                    timeplugin.canLastInsnDualWithYounger = claripy.Not(dualIssue)
-                    timeplugin.didLastInsnDualIssue = dualIssue
-                else:
-                    possibleDualIssueTime = claripy.BVV(0, 32)  #always dual issue
-                    timeplugin.canLastInsnDualWithYounger = claripy.false
-                    timeplugin.didLastInsnDualIssue = claripy.true
-            else:
-                possibleDualIssueTime = timing[0] #don't dual issue
-                timeplugin.canLastInsnDualWithYounger = claripy.true
-                timeplugin.didLastInsnDualIssue = claripy.false
-                
-            violation = timeplugin.countTime(possibleDualIssueTime, compositionCheck=insn, props=props, dependencies=depends)
-            #if we didn't dual issue now, that means this instruction is available to dual issue as older with the next instruction (since all instructions which can dual issue as younger can also dual issue as older)
-        else:
-            #no dual issue possible, so count the time and set whether this instruction can dual issue as older for the following instruction
-            violation = timeplugin.countTime(timing[0], compositionCheck=insn, props=props, dependencies=depends)
-            if props.canDualIssueAsOlder():
-                timeplugin.canLastInsnDualWithYounger = claripy.true
-            else:
-                timeplugin.canLastInsnDualWithYounger = claripy.false
-            timeplugin.didLastInsnDualIssue = claripy.false
-        
+        violation = timeplugin.countTime(timing[0], compositionCheck=insn, props=props, dependencies=depends)
         
         #6 roundup
         if violation:
@@ -457,10 +267,6 @@ def computePipelineTime(_self, state, stmt):
         
         
         #7 cleanup
-        for r in altRegTimings: #cleanup early and late regs latency
-            if r[0] in registers and r[0] not in writtenRegs:
-                registers[r[0]][0] += r[1]
-            
         for r in semiBypassedRegs: #cleanup latency of semi bypassed registers
             if r not in writtenRegs:
                 registers[r][0] += 1

@@ -94,16 +94,6 @@ def time(props, insn, state, reg=None):
     """
     timing = props.timeTupleTuple()
     
-    if props.hasSpecialLatencyNeeds():
-        specialLatency = props.specialLatency()
-        if reg in specialLatency:
-            timing[1] = props.specialLatency()[reg]
-        elif reg == MEMORY_PLACEHOLDER:
-            timing[1] = props.specialLatency().items()[0]
-        else:
-            timing[1] = (None, None)
-            
-    
     if props.isMemInsn():
         timing = [[timing[0][0],timing[0][1]],[timing[1][0],timing[1][1]]]
         if props.ldr or props.ldm or props.pop:
@@ -139,11 +129,6 @@ def time(props, insn, state, reg=None):
             #state.se._solver.addConnector(claripy.Or(state.se._solver.symbolCopies(branchMissInstance)[1] == 0, state.se._solver.symbolCopies(branchMissInstance)[1] == 1))
             #timing[0][0] = claripy.If(branchMissInstance == 1, claripy.BVV(timing[0][0]+flushtime, 32), claripy.BVV(timing[0][0], 32))
             #timing[0][1] = claripy.If(branchMissInstance == 1, claripy.BVV(timing[0][1]+flushtime, 32), claripy.BVV(timing[0][1], 32))
-    elif props.isEffectiveBranch():
-        #model issue time / bailout increase
-        timing = ((timing[0][0]+9, timing[0][1]+1),timing[1])
-        #timing[0][0] += 9   #branching time
-        #timing[0][1] += 1   #bailout time
     
     if timing == None:
         if props.format == None:
