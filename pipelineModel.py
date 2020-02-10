@@ -60,12 +60,11 @@ def computeMemLocation(operand, state):
     """
     memOperand = operand.mem
     baseReg = state.meta.factory.project.arch.capstone.reg_name(memOperand.base)
-    indexReg = state.meta.factory.project.arch.capstone.reg_name(memOperand.index)
     
-    if indexReg == None or baseReg == None:
+    if baseReg == None:
         global noneRegInsn
         noneRegInsn = operand
-    baseVal = state.regs.get(parseReg(baseReg)) if memOperand.base != 0 else 0
+    baseVal = state.regs.get(baseReg) if memOperand.base != 0 else 0
     return (baseVal + memOperand.disp)
     
 
@@ -103,7 +102,7 @@ def computePipelineTime(_self, state, stmt):
         
         if settings.VERBOSE:
             print("%x:\t%s\t%s" % (insn.address, insn.mnemonic, insn.op_str))
-        return
+
         if insn.address == settings.WARNING_ADDRESS and settings.WARNING_MOMENT == settings.WARNING_BEFORE:
             warningFunc(_self, props, insn, timingModel)
         
@@ -126,16 +125,8 @@ def computePipelineTime(_self, state, stmt):
                         semiBypassedRegs.append(operand.reg)
                 elif operand.type == cap.CS_OP_MEM: #TODO Think about how to do memory
                     dependencies[0].add(operand.reg) #this is the register which determines the memory location
-                    if (operand.mem.index != 0):
-                        dependencies[0].add(operand.mem.index) #this is the register which determines the memory location
                     memloc = computeMemLocation(operand, state)
                     dependencies[1].add(memloc)
-                    if operand.mem.lshift != 0: #if shift and register already in timeplugin
-                        if operand.mem.index == 0:  #there's no index register, shift is applied to base reg:
-                            if operand.reg in registers:
-                                registers[operand.reg][0] += 1
-                        elif operand.mem.index in registers: #shift is applied to index reg:
-                                registers[operand.mem.index][0] += 1
             elif operand.access == cap.CS_AC_WRITE and operand.type == cap.CS_OP_MEM:
                 dependencies[0].add(operand.reg)
                 memloc = computeMemLocation(operand, state)
@@ -164,7 +155,7 @@ def computePipelineTime(_self, state, stmt):
             depends.extend(dependencies[1]) #these are the memory addresses accessed by the instruction, self-composition can determine whether they are secret-dependent.
             for r in dependencies[0]:
                 regname = state.meta.factory.project.arch.capstone.reg_name(r)
-                regval = state.regs.get(parseReg(regname)) if insn.operands[0].reg != 0 else 0
+                regval = state.regs.get(regname) if insn.operands[0].reg != 0 else 0
                 depends.append(regval)
                 #print "regname: %s" % regname
                 #print "regval: %s" % (regval,)
@@ -172,7 +163,7 @@ def computePipelineTime(_self, state, stmt):
         if props.isTrueBranch():
             for r in dependencies[0]:
                 regname = state.meta.factory.project.arch.capstone.reg_name(r)
-                regval = state.regs.get(parseReg(regname)) if insn.operands[0].reg != 0 else 0
+                regval = state.regs.get(regname) if insn.operands[0].reg != 0 else 0
                 depends.append(regval)
         
         #2 get issuing time and result latencies for this instruction
@@ -185,13 +176,8 @@ def computePipelineTime(_self, state, stmt):
             """
             gets actually latency from above timing variable or from a new register-based latency fetch for certain instructions.
             """
-            result = None
-            if props.hasSpecialLatencyNeeds():
-                lattiming = timingModel.time(props, insn, state, reg)
-            else:
-                lattiming = timing
-            if result == None:
-                result = lattiming[1]
+            result = timing[1]
+
             if type(result) == claripy.ast.bv.BV:
                 if strategyEffect:
                     solverCopy = state.solver._stored_solver.branch()
@@ -203,6 +189,7 @@ def computePipelineTime(_self, state, stmt):
                         result = solverCopy.max(result)
                 else:
                     result = claripy.backends.z3.simplify(result)
+
             if isinstance(result, float) and  result.is_integer():
                  return int(result)
             return result
@@ -214,12 +201,13 @@ def computePipelineTime(_self, state, stmt):
             #print "determining latency differences"
        
         dependsOnSecret = False
-        for r in insn.regs_access()[1]:
-            resultLatency = getLatency(r)
-            
-            #perform self-composition to check if resultLatency depends on the secret
-            if type(resultLatency) == claripy.ast.bv.BV and resultLatency.symbolic and emptySolver.hasMultipleSolutions(resultLatency) and state.solver._stored_solver.proofInequalityPossible(resultLatency):
-                dependsOnSecret = True
+        for operand in insn.operands:
+            if operand.access == cap.CS_AC_WRITE:
+                resultLatency = getLatency(operand)
+                
+                #perform self-composition to check if resultLatency depends on the secret
+                if type(resultLatency) == claripy.ast.bv.BV and resultLatency.symbolic and emptySolver.hasMultipleSolutions(resultLatency) and state.solver._stored_solver.proofInequalityPossible(resultLatency):
+                    dependsOnSecret = True
                     
         if dependsOnSecret and len(depends) > 0:
             trueDepends = False

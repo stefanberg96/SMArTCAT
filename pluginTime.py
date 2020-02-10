@@ -100,8 +100,6 @@ class PluginTime(SimStatePlugin):
                     print("\033[93mWarning: Type 2 violation at instruction: %s @ 0x%x\033[0m" % (compositionCheck.mnemonic, compositionCheck.address))
                     global type2violations
                     type2violations.append((compositionCheck.mnemonic, compositionCheck.address))
-                    if not (self.state.options.__contains__(simuvex.o.CONSERVATIVE_WRITE_STRATEGY) and self.state.options.__contains__(simuvex.o.CONSERVATIVE_READ_STRATEGY)):
-                        print("\033[93mFor better results you should probably run the analysis and with the initial states' options \"add_options={simuvex.o.CONSERVATIVE_WRITE_STRATEGY, simuvex.o.CONSERVATIVE_READ_STRATEGY}\"\033[0m")
                 else:
                     print("\033[93mWarning: violation of unknown type at instruction: %s @ 0x%x\033[0m" % (compositionCheck.mnemonic, compositionCheck.address))
                   

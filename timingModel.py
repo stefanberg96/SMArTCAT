@@ -96,13 +96,10 @@ def time(props, insn, state, reg=None):
     
     if props.isMemInsn():
         timing = [[timing[0][0],timing[0][1]],[timing[1][0],timing[1][1]]]
-        if props.ldr or props.ldm or props.pop:
-            timeDiff = settings.MAX_LOAD_CACHE_MISS_SLOWDOWN
-        elif props.str or props.stm or props.push:
+        if props.str:
             timeDiff = settings.MAX_STORE_CACHE_MISS_SLOWDOWN
         else:
-            print("unmodelled memory instruction: 0x%x: %s %s; assumed worst case cache time difference" % (insn.address, insn.mnemonic, insn.op_str))
-            timeDiff = settings.MAX_STORE_CACHE_MISS_SLOWDOWN
+            timeDiff = settings.MAX_LOAD_CACHE_MISS_SLOWDOWN
         
         if settings.MODEL_CACHE_CHANNELS:
             cacheMissInstance = claripy.BVS("cacheMissInstance",1) #unique for this specific cache miss
@@ -116,10 +113,7 @@ def time(props, insn, state, reg=None):
     
     if props.isTrueBranch():
         #model branch predictor misses
-        if insn.insn_name() == 'blx':
-            flushtime = 8
-        else: #instructions b and bl
-            flushtime = 7
+        flushtime = 3
         if settings.MODEL_BRANCH_CHANNELS:
             branchMissInstance = claripy.BVS("branchMissInstance",1) #unique for this specific cache miss
             branchSwitchInstances[branchMissInstance.cache_key] = branchMissInstance
@@ -138,25 +132,6 @@ def time(props, insn, state, reg=None):
             print("No known timing for instruction %s" % (props.format,))
         issue = settings.DEFAULTEXECUTIONTIME
         latency = settings.DEFAULTRESULTLATENCY
-    elif (insn.cc != 15 and insn.cc != 0) and (Au.ASTSafeEqualsComparison(timing[0][0], timing[0][1]) or Au.ASTSafeEqualsComparison(timing[1][0], timing[1][1])): #conditional execution
-        condition = computeCondition(insn.cc-1, state)
-        if not Au.ASTSafeEqualsComparison(timing[0][0], timing[0][1]) and state.se.satisfiable([condition==1]):
-            if state.se.satisfiable([condition!=1]):
-                #Arithmetic representation of the if-statement seems a lot more efficient than using the actual if statement, probably because it can be simplified easier
-                #issue = claripy.If(condition==1, claripy.BVV(timing[0][0], 32), claripy.BVV(timing[0][1], 32))
-                issue = condition*claripy.BVV(timing[0][0], 32) + (1-condition)*claripy.BVV(timing[0][1], 32)
-            else:
-                issue = timing[0][0]
-        else:
-            issue = timing[0][1]
-        if not Au.ASTSafeEqualsComparison(timing[1][0], timing[1][1]) and state.se.satisfiable([condition==1]):
-            if state.se.satisfiable([condition!=1]):
-                #latency = claripy.If(condition==1, claripy.BVV(timing[1][0], 32), claripy.BVV(timing[1][1], 32))
-                latency = condition*claripy.BVV(timing[1][0], 32) + (1-condition)*claripy.BVV(timing[1][1], 32)
-            else:
-                latency = timing[1][0]
-        else:
-            latency = timing[1][1]
     else:
         issue = timing[0][0]
         latency = timing[1][0]

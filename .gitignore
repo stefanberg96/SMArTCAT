@@ -2,3 +2,4 @@ latestversion/
 .vscode/
 *.swp
 __pycache__/
+*.pyc

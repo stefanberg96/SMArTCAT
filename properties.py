@@ -9,9 +9,8 @@ class Properties():
     def __init__(self, insn):
         self.insn = insn
         self.setOperandsAccessType()
+        self.str = operandtypes_store.get(insn.mnemonic) != None
         self.resultsBypassed = False
-        self.ldr = "ldr" in self.insn.insn_name() 
-        self.str = "str" in self.insn.insn_name()
         self.issueTimeSet = False
         self.latencyComputed = False
         self.timeTupleComputed = False
@@ -19,15 +18,15 @@ class Properties():
 
     def setOperandsAccessType(self):
         operandtypes=[w,r,r]
-        if self.insn.mnemonic in operandtypes_branch:
+        if operandtypes_branch.get(self.insn.mnemonic) != None:
             operandtypes = operandtypes_branch[self.insn.mnemonic]
-        elif self.insn.mnemonic in operandtypes_jump:
+        elif operandtypes_jump.get(self.insn.mnemonic) != None:
             operandtypes = operandtypes_jump[self.insn.mnemonic]
-        elif self.insn.mnemonic in operandtypes_load:
+        elif operandtypes_load.get(self.insn.mnemonic) != None:
             operandtypes = operandtypes_load[self.insn.mnemonic]
-        elif self.insn.mnemonic in operandtypes_store:
+        elif operandtypes_store.get(self.insn.mnemonic) != None:
             operandtypes = operandtypes_store[self.insn.mnemonic]
-        elif self.insn.mnemonic in operandtypes_non_default[self.insn.mnemonic]:
+        elif operandtypes_non_default.get(self.insn.mnemonic) != None:
             operandtypes = operandtypes_non_default[self.insn.mnemonic]
 
         if len(self.insn.operands) != len((operandtypes)):
@@ -49,26 +48,20 @@ class Properties():
             NOTE: only relies on issueTime() for memery operations
         """
         if not self.timeTupleComputed:
-            if self.hasSpecialLatencyNeeds():
-                issueTiming = self.issueTime()
-                result = [(issueTiming, issueTiming), None] #none because hasspecialneeds!
-            elif self.format in simpleTiming:
-                issueTiming = simpleTiming[self.format][0]
-                if issueTiming == 0:
-                    issueTiming = 1
-                latencyTiming = simpleTiming[self.format][0]
-                result = ((issueTiming, issueTiming), (latencyTiming, latencyTiming))
-            elif self.str: 
-                issueTiming = self.issueTime()
-                latency = issueTiming+1
-                result = ((issueTiming,issueTiming), (latency,latency))
-            else:
-                result = None
-            self.timeTuple = result
+            issueTiming = self.issueTime()
+            latencyTiming = 1
+            if self.insn.mnemonic == "lw":
+                latencyTiming = 2
+            elif operandtypes_load.get(self.insn.mnemonic) != None:
+                latencyTiming = 3
+            elif self.insn.mnemonic in mul_instr:
+                latencyTiming = 5
+            self.timeTuple = ((issueTiming, issueTiming), (latencyTiming, latencyTiming))
             self.timeTupleComputed = True
         return self.timeTuple
      
     def issueTime(self):
+        return 1
         if not self.issueTimeSet:
             if self.isMemInsn():
                 if (self.ldr or self.str):
@@ -84,14 +77,14 @@ class Properties():
                 result = time
             self.issueTiming = result
             self.issueTimeSet = True
-        return self.issueTiming
+        return 1
         
         
     def isMemInsn(self):
         """
             returns whether this is a memory instruction (load or store)
         """
-        return self.ldr or self.str 
+        return operandtypes_load.get(self.insn.mnemonic) != None or operandtypes_store.get(self.insn.mnemonic) != None
         
     def canReceiveSemiBypass(self):
         """
@@ -111,4 +104,5 @@ operandtypes_branch = {"beq": [r,r,r], "bne":[r,r,r], "blt":[r,r,r], "bge":[r,r,
 operandtypes_jump = {"j": [r],"jr":[r], "jal":[r, r],"jalr":[w, r, r]}
 operandtypes_load = {"lb":[w,r], "lh":[w,r], "lbu":[w,r], "lhu":[w,r], "lw":[w,r]}
 operandtypes_store = {"sb":[r,w], "sh":[r,w],"sw":[r,w]}
-operandtypes_non_default = {"lui":[w,r],"auipc":[w,r], "li":[w,r],"mv":[w,r],"not":[w,r],"neg":[w,r],"seqz":[w,r], "snez":[w,r],"sltz":[w,r], "sgtz":[w,r]}
+operandtypes_non_default = {"lui":[w,r],"auipc":[w,r], "li":[w,r],"mv":[w,r],"not":[w,r],"neg":[w,r],"seqz":[w,r], "snez":[w,r],"sltz":[w,r], "sgtz":[w,r], "ret": []}
+mul_instr = ["mul", "mulh", "mulhu", "mulhsu"]
