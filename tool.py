@@ -50,18 +50,19 @@ def run():
     a = []
     inequalities = set([])
     #global compositions
-    for k,d in enumerate(store.tpg.deadended):
+    for k,d in enumerate(store.tpg.unconstrained):
         #compositions.append(d.state.se._stored_solver.branch())
         #compositions[k].addInequalityConnector(timeSymbol)
         #compositions[k].add(timeSymbol == d.state.time.totalExecutionTime)
         if d.solver.satisfiable():
             a.append( claripy.And(timeSymbol == d.time.totalExecutionTime, *(d.solver._stored_solver.constraints)) )
-    if len(store.tpg.deadended) > 0:
-        sol = store.tpg.deadended[0].solver._stored_solver.blank_copy()
+    if len(store.tpg.unconstrained) > 0:
+        sol = store.tpg.unconstrained[0].solver._stored_solver.blank_copy()
     else:
         from selfComposition import SelfComposition
         sol = SelfComposition()
     sol.addInequalityConnector(settings.secret)
+    sol.addInequalityConnector(settings.public)
     sol.addInequalityConnector(timeSymbol)
     sol.add(claripy.Or(*a))
     sol.simplify()
@@ -89,10 +90,7 @@ if not settings.PC_ONLY:
         return readables
     
     readables = []
-    #readables = makeReadables(solver)
-    
-    #for r in readables:
-    #    print("readable: %s" % r)
+    readables = makeReadables(solver)
     
     #self composition:
     print("preparing self-composition...", end='')
@@ -117,12 +115,7 @@ if not settings.PC_ONLY:
     sys.stdout.flush()
     
     symbols = solver.symbols()
-    
-    if not (public in symbols and secret in symbols and time in symbols):
-        print("program execution constraints do not depend on both public and secret symbols")
-    elif not public in symbols:
-        print("program execution constraints do not depend on public symbol")
-    
+
     if secret in symbols:
         if not (solver.hasMultipleSolutions(timeSymbol)):
             print("constant timing, no timing channel present")
