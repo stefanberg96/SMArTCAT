@@ -29,7 +29,7 @@ MAX_STORE_CACHE_MISS_SLOWDOWN = 90 #measured time by decrementing mem address by
 MAX_LOAD_CACHE_MISS_SLOWDOWN = 9
 
 #Max memory usage in GB
-MAX_MEM = 5
+MAX_MEM = 13
 
 #Concretisation strategy to handle symbolic execution time
 from pluginTime import TIME_STRATEGY_SHORTEST_IF_NONSECRET

@@ -3,7 +3,7 @@ import claripy
 settings.WARNING_ADDRESS = 0x1fcb0
 settings.VERBOSE = True
 settings.DEBUG = True
-settings.TARGET_BINARY = "/home/stefan/Documents/Graduation/RISC-V-toolchain/riscv/Programs/Poly1305_onetimeauth/Radix2.26_woMultiplier/program.elf"
+settings.TARGET_BINARY = "/home/stefan/Documents/Graduation/RISC-V-toolchain/riscv/Programs/WithoutMultiplication/Poly1305/Radix2.26_woMultiplier/program.elf"
 settings.TARGET_ADDRESS = 0x20011934
 settings.mulA = claripy.BVS("a", 160)
 settings.pointerA=100000

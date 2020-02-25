@@ -47,8 +47,6 @@ class PluginTime(SimStatePlugin):
         self.registers = {} #timewise availability of registers in this state
         self.memory = {} #timewise availability of memory in this state
 
-        self.canLastInsnDualWithYounger = claripy.false
-        self.didLastInsnDualIssue = claripy.false
         
         self.lastInsn = None #(insn, format)
         
@@ -58,7 +56,6 @@ class PluginTime(SimStatePlugin):
             self.registers = time.registers
             self.memory = time.memory
             self.lastInsn = time.lastInsn
-            self.canLastInsnDualWithYounger = time.canLastInsnDualWithYounger
             self.instructionCount = time.instructionCount
 
     def countTime(self, deltaTime, compositionCheck=None, props=None, dependencies=None):
@@ -103,8 +100,6 @@ class PluginTime(SimStatePlugin):
                     print("\033[93mWarning: Type 2 violation at instruction: %s @ 0x%x\033[0m" % (compositionCheck.mnemonic, compositionCheck.address))
                     global type2violations
                     type2violations.append((compositionCheck.mnemonic, compositionCheck.address))
-                    if not (self.state.options.__contains__(simuvex.o.CONSERVATIVE_WRITE_STRATEGY) and self.state.options.__contains__(simuvex.o.CONSERVATIVE_READ_STRATEGY)):
-                        print("\033[93mFor better results you should probably run the analysis and with the initial states' options \"add_options={simuvex.o.CONSERVATIVE_WRITE_STRATEGY, simuvex.o.CONSERVATIVE_READ_STRATEGY}\"\033[0m")
                 else:
                     print("\033[93mWarning: violation of unknown type at instruction: %s @ 0x%x\033[0m" % (compositionCheck.mnemonic, compositionCheck.address))
                   
@@ -168,7 +163,7 @@ class PluginTime(SimStatePlugin):
         self.__init__()
         self.state = s
 
-    def updateTimeFromDependencies(self, regs, memory, testBubble):
+    def updateTimeFromDependencies(self, regs, memory):
         """
         Sets the execution time to the max of the execution time and the time required to access the dependencies.
         The max function is symbolic so it can handle symbolic expressions with overlapping feasibility space
@@ -206,10 +201,6 @@ class PluginTime(SimStatePlugin):
                         if settings.VERBOSE:
                             print("Waiting for %s..." % registerName)
                     regsInfluencingMaxTime.append(r)
-                    if testBubble:
-                        bubble = claripy.Or(bubble, compute)
-                elif testBubble:
-                        dualPrevented = claripy.Or(dualPrevented, self.registers[r][0] == self.totalExecutionTime)
 
         #check whether we have to wait for a memory
         for m in memory:
@@ -231,11 +222,7 @@ class PluginTime(SimStatePlugin):
                             else:
                                 print("Waiting for memory [%s]..." % m)
                     memsInfluencingMaxTime.append(m)
-                    if testBubble:
-                        bubble = claripy.Or(bubble, compute)
-                elif testBubble:
-                    dualPrevented = claripy.Or(dualPrevented, self.memory[m][0] == self.totalExecutionTime)
-        
+
         global type1violations
         global type2violations
         global type3violations
