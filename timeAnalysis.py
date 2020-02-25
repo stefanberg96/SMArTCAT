@@ -72,6 +72,14 @@ def step1():
     startState = b.factory.call_state(targetAddress, *settings.params, add_options={angr.sim_options.CONSERVATIVE_WRITE_STRATEGY, angr.sim_options.CONSERVATIVE_READ_STRATEGY})
     #startState.memory.store(pointerToSecret, secret, 4)
     settings.stateInit(startState)
+
+    startState.options -= {angr.options.SIMPLIFY_EXPRS}
+    #startState.options -= {angr.options.SIMPLIFY_REGISTER_WRITES}
+    #startState.options -= {angr.options.SIMPLIFY_MEMORY_WRITES}
+    #startState.options -= {angr.options.SIMPLIFY_REGISTER_READS}
+    #startState.options -= {angr.options.SIMPLIFY_MEMORY_READS}
+
+ 
     startState.meta.factory = b.factory
     startState.options.discard('OPTIMIZE_IR') #OMG make sure to keep this here or optimisation level will be overriden all the time
     tpg = b.factory.simgr(startState, save_unsat = True)

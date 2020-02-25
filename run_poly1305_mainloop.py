@@ -3,8 +3,8 @@ import claripy
 settings.WARNING_ADDRESS = 0x1fcb0
 settings.VERBOSE = True
 settings.DEBUG = True
-settings.TARGET_BINARY = "/home/stefan/Documents/Graduation/RISC-V-toolchain/riscv/Programs/Poly1305_onetimeauth/Radix2.26_woMultiplier/program.elf"
-settings.TARGET_ADDRESS = 0x20011f00
+settings.TARGET_BINARY = "/home/stefan/Documents/Graduation/RISC-V-toolchain/riscv/Programs/WithoutMultiplication/Poly1305/Radix2.26_woMultiplier/program.elf"
+settings.TARGET_ADDRESS = 0x20011f04
 settings.inparam = claripy.BVS("in", 35*8)
 settings.pointerInparam=100000
 settings.h = claripy.BVS("h", 20*8)
@@ -13,7 +13,7 @@ settings.r = claripy.BVS("r", 20*8)
 settings.pointerR=120000
 settings.c = claripy.BVS("c", 20*8)
 settings.pointerC=130000
-settings.mlen = claripy.BVS("mlen", 18)
+settings.mlen = claripy.BVV(18, size=32)
 settings.params = [settings.pointerInparam, settings.mlen, settings.pointerH, settings.pointerR, settings.pointerC]
 settings.secret = settings.inparam.concat(settings.h).concat(settings.r).concat(settings.c)
 settings.public = settings.mlen
