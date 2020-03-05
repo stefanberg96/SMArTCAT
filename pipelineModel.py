@@ -12,7 +12,10 @@ capcon = cap.arm_const
 import angr.engines.vex.ccall as ccall
 from collections import defaultdict
 import store
-
+import os
+import psutil
+import angr as angr
+ 
 from selfComposition import SelfComposition
  
 import logging
@@ -115,7 +118,7 @@ def computePipelineTime(_self, state, stmt):
         #maintain list of semiBypassedRegs for cleanup
         semiBypassedRegs = []
         canReceiveSemiBypass = props.canReceiveSemiBypass()
-            
+
         for operand in insn.operands:
             if operand.access == cap.CS_AC_READ:
                 if operand.type == cap.CS_OP_REG:

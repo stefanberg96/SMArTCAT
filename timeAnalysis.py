@@ -74,10 +74,10 @@ def step1():
     settings.stateInit(startState)
 
     startState.options -= {angr.options.SIMPLIFY_EXPRS}
-    #startState.options -= {angr.options.SIMPLIFY_REGISTER_WRITES}
-    #startState.options -= {angr.options.SIMPLIFY_MEMORY_WRITES}
-    #startState.options -= {angr.options.SIMPLIFY_REGISTER_READS}
-    #startState.options -= {angr.options.SIMPLIFY_MEMORY_READS}
+    startState.options -= {angr.options.SIMPLIFY_REGISTER_WRITES}
+    startState.options -= {angr.options.SIMPLIFY_MEMORY_WRITES}
+    startState.options -= {angr.options.SIMPLIFY_REGISTER_READS}
+    startState.options -= {angr.options.SIMPLIFY_MEMORY_READS}
 
  
     startState.meta.factory = b.factory

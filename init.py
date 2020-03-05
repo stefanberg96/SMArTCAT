@@ -36,6 +36,12 @@ def init():
     store.b.arch.capstone.detail=True #set this so we have access to instruction details required for our timing model
     store.b.factory.default_engine._default_opt_level = 0
     print("Loaded binary %s" % settings.TARGET_BINARY)
+
+    #apply the skips from the settings using user hooks
+    for (from_address, to_address) in settings.skips:
+        def skip(state):
+            print('Skipping at {:x} till {:x}({:d} bytes)'.format(from_address, to_address, to_address-from_address))
+        store.b.hook(from_address, skip, to_address-from_address)
     
     import resource
     soft,hard = resource.getrlimit(resource.RLIMIT_AS)  #determine current limit

@@ -67,6 +67,8 @@ outputBufferLength = claripy.BVS("outputBufferLength", 32)
 nonce = claripy.BVS("nonce", 32)
 params = [outputBufferPointer, outputBufferLength, pointerToMessage, messagelength, pointerToKey]
 
+#List of tuples with begin address up to but not including the end addres of what to skip 
+skips=[] 
 secret = key
 
 #TARGET_ADDRESS = 0x1ef2c
