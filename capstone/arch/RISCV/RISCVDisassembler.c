@@ -42,7 +42,7 @@ static uint64_t getFeatureBits(int mode)
 {
 	if (mode == CS_MODE_RISCV32)
 		// return b11110
-		return RISCV_FeatureStdExtM | RISCV_FeatureStdExtA |
+		return RISCV_FeatureStdExtM | RISCV_FeatureStdExtA | RISCV_FeatureStdExtC |
 		       RISCV_FeatureStdExtF | RISCV_FeatureStdExtD ;
 	else
 		

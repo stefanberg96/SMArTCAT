@@ -3,7 +3,7 @@ import claripy
 settings.WARNING_ADDRESS = 0x1fcb0
 settings.VERBOSE = True
 settings.DEBUG = True
-settings.TARGET_BINARY = "/home/stefan/Documents/Graduation/RISC-V-toolchain/riscv/Programs/WithMultiplication/Curve25519_scalarmult/Radix226/program.elf"
+settings.TARGET_BINARY = "/home/stefan/Documents/Graduation/RISC-V-toolchain/riscv/Programs/WithMultiplication/build/program.elf"
 settings.TARGET_ADDRESS = 0x200116c4
 settings.r = claripy.BVS("result", 32*8)
 settings.pointerR= 100000
